@@ -1,0 +1,22 @@
+{
+  "name": "studant",
+  "version": "1.0.0",
+  "description": "Servidor para processamento das validações do compilador",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/programmerGM/prototypeCompilerServer.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/programmerGM/prototypeCompilerServer/issues"
+  },
+  "homepage": "https://github.com/programmerGM/prototypeCompilerServer#readme",
+  "dependencies": {
+    "express": "^4.15.4"
+  }
+}
