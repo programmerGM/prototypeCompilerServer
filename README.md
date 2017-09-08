@@ -2,7 +2,7 @@
 
 Protótipo de um compilador. Repositório com servidor em node.js para processar as lógicas de análise léxica, sintática e validação de erros léxicos.
 
-[Aplicação Client/Server com objetos de estudos] <br>
+[Aplicação criada em forma de Cliente/Servidor com objetivos de estudos] <br>
 Aplicação cliente no repositório: https://github.com/programmerGM/prototypeCompiler
 
 @author: [Luan Darabas](https://github.com/luandr) <br>
