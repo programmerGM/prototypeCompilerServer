@@ -1,23 +1,18 @@
 {
-  "name": "studant",
+  "name": "multiroom_chat",
   "version": "1.0.0",
-  "description": "Servidor para processamento das validações do compilador",
+  "description": "",
   "main": "app.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/programmerGM/prototypeCompilerServer.git"
-  },
-  "author": "",
+  "author": "Jorge",
   "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/programmerGM/prototypeCompilerServer/issues"
-  },
-  "homepage": "https://github.com/programmerGM/prototypeCompilerServer#readme",
   "dependencies": {
-    "express": "^4.15.4",
-    "nodemon": "^1.12.0"
+    "body-parser": "^1.15.2",
+    "consign": "^0.1.2",
+    "ejs": "^2.5.2",
+    "express": "^4.14.0",
+    "express-validator": "^2.20.8"
   }
 }
