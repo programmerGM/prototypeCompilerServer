@@ -23,6 +23,7 @@
           <tr>
             <th>Linha</th>
             <th>Token</th>
+            <th>Código</th>
             <th>Mensagem</th>
           </tr>
         </thead>
@@ -31,6 +32,7 @@
           </tr>
             <td><%= tokens[i].linha %></td>
             <td><%=tokens[i].token %></td>
+            <td><%=tokens[i].code %></td>
             <td class="<% if(tokens[i].messageError!== null) { %> alert alert-danger <% } %>"><%= tokens[i].messageError %></td>
           </tr>
           <% } %>
