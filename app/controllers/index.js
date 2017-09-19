@@ -72,7 +72,13 @@ module.exports.validar = (application, req, res) => {
   var literal = false, literalOpen = 0;
   var number = false, numberOpen = 0, numAcumula = "";
   var wordAux = "", firstLetter = false;
-  //var hasNext = false, hasNextNext=false;
+  var tokList = [
+    { nome: 'while', code: 1 },
+    { nome: 'if', code: 14 }
+    //etc
+  ];
+
+
   // remove espaço em branco
   // @deprecated text = text.replace(/(\r\n|\n|\r)/gm, "");
   // text = text.replace(/\s/g, '');
@@ -156,6 +162,25 @@ module.exports.validar = (application, req, res) => {
           console.log(wordAux);
           temp = wordAux;
           wordAux = "";
+          find = false;
+
+
+          /*
+          //testar essa cosis aqui
+          tokList.forEach((value) => {
+            if (value.nome.match(temp)) {
+              tokens.push(new Token(a, value.nome, null, value.code));
+              console.log('aee');
+              find = true;
+            }
+          });
+          if (!find) {
+            //nome variavel
+            tokens.push(new Token(a, "nomevariavel", null, 0));
+          }
+          continue; */
+
+
 
           //verifica qual palavra é
           switch (true) {
@@ -383,6 +408,6 @@ module.exports.validar = (application, req, res) => {
 
   console.log(tokens);
 
-  res.send(tokens);
-  // res.render('index', { validacao: validacao, tokens: tokens, dadosForm: textOriginal });
+  //res.send(tokens);
+  res.render('index', { validacao: validacao, tokens: tokens, dadosForm: textOriginal });
 }
