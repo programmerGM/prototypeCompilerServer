@@ -12,8 +12,8 @@ module.exports.validar = (application, req, res) => {
   const OPERADOR_IO_MSG = "Erro ao informar o operador de entrada e saída ou lógico";
 
 
-  var Token = function (linha, token, messageError, code) {
-    this.linha = linha;
+  var Token = function (line, token, messageError, code) {
+    this.line = line;
     this.token = token;
     this.messageError = messageError;
     this.code = code;
@@ -150,6 +150,10 @@ module.exports.validar = (application, req, res) => {
             // fim - 18
             case /fim+/g.test(temp):
               tokens.push(new Token(a, "fim", null, 18));
+              continue;
+            // integer - 12
+            case /integer+/g.test(temp):
+              tokens.push(new Token(a, "integer", null, 12));
               continue;
             // else - 19
             case /else+/g.test(temp):
@@ -342,5 +346,6 @@ module.exports.validar = (application, req, res) => {
 
   console.log(tokens);
 
-  res.render('index', { validacao: validacao, tokens: tokens, dadosForm: textOriginal });
+  res.send(tokens);
+  // res.render('index', { validacao: validacao, tokens: tokens, dadosForm: textOriginal });
 }
