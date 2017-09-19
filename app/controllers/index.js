@@ -4,6 +4,54 @@ module.exports.index = (application, req, res) => {
 
 module.exports.validar = (application, req, res) => {
 
+  const TOKEN_WHILE = 1;
+  const TOKEN_VOID = 2;
+  const TOKEN_STRING = 3;
+  const TOKEN_RETURN = 4;
+  const TOKEN_NUMERO_INTEIRO = 5;
+  const TOKEN_NUMERO_FLOAT = 6;
+  const TOKEN_NOME_VARIAVEL = 7;
+  const TOKEN_NOME_DO_CHAR = 8;
+  const TOKEN_NOME_DA_STRING = 9;
+  const TOKEN_MAIN = 10;
+  const TOKEN_LITERAL = 11;
+  const TOKEN_INTEGER = 12;
+  const TOKEN_INICIO = 13;
+  const TOKEN_IF = 14;
+  const TOKEN_VAZIO = 15;
+  const TOKEN_FOR = 16;
+  const TOKEN_FLOAT = 17;
+  const TOKEN_FIM = 18;
+  const TOKEN_ELSE = 19;
+  const TOKEN_DO = 20;
+  const TOKEN_COUT = 21;
+  const TOKEN_CIN = 22;
+  const TOKEN_CHAR = 23;
+  const TOKEN_CALLFUNCAO = 24;
+  const TOKEN_EXTRACAO = 25;
+  const TOKEN_MAIOR_OU_IGUAL = 26;
+  const TOKEN_MAIOR = 27;
+  const TOKEN_IGUAL_IGUAL = 28;
+  const TOKEN_IGUAL = 29;
+  const TOKEN_MENOR_OU_IGUAL = 30;
+  const TOKEN_INSERCAO = 31;
+  const TOKEN_MENOR = 32;
+  const TOKEN_INCREMENTO = 33;
+  const TOKEN_ADICAO = 34;
+  const TOKEN_FECHA_CHAVE = 35;
+  const TOKEN_ABRE_CHAVE = 36;
+  const TOKEN_PONTO_E_VIRGULA = 37;
+  const TOKEN_DOIS_PONTOS = 38;
+  const TOKEN_BARRA = 39;
+  const TOKEN_VIRGULA = 40;
+  const TOKEN_ASTERISCO = 41;
+  const TOKEN_FECHA_PARENTESE = 42;
+  const TOKEN_ABRE_PARENTESE = 43;
+  const TOKEN_FIM_DE_ARQUIVO = 44;
+  const TOKEN_DIFERENTE = 45;
+  const TOKEN_DECREMENTO = 46;
+  const TOKEN_SUBTRACAO = 47;
+
   const OPERADOR_MAT_MSG = "Erro ao informar o operador matemático";
   const LITERAL_CLOSE_MSG = "Erro ao fechar o literal"
   const FLOAT_ERROR_MSG = "Float inserido erradamente"
@@ -64,38 +112,34 @@ module.exports.validar = (application, req, res) => {
       switch (true) {
         // } - 35
         case /[}]+/g.test(l):
-          tokens.push(new Token(a, l, null, 35));
+          tokens.push(new Token(a, l, null, TOKEN_FECHA_CHAVE));
           continue;
         // { - 36
         case /[{]+/g.test(l):
-          tokens.push(new Token(a, l, null, 36));
+          tokens.push(new Token(a, l, null, TOKEN_ABRE_CHAVE));
           continue;
         // ; - 37
         case /[;]+/g.test(l):
-          tokens.push(new Token(a, l, null, 37));
+          tokens.push(new Token(a, l, null, TOKEN_PONTO_E_VIRGULA));
           continue;
         // : - 38
         case /[:]+/g.test(l):
-          tokens.push(new Token(a, l, null, 38));
+          tokens.push(new Token(a, l, null, TOKEN_DOIS_PONTOS));
           continue;
         // , - 40
         case /[,]+/g.test(l):
-          tokens.push(new Token(a, l, null, 40));
+          tokens.push(new Token(a, l, null, TOKEN_VIRGULA));
           continue;
         // ) - 42
         case /[)]+/g.test(l):
-          tokens.push(new Token(a, l, null, 42));
+          tokens.push(new Token(a, l, null, TOKEN_ABRE_PARENTESE));
           continue;
         // , - 43
         case /[(]+/g.test(l):
-          tokens.push(new Token(a, l, null, 43));
+          tokens.push(new Token(a, l, null, TOKEN_FECHA_PARENTESE));
           continue;
 
       }
-
-
-
-
 
       if (l.match(/[a-z]+/g)) {
         // armazena a letra
@@ -117,82 +161,75 @@ module.exports.validar = (application, req, res) => {
           switch (true) {
             // while - 1
             case /while+/g.test(temp):
-              tokens.push(new Token(a, "while", null, 1));
+              tokens.push(new Token(a, "while", null, TOKEN_WHILE));
               continue;
             // void - 2
             case /void+/g.test(temp):
-              tokens.push(new Token(a, "void", null, 2));
+              tokens.push(new Token(a, "void", null, TOKEN_VOID));
               continue;
             // string - 3
             case /string+/g.test(temp):
-              tokens.push(new Token(a, "string", null, 3));
+              tokens.push(new Token(a, "string", null, TOKEN_STRING));
               continue;
             // return - 4
             case /return+/g.test(temp):
-              tokens.push(new Token(a, "return", null, 4));
+              tokens.push(new Token(a, "return", null, TOKEN_RETURN));
               continue;
             // main - 10
             case /main+/g.test(temp):
-              tokens.push(new Token(a, "while", null, 10));
+              tokens.push(new Token(a, "while", null, TOKEN_MAIN));
               continue;
             // inicio - 13
             case /inicio+/g.test(temp):
-              tokens.push(new Token(a, "inicio", null, 13));
+              tokens.push(new Token(a, "inicio", null, TOKEN_INICIO));
               continue;
             // if - 14
             case /if+/g.test(temp):
-              tokens.push(new Token(a, "if", null, 14));
+              tokens.push(new Token(a, "if", null, TOKEN_IF));
               continue;
             // for - 16
             case /for+/g.test(temp):
-              tokens.push(new Token(a, "for", null, 16));
+              tokens.push(new Token(a, "for", null, TOKEN_FOR));
               continue;
             // fim - 18
             case /fim+/g.test(temp):
-              tokens.push(new Token(a, "fim", null, 18));
+              tokens.push(new Token(a, "fim", null, TOKEN_FIM));
               continue;
             // integer - 12
             case /integer+/g.test(temp):
-              tokens.push(new Token(a, "integer", null, 12));
+              tokens.push(new Token(a, "integer", null, TOKEN_INTEGER));
               continue;
             // else - 19
             case /else+/g.test(temp):
-              tokens.push(new Token(a, "else", null, 19));
+              tokens.push(new Token(a, "else", null, TOKEN_ELSE));
               continue;
             // do - 20
             case /do+/g.test(temp):
-              tokens.push(new Token(a, "do", null, 20));
+              tokens.push(new Token(a, "do", null, TOKEN_DO));
               continue;
             // cout - 21
             case /cout+/g.test(temp):
-              tokens.push(new Token(a, "cout", null, 21));
+              tokens.push(new Token(a, "cout", null, TOKEN_COUT));
               continue;
             // cin - 22
             case /cin+/g.test(temp):
-              tokens.push(new Token(a, "cin", null, 22));
+              tokens.push(new Token(a, "cin", null, TOKEN_CIN));
               continue;
             // callfuncao - 24
             case /callfuncao+/g.test(temp):
-              tokens.push(new Token(a, "callfuncao", null, 24));
+              tokens.push(new Token(a, "callfuncao", null, TOKEN_CALLFUNCAO));
               continue;
 
           }
-
-
-
-
         }
       }
-
-
-
 
       // verifica char
       if (l.match(/[']+/g)) {
         // se o segundo após l for "'"então é pq é char
         if (nextnext.match(/[']+/g)) {
           // é char - 23
-          tokens.push(new Token(a, "char", null, 23));
+          tokens.push(new Token(a, "char", null, TOKEN_CHAR));
           b += 2;
         } else {
           tokens.push(new Token(a, null, CHAR_MSG, null));
@@ -210,14 +247,14 @@ module.exports.validar = (application, req, res) => {
             // se não tiver +2 . no valor não tem erro
             if (!(numAcumula.match(/([.])+/g).length > 1)) {
               // sucesso
-              tokens.push(new Token(a, "float", null, 17));
+              tokens.push(new Token(a, "float", null, TOKEN_FLOAT));
             } else {
               // msg erro
               tokens.push(new Token(a, null, FLOAT_ERROR_MSG, null));
             }
           } else {
             // senão é integer - 11
-            tokens.push(new Token(a, "integer", null, 12));
+            tokens.push(new Token(a, "integer", null, TOKEN_INTEGER));
           }
           numAcumula = "";
           continue;
@@ -232,30 +269,30 @@ module.exports.validar = (application, req, res) => {
           case /[+]+/g.test(l):
             if (next.match(/[+]+/g)) {
               // ++ 33
-              tokens.push(new Token(a, l + next, null, 33));
+              tokens.push(new Token(a, l + next, null, TOKEN_INCREMENTO));
               b += 1;
             } else {
               // + 34
-              tokens.push(new Token(a, l, null, 34));
+              tokens.push(new Token(a, l, null, TOKEN_ADICAO));
             }
             continue;
           case /[-]+/g.test(l):
             if (next.match(/[-]+/g)) {
               // -- 46
-              tokens.push(new Token(a, l + next, null, 46));
+              tokens.push(new Token(a, l + next, null, TOKEN_DECREMENTO));
               b += 1;
             } else {
               // - 47
-              tokens.push(new Token(a, l, null, 47));
+              tokens.push(new Token(a, l, null, TOKEN_SUBTRACAO));
             }
             continue;
           case /[*]+/g.test(l):
             // * - 41
-            tokens.push(new Token(a, l, null, 41));
+            tokens.push(new Token(a, l, null, TOKEN_ASTERISCO));
             continue;
           case /[/]+/g.test(l):
             // / - 39
-            tokens.push(new Token(a, l, null, 39));
+            tokens.push(new Token(a, l, null, TOKEN_BARRA));
             continue;
         }
       }
@@ -265,11 +302,11 @@ module.exports.validar = (application, req, res) => {
         if (l.match(/[<]+/g)) {
           // << cin -  31
           if (next.match(/[<]+/g)) {
-            tokens.push(new Token(a, "<<", null, 31));
+            tokens.push(new Token(a, "<<", null, TOKEN_INSERCAO));
           } else {
             // <= menor ou igual que - 30
             if (next.match(/[=]+/g)) {
-              tokens.push(new Token(a, "<=", null, 30));
+              tokens.push(new Token(a, "<=", null, TOKEN_MENOR_OU_IGUAL));
             }
           }
 
@@ -279,12 +316,12 @@ module.exports.validar = (application, req, res) => {
           if (l.match(/[>]+/g)) {
             // >> cin - 25
             if (next.match(/[>]+/g)) {
-              tokens.push(new Token(a, ">>", null, 25));
+              tokens.push(new Token(a, ">>", null, TOKEN_EXTRACAO));
               b += 1;
             } else {
               // >= maior ou igual que 26
               if (next.match(/[=]+/g)) {
-                tokens.push(new Token(a, ">=", null, 26));
+                tokens.push(new Token(a, ">=", null, TOKEN_MAIOR_OU_IGUAL));
                 b += 1;
               }
 
@@ -294,7 +331,7 @@ module.exports.validar = (application, req, res) => {
             // != diferente - 45
             if (l.match(/[!]+/g)) {
               if (next.match(/[=]+/g)) {
-                tokens.push(new Token(a, "!=", null, 45));
+                tokens.push(new Token(a, "!=", null, TOKEN_DIFERENTE));
                 b += 1;
               } else {
                 msg = "Esperava \"!=\" entrava inválida";
@@ -306,12 +343,12 @@ module.exports.validar = (application, req, res) => {
               if (l.match(/[=]+/g)) {
                 // == - 28
                 if (next.match(/[=]+/g)) {
-                  tokens.push(new Token(a, "==", null, 28));
+                  tokens.push(new Token(a, "==", null, TOKEN_IGUAL_IGUAL));
                   b += 1;
                   continue;
                 }
                 // se for = - 29
-                tokens.push(new Token(a, "=", null, 29));
+                tokens.push(new Token(a, "=", null, TOKEN_IGUAL));
                 continue;
 
               }
@@ -330,19 +367,19 @@ module.exports.validar = (application, req, res) => {
           literalOpen = a;
         } else {
           // lietarl - 11
-          tokens.push(new Token(a, "literal", null, 1));
+          tokens.push(new Token(a, "literal", null, TOKEN_LITERAL));
         }
         literal = !literal;
       }
     }
-  }
+  } // Fim FOR
   //se não fechar o literal
   if (literal) {
     tokens.push(new Token(literalOpen, null, LITERAL_CLOSE_MSG, null));
   }
 
   // fim de arquivo $ - 44
-  tokens.push(new Token(a, "$", null, 44));
+  tokens.push(new Token(a, "$", null, TOKEN_FIM_DE_ARQUIVO));
 
   console.log(tokens);
 
