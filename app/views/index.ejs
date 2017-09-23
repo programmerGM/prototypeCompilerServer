@@ -30,7 +30,7 @@
         <tbody>
           <% for(var i = 0; i < tokens.length; i++) { %>
           </tr>
-            <td><%= tokens[i].linha %></td>
+            <td><%= tokens[i].line + 1 %></td>
             <td><%=tokens[i].token %></td>
             <td><%=tokens[i].code %></td>
             <td class="<% if(tokens[i].messageError!== null) { %> alert alert-danger <% } %>"><%= tokens[i].messageError %></td>
