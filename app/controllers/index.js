@@ -85,15 +85,20 @@ module.exports.validar = (application, req, res) => {
   // remove espaço em branco
   // @deprecated text = text.replace(/(\r\n|\n|\r)/gm, "");
   // text = text.replace(/\s/g, '');
+  //console.log(\/\*([\S\s]+?)\*\/.atc)
+
+  // Verifica comentário de linha e bloco, se existir REMOVE
+  text = text.replace(/(\/\*([\s\S]*?)\*\/)|(\/\/(.*)$)/gm, '');
 
   var lines = text.split('\n');
-
-  nextLine:
   for (var a = 0; a < lines.length; a++) {
     //lines[a] = lines[a].replace(/\s/g, '');
     textaux = lines[a];
     for (var b = 0; b < textaux.length; b++) {
       var l = textaux[b];
+      if (l.match(/\s+/g)) {
+        continue;
+      }
       // seta proximo valor de next
       if (b <= textaux.length - 3) {
         var nextnext = textaux[b + 2];
@@ -111,11 +116,6 @@ module.exports.validar = (application, req, res) => {
         var prev = textaux[b - 1];
       } else {
         var prev = "";
-      }
-
-      // Verifica comentário de linha, se existir vai para a próxima linha
-      if (l.match(/[\/\/]+/g)) {
-        continue nextLine;
       }
 
       // verifica se não é fechamento de literal
@@ -168,7 +168,7 @@ module.exports.validar = (application, req, res) => {
         // se o proximo não for uma letra então pode finalizar
         if (!(next.match(/[a-z]+/g))) {
           firstLetter = !firstLetter;
-          console.log(wordAux);
+          //console.log(wordAux);
           temp = wordAux;
           wordAux = "";
           find = false;
