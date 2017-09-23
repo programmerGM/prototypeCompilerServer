@@ -173,83 +173,14 @@ module.exports.validar = (application, req, res) => {
           temp = wordAux;
           wordAux = "";
           find = false;
-
-
           /*
           //testar essa cosis aqui+
           +*/
           tokList.forEach((value) => {
             if (value.nome.match(temp)) {
               tok(temp);
-              console.log('aee');
             }
           });
-
-
-
-          /* //verifica qual palavra é
-          switch (true) {
-            // while - 1
-            case /while+/g.test(temp):
-              tok("while");
-              continue;
-            // void - 2
-            case /void+/g.test(temp):
-              tok('void');
-              continue;
-            // string - 3
-            case /string+/g.test(temp):
-              tok('string');
-              continue;
-            // return - 4
-            case /return+/g.test(temp):
-              tok('return');
-              continue;
-            // main - 10
-            case /main+/g.test(temp):
-              tok('main');
-              continue;
-            // inicio - 13
-            case /inicio+/g.test(temp):
-              tok('inicio');
-              continue;
-            // if - 14
-            case /if+/g.test(temp):
-              tok('if');
-              continue;
-            // for - 16
-            case /for+/g.test(temp):
-              tok('for');
-              continue;
-            // fim - 18
-            case /fim+/g.test(temp):
-              tok('fim');
-              continue;
-            // integer - 12
-            case /integer+/g.test(temp):
-              tok('integer');
-              continue;
-            // else - 19
-            case /else+/g.test(temp):
-              tok('else');
-              continue;
-            // do - 20
-            case /do+/g.test(temp):
-              tok('do');
-              continue;
-            // cout - 21
-            case /cout+/g.test(temp):
-              tok('cout');
-              continue;
-            // cin - 22
-            case /cin+/g.test(temp):
-              tok('cin');
-              continue;
-            // callfuncao - 24
-            case /callfuncao+/g.test(temp):
-              tok('callfuncao');
-              continue;
-          }*/
         }
       }
 
@@ -353,7 +284,6 @@ module.exports.validar = (application, req, res) => {
 
       // se é operador de comparação
       if (l.match(/[<>!=]+/g)) {
-        console.log("achou");
         if (l.match(/[<]+/g)) {
           // << cin -  31
           if (next.match(/[<]+/g)) {
