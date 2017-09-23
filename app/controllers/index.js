@@ -65,9 +65,11 @@ module.exports.validar = (application, req, res) => {
     this.token = token;
     this.messageError = messageError;
     this.code = code;
-  }
+  } 
 
   var text = textOriginal = textaux = req.body.textarea;
+  var typeClient = req.body.typeclient;
+  if(!typeClient) {typeClient = 0}
   var validacao = {}, tokens = [], posicao = 0;
   var literal = false, literalOpen = 0;
   var number = false, numberOpen = 0, numAcumula = "";
@@ -408,6 +410,9 @@ module.exports.validar = (application, req, res) => {
 
   console.log(tokens);
 
-  //res.send(tokens);
-  res.render('index', { validacao: validacao, tokens: tokens, dadosForm: textOriginal });
+  if (typeClient == 1){ // App JavaFx
+    res.send(tokens);
+  } else { // Página web
+    res.render('index', { validacao: validacao, tokens: tokens, dadosForm: textOriginal });
+  }
 }
