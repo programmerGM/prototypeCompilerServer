@@ -361,24 +361,20 @@ module.exports.validar = (application, req, res) => {
           } else if (next.match(/[=]+/g)) { // <= menor ou igual que - 30
             tok('<=');
           } else {
-            console.log("achou");
             tok('<');
           }
           b += 1;
         } else {
-
           if (l.match(/[>]+/g)) {
             // >> cin - 25
             if (next.match(/[>]+/g)) {
               tok('>>');
               b += 1;
-            } else {
-              // >= maior ou igual que 26
-              if (next.match(/[=]+/g)) {
+            } else if (next.match(/[=]+/g)) { // >= maior ou igual que 26
                 tok('>=');
                 b += 1;
-              }
-
+            } else {
+              tok('>');
             }
           } else {
 
