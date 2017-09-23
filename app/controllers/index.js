@@ -51,7 +51,6 @@ module.exports.validar = (application, req, res) => {
     { nome: '!=', code: 45 },
     { nome: '--', code: 46 },
     { nome: '-', code: 47 },
-
   ],
     errList = [
       { nome: 'literal', msg: 'Erro ao fechar o literal' },
@@ -354,17 +353,17 @@ module.exports.validar = (application, req, res) => {
 
       // se é operador de comparação
       if (l.match(/[<>!=]+/g)) {
+        console.log("achou");
         if (l.match(/[<]+/g)) {
           // << cin -  31
           if (next.match(/[<]+/g)) {
             tok('<<');
+          } else if (next.match(/[=]+/g)) { // <= menor ou igual que - 30
+            tok('<=');
           } else {
-            // <= menor ou igual que - 30
-            if (next.match(/[=]+/g)) {
-              tok('<=');
-            }
+            console.log("achou");
+            tok('<');
           }
-
           b += 1;
         } else {
 
