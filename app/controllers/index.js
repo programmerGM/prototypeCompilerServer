@@ -99,6 +99,7 @@ module.exports.validar = (application, req, res) => {
   text = text.replace(/(\/\*([\s\S]*?)\*\/)|(\/\/(.*)$)/gm, '');
 
   var lines = text.split('\n');
+  extern:
   for (var a = 0; a < lines.length; a++) {
     //lines[a] = lines[a].replace(/\s/g, '');
     textaux = lines[a];
@@ -124,6 +125,11 @@ module.exports.validar = (application, req, res) => {
         var prev = textaux[b - 1];
       } else {
         var prev = "";
+      }
+
+    if (l.match(/[\/]/) && next.match(/\*/)){
+        error('invalidcomment');
+        break extern;
       }
 
       // verifica se não é fechamento de literal
