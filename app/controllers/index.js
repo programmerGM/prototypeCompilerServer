@@ -10,10 +10,10 @@ module.exports.validar = (application, req, res) => {
     { nome: 'string', code: 3 },
     { nome: 'return', code: 4 },
     { nome: 'numerointeiro', code: 5 },
-    { nome: 'numerofloat', code: 6 },
+    { nome: 'numeroflutuante', code: 6 },
     { nome: 'nomevariavel', code: 7 },
-    { nome: 'nomechar', code: 8 },
-    { nome: 'nomestring', code: 9 },
+    { nome: 'nomecharacter', code: 8 },
+    { nome: 'nomestr', code: 9 },
     { nome: 'main', code: 10 },
     { nome: 'literal', code: 11 },
     { nome: 'integer', code: 12 },
@@ -53,10 +53,17 @@ module.exports.validar = (application, req, res) => {
     { nome: '-', code: 47 },
   ],
     errList = [
-      { nome: 'literal', msg: 'Erro ao fechar o literal' },
+      { nome: 'literal', msg: 'Erro ao fechar o literal "' },
       { nome: 'float', msg: 'Float não foi inserido corretamente' },
       { nome: 'char', msg: 'Char esperado' },
-      { nome: 'diff', msg: 'Esperava "!=" entrava inválida' }
+      { nome: 'diff', msg: 'Esperava "!=" entrava inválida' },
+      { nome: 'biginteger', msg: 'Número inteiro ultrapassa o limite de 1.048.576' },
+      { nome: 'smallinteger', msg: 'Número inteiro menor que o limite de -1.048.576' },
+      { nome: 'bigfloat', msg: 'Número float ultrapassa o limite de 1.073.741.824 para númuero inteiro' },
+      { nome: 'biginteger', msg: 'Número float menor o limite de -1.073.741.824' },
+      { nome: 'bigstring', msg: 'String muito grande. Limite: 512 caracteres' },
+      { nome: 'invalidcomment', msg: 'Falta fechamento de comentário' },
+      { nome: 'identifyinvalid', msg: 'Tamanho inválido para o identificador. Limite: 512 caracteres' }
     ];
 
   // ??????????????????? const TOKEN_VAZIO = 15; ????????????????????
@@ -230,14 +237,20 @@ module.exports.validar = (application, req, res) => {
             // se não tiver +2 . no valor não tem erro
             if (!(numAcumula.match(/([.])+/g).length > 1)) {
               // sucesso
-              tok('float');
+              tok('numeroflutuante');
             } else {
               // msg erro
               error('float');
             }
           } else {
-            // senão é integer - 11
-            tok('integer');
+            // senão é numerointeiro - 5
+            if (numAcumula >= 0 && numAcumula > 1048576) {
+              error('biginteger');
+            } else if (numAcumula < 0 && numAcumula < -1048576) {
+              error('smallinteger');
+            } else {
+              tok('numerointeiro');
+            }
           }
           if (next.match(/[0-9]+/g) || next.match(/[.]+/g)) {
             floatCycle = false;
@@ -301,8 +314,8 @@ module.exports.validar = (application, req, res) => {
               tok('>>');
               b += 1;
             } else if (next.match(/[=]+/g)) { // >= maior ou igual que 26
-                tok('>=');
-                b += 1;
+              tok('>=');
+              b += 1;
             } else {
               tok('>');
             }
