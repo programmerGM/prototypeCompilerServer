@@ -12,7 +12,7 @@ module.exports.validar = (application, req, res) => {
     { nome: 'numerointeiro', code: 5 },
     { nome: 'numeroflutuante', code: 6 },
     { nome: 'nomevariavel', code: 7 },
-    { nome: 'nomecharacter', code: 8 },
+    { nome: 'nomecht', code: 8 }, // Nome do char
     { nome: 'nomestr', code: 9 },
     { nome: 'main', code: 10 },
     { nome: 'literal', code: 11 },
@@ -55,7 +55,7 @@ module.exports.validar = (application, req, res) => {
     errList = [
       { nome: 'literal', msg: 'Erro ao fechar o literal "' },
       { nome: 'float', msg: 'Float não foi inserido corretamente' },
-      { nome: 'char', msg: 'Char esperado' },
+      { nome: 'stringchar', msg: 'Falta de fechamento. Esperado uma string ou char.' },
       { nome: 'diff', msg: 'Esperava "!=" entrava inválida' },
       { nome: 'biginteger', msg: 'Número inteiro ultrapassa o limite de 1.048.576' },
       { nome: 'smallinteger', msg: 'Número inteiro menor que o limite de -1.048.576' },
@@ -87,7 +87,7 @@ module.exports.validar = (application, req, res) => {
   var literal = false, literalOpen = 0;
   var number = false, numberOpen = 0, numAcumula = "";
   var wordAux = "", firstLetter = false;
-  var commentBlock = false;
+  var commentBlockNoClosed = false;
 
 
   // remove espaço em branco
@@ -127,8 +127,9 @@ module.exports.validar = (application, req, res) => {
         var prev = "";
       }
 
-    if (l.match(/[\/]/) && next.match(/\*/)){
+      if (l.match(/[\/]/) && next.match(/\*/)) {
         error('invalidcomment');
+        commentBlockNoClosed = !commentBlockNoClosed;
         break extern;
       }
 
@@ -179,8 +180,9 @@ module.exports.validar = (application, req, res) => {
         if (!firstLetter) {
           firstLetter = !firstLetter;
         }
-        // se o proximo não for uma letra então pode finalizar
-        if (!(next.match(/[a-z]+/g))) {
+        // se o proximo não for uma letra ou digito então pode finalizar
+        if (!(next.match(/[a-z]|[0-9]+/g))) {
+          var finded = false;
           firstLetter = !firstLetter;
           //console.log(wordAux);
           temp = wordAux;
@@ -191,80 +193,72 @@ module.exports.validar = (application, req, res) => {
           +*/
           tokList.forEach((value) => {
             if (value.nome.match(temp)) {
+              finded = !finded;
               tok(temp);
             }
           });
+          if (!finded){ // ALTERAR NO MANUAL PARA QUE AS VARIÁVEIS TENHAM SOMENTE LETRAS
+            tok('nomevariavel');
+          }
         }
       }
 
-      // verifica char
+      // verifica char ou string
       if (l.match(/[']+/g)) {
         // se o segundo após l for "'"então é pq é char
         if (nextnext.match(/[']+/g)) {
           // é char - 23
-          tok('char');
+          tok('nomecht');
           b += 2;
         } else {
-          error('char');
+          /*
+          
+                    FAZER A STRING AQUI, tem que ficar assim -> 'Isso é uma string'
+          
+          
+          */
+          error('stringchar');
           break;
         }
       }
-      /*
 
-
-
-
-
-
-
-
-            VER A PARADA DO FLOAT SE É PARA RETORNAR NUMEROFLOAT, E TEM QUE ARRUMAR ELE NÃO TÁ LENDO O QUE TÁ DEPOIS DO ".", BOA SORTE <3
-
-
-
-
-
-
-
-
-
-
-      */
       // se for numero ou virgula
       if (l.match(/[0-9]+/g) || l.match(/[.]+/g)) {
         floatCycle = true;
         // se os proximos não foram parte da parada seta boolean
-
         numAcumula += "" + l;
         // se o proximo n for numero nem virgula tem que criar token e setar false
-        if (!(next.match(/[0-9]+/g)) && (!next.match(/[.]+/g))) {
-          // se tem ponto é float - 17
-          if (numAcumula.match(/[.]+/g)) {
-            // se não tiver +2 . no valor não tem erro
-            if (!(numAcumula.match(/([.])+/g).length > 1)) {
-              // sucesso
-              tok('numeroflutuante');
+        if (!(l.match(/[.]+/g) && !next.match(/[0-9]+/g))) {
+          if (!(next.match(/[0-9]+/g)) && (!next.match(/[.]+/g))) {
+            // se tem ponto é float - 17
+            if (numAcumula.match(/[.]+/g)) {
+              // se não tiver +2 . no valor não tem erro
+              if (!(numAcumula.match(/([.])+/g).length > 1)) {
+                // sucesso
+                tok('numeroflutuante');
+              } else {
+                // msg erro
+                error('float');
+              }
             } else {
-              // msg erro
-              error('float');
+              // senão é numerointeiro - 5
+              if (numAcumula >= 0 && numAcumula > 1048576) {
+                error('biginteger');
+              } else if (numAcumula < 0 && numAcumula < -1048576) {
+                error('smallinteger');
+              } else {
+                tok('numerointeiro');
+              }
             }
-          } else {
-            // senão é numerointeiro - 5
-            if (numAcumula >= 0 && numAcumula > 1048576) {
-              error('biginteger');
-            } else if (numAcumula < 0 && numAcumula < -1048576) {
-              error('smallinteger');
-            } else {
-              tok('numerointeiro');
+            if (next.match(/[0-9]+/g) || next.match(/[.]+/g)) {
+              floatCycle = false;
+              numAcumula = "";
             }
+            continue;
           }
-          if (next.match(/[0-9]+/g) || next.match(/[.]+/g)) {
-            floatCycle = false;
-            numAcumula = "";
-          }
-          continue;
+        } else {
+          error('float');
         }
-
       }
 
       // se é operador matemático ou incrementação
@@ -377,7 +371,9 @@ module.exports.validar = (application, req, res) => {
   }
 
   // fim de arquivo $ - 44
-  tok('$');
+  if (!commentBlockNoClosed) {
+    tok('$');
+  }
 
   console.log(tokens);
 
