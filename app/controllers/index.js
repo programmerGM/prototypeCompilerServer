@@ -87,7 +87,6 @@ module.exports.validar = (application, req, res) => {
   var literal = false, literalOpen = 0;
   var number = false, numberOpen = 0, numAcumula = "";
   var wordAux = "", firstLetter = false;
-  var commentBlockNoClosed = false;
 
 
   // remove espaço em branco
@@ -99,7 +98,6 @@ module.exports.validar = (application, req, res) => {
   text = text.replace(/(\/\*([\s\S]*?)\*\/)|(\/\/(.*)$)/gm, '');
 
   var lines = text.split('\n');
-  extern:
   for (var a = 0; a < lines.length; a++) {
     //lines[a] = lines[a].replace(/\s/g, '');
     textaux = lines[a];
@@ -129,8 +127,7 @@ module.exports.validar = (application, req, res) => {
 
       if (l.match(/[\/]/) && next.match(/\*/)) {
         error('invalidcomment');
-        commentBlockNoClosed = !commentBlockNoClosed;
-        break extern;
+        retornar();
       }
 
       // verifica se não é fechamento de literal
@@ -197,7 +194,7 @@ module.exports.validar = (application, req, res) => {
               tok(temp);
             }
           });
-          if (!finded){ // ALTERAR NO MANUAL PARA QUE AS VARIÁVEIS TENHAM SOMENTE LETRAS
+          if (!finded) { // ALTERAR NO MANUAL PARA QUE AS VARIÁVEIS TENHAM SOMENTE LETRAS
             tok('nomevariavel');
           }
         }
@@ -371,16 +368,19 @@ module.exports.validar = (application, req, res) => {
   }
 
   // fim de arquivo $ - 44
-  if (!commentBlockNoClosed) {
-    tok('$');
-  }
+  tok('$');
 
-  console.log(tokens);
+  retornar();
+  
+  function retornar() {
+    console.log(tokens);
 
-  if (typeClient == 1) { // App JavaFx
-    res.send(tokens);
-  } else { // Página web
-    res.render('index', { validacao: validacao, tokens: tokens, dadosForm: textOriginal });
+    if (typeClient == 1) { // App JavaFx
+      res.send(tokens);
+    } else { // Página web
+      res.render('index', { validacao: validacao, tokens: tokens, dadosForm: textOriginal });
+    }
+
   }
 
   function tok(nome) {
@@ -389,5 +389,4 @@ module.exports.validar = (application, req, res) => {
   function error(nome) {
     tokens.push(new Token(a, null, errList.find(x => x.nome === nome).msg, null));
   }
-
 }
