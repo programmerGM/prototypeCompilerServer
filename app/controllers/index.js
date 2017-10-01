@@ -217,7 +217,7 @@ module.exports.validar = (application, req, res) => {
         if (nextnext.match(/[']+/g)) {
           // é char - 23
           tok('nomecht');
-          b += 2;
+          b += 2; 
         } else {
           /* FAZER A STRING AQUI, tem que ficar assim -> 'Isso é uma string' */
           error('stringchar');
@@ -251,6 +251,7 @@ module.exports.validar = (application, req, res) => {
                 error('smallinteger');
               } else {
                 tok('numerointeiro');
+                numAcumula = '';
               }
             }
             if (next.match(/[0-9]+/g) || next.match(/[.]+/g)) {
