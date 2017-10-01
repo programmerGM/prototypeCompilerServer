@@ -51,6 +51,7 @@ module.exports.validar = (application, req, res) => {
     { nome: '!=', code: 45 },
     { nome: '--', code: 46 },
     { nome: '-', code: 47 },
+    { nome: 'nomefuncao', code: 48 }
   ],
     errList = [
       { nome: 'literal', msg: 'Erro ao fechar o literal "' },
@@ -177,8 +178,8 @@ module.exports.validar = (application, req, res) => {
         if (!firstLetter) {
           firstLetter = !firstLetter;
         }
-        // se o proximo não for uma letra ou digito então pode finalizar
-        if (!(next.match(/[a-z]|[0-9]+/g))) {
+        // se o proximo não for uma letra então pode finalizar
+        if (!(next.match(/[a-z]+/g))) {
           var finded = false;
           firstLetter = !firstLetter;
           //console.log(wordAux);
@@ -189,13 +190,23 @@ module.exports.validar = (application, req, res) => {
           //testar essa cosis aqui+
           +*/
           tokList.forEach((value) => {
-            if (value.nome.match(temp)) {
+            if (value.nome === temp) { //estava MATCH ai pegava NUM no match e dava PT
               finded = !finded;
               tok(temp);
             }
           });
           if (!finded) { // ALTERAR NO MANUAL PARA QUE AS VARIÁVEIS TENHAM SOMENTE LETRAS
+            //ANNN SE O PROXIMO FOR ( OU { É PQ TA CHAMANDO FUNCAO OU TA INICIANDO UMA CERTO? CERTO
+            if (next.match(/[(]+/g) || nextnext.match(/[(]+/g)) {
+              tok('nomefuncao');
+              continue;
+            }
+            if (next.match(/[{]+/g) || nextnext.match(/[{]+/g)) {
+              tok('nomefuncao');
+              continue;
+            }
             tok('nomevariavel');
+            continue;
           }
         }
       }
@@ -208,12 +219,7 @@ module.exports.validar = (application, req, res) => {
           tok('nomecht');
           b += 2;
         } else {
-          /*
-          
-                    FAZER A STRING AQUI, tem que ficar assim -> 'Isso é uma string'
-          
-          
-          */
+          /* FAZER A STRING AQUI, tem que ficar assim -> 'Isso é uma string' */
           error('stringchar');
           break;
         }
@@ -371,7 +377,7 @@ module.exports.validar = (application, req, res) => {
   tok('$');
 
   retornar();
-  
+
   function retornar() {
     console.log(tokens);
 
@@ -384,6 +390,7 @@ module.exports.validar = (application, req, res) => {
   }
 
   function tok(nome) {
+    console.log(nome);
     tokens.push(new Token(a, nome, null, tokList.find(x => x.nome === nome).code));
   }
   function error(nome) {
