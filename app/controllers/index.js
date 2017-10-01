@@ -51,7 +51,6 @@ module.exports.validar = (application, req, res) => {
     { nome: '!=', code: 45 },
     { nome: '--', code: 46 },
     { nome: '-', code: 47 },
-<<<<<<< HEAD
     { nome: 'nomefuncao', code: 0 }
   ],
     errList = [
@@ -219,7 +218,6 @@ module.exports.validar = (application, req, res) => {
           // é char - 23
           tok('nomecht');
           b += 2;
-          b += 2; 
         } else {
           /* FAZER A STRING AQUI, tem que ficar assim -> 'Isso é uma string' */
           error('stringchar');
@@ -394,6 +392,7 @@ module.exports.validar = (application, req, res) => {
   }
 
   function tok(nome) {
+    console.log(nome);
     tokens.push(new Token(a, nome, null, tokList.find(x => x.nome === nome).code));
   }
   function error(nome) {
