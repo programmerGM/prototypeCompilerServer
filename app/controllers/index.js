@@ -51,6 +51,7 @@ module.exports.validar = (application, req, res) => {
     { nome: '!=', code: 45 },
     { nome: '--', code: 46 },
     { nome: '-', code: 47 },
+<<<<<<< HEAD
     { nome: 'nomefuncao', code: 0 }
   ],
     errList = [
@@ -218,6 +219,7 @@ module.exports.validar = (application, req, res) => {
           // é char - 23
           tok('nomecht');
           b += 2;
+          b += 2; 
         } else {
           /* FAZER A STRING AQUI, tem que ficar assim -> 'Isso é uma string' */
           error('stringchar');
@@ -251,6 +253,7 @@ module.exports.validar = (application, req, res) => {
                 error('smallinteger');
               } else {
                 tok('numerointeiro');
+                numAcumula = '';
               }
             }
             if (next.match(/[0-9]+/g) || next.match(/[.]+/g)) {
