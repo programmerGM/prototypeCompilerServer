@@ -61,7 +61,7 @@ module.exports.validar = (application, req, res) => {
       { nome: 'biginteger', msg: 'Número inteiro ultrapassa o limite de 1.048.576' },
       { nome: 'smallinteger', msg: 'Número inteiro menor que o limite de -1.048.576' },
       { nome: 'bigfloat', msg: 'Número float ultrapassa o limite de 1.073.741.824 para númuero inteiro' },
-      { nome: 'biginteger', msg: 'Número float menor o limite de -1.073.741.824' },
+      { nome: 'smallfloat', msg: 'Número float menor o limite de -1.073.741.824' },
       { nome: 'bigstring', msg: 'String muito grande. Limite: 512 caracteres' },
       { nome: 'invalidcomment', msg: 'Falta fechamento de comentário' },
       { nome: 'identifyinvalid', msg: 'Tamanho inválido para o identificador. Limite: 512 caracteres' }
@@ -217,7 +217,7 @@ module.exports.validar = (application, req, res) => {
         if (nextnext.match(/[']+/g)) {
           // é char - 23
           tok('nomecht');
-          b += 2; 
+          b += 2;
         } else {
           /* FAZER A STRING AQUI, tem que ficar assim -> 'Isso é uma string' */
           error('stringchar');
@@ -238,7 +238,14 @@ module.exports.validar = (application, req, res) => {
               // se não tiver +2 . no valor não tem erro
               if (!(numAcumula.match(/([.])+/g).length > 1)) {
                 // sucesso
-                tok('numeroflutuante');
+                if (numAcumula >= 0 && numAcumula > 1073741824) {
+                  error('bigfloat');
+                } else if (numAcumula < 0 && numAcumula < -1073741824) {
+                  error('smallfloat');
+                } else {
+                  tok('numeroflutuante');
+                  numAcumula = '';
+                }
               } else {
                 // msg erro
                 error('float');
