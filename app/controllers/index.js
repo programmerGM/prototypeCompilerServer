@@ -13,7 +13,7 @@ module.exports.validar = (application, req, res) => {
     { nome: 'numeroflutuante', code: 6 },
     { nome: 'nomevariavel', code: 7 },
     { nome: 'nomecht', code: 8 }, // Nome do char
-    { nome: 'nomestr', code: 9 },
+    { nome: 'nomedastring', code: 9 },
     { nome: 'main', code: 10 },
     { nome: 'literal', code: 11 },
     { nome: 'integer', code: 12 },
@@ -51,7 +51,7 @@ module.exports.validar = (application, req, res) => {
     { nome: '!=', code: 45 },
     { nome: '--', code: 46 },
     { nome: '-', code: 47 },
-    { nome: 'nomefuncao', code: 48 }
+    { nome: 'nomefuncao', code: 0 }
   ],
     errList = [
       { nome: 'literal', msg: 'Erro ao fechar o literal "' },
@@ -362,15 +362,16 @@ module.exports.validar = (application, req, res) => {
 
       //verifica '""
       if (l.match(/[\"]+/g)) {
-        if (prev.match(/[=]+/g)) {
-
-        }
-
         if (!literal) {
           literalOpen = a;
         } else {
-          // lietarl - 11
-          tok("literal");
+          //se tem igual é pq é variável recebendo string
+          if (tokens[tokens.length - 1].code == tokList.find(x => x.nome === "=").code) {
+            tok("nomedastring");
+          } else {
+            // literal - 11
+            tok("literal");
+          }
         }
         literal = !literal;
       }
