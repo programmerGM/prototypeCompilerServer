@@ -201,6 +201,13 @@ module.exports.validar = (application, req, res) => {
               tok('nomefuncao');
               continue;
             }
+            //v verifica o anterior se é ( e anterior a ele se é return
+            if (tokens[tokens.length - 1].code == tokList.find(x => x.nome === "(").code &&
+              tokens[tokens.length - 2].code == tokList.find(x => x.nome === "return").code) {
+              tok('string');
+              continue;
+            }
+
             if (temp.length > 512) {
               error('identifyinvalid');
               continue;
