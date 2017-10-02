@@ -62,12 +62,10 @@ module.exports.validar = (application, req, res) => {
       { nome: 'smallinteger', msg: 'Número inteiro menor que o limite de -1.048.576' },
       { nome: 'bigfloat', msg: 'Número float ultrapassa o limite de 1.073.741.824 para númuero inteiro' },
       { nome: 'smallfloat', msg: 'Número float menor o limite de -1.073.741.824' },
-      { nome: 'bigstring', msg: 'String muito grande. Limite: 512 caracteres' },
       { nome: 'invalidcomment', msg: 'Falta fechamento de comentário' },
+      { nome: 'numberinvalido', msg: 'Entrada inválida para um inteiro' }, // falta esse erro. Exemplo: 123variavel123 - é uma variável inválida ou número inválido.
       { nome: 'identifyinvalid', msg: 'Tamanho inválido para o identificador. Limite: 512 caracteres' }
     ];
-
-  // ??????????????????? const TOKEN_VAZIO = 15; ????????????????????
 
   //const OPERADOR_MAT_MSG = "Erro ao informar o operador matemático";
   // const OPERADOR_LOG_MSG = "Erro ao informar o operador lógico";
@@ -186,16 +184,14 @@ module.exports.validar = (application, req, res) => {
           temp = wordAux;
           wordAux = "";
           find = false;
-          /*
-          //testar essa cosis aqui+
-          +*/
+
           tokList.forEach((value) => {
             if (value.nome === temp) { //estava MATCH ai pegava NUM no match e dava PT
               finded = !finded;
               tok(temp);
             }
           });
-          if (!finded) { // ALTERAR NO MANUAL PARA QUE AS VARIÁVEIS TENHAM SOMENTE LETRAS
+          if (!finded) {
             //ANNN SE O PROXIMO FOR ( OU { É PQ TA CHAMANDO FUNCAO OU TA INICIANDO UMA CERTO? CERTO
             if (next.match(/[(]+/g) || nextnext.match(/[(]+/g)) {
               tok('nomefuncao');
@@ -203,6 +199,10 @@ module.exports.validar = (application, req, res) => {
             }
             if (next.match(/[{]+/g) || nextnext.match(/[{]+/g)) {
               tok('nomefuncao');
+              continue;
+            }
+            if (temp.length > 512) {
+              error('identifyinvalid');
               continue;
             }
             tok('nomevariavel');
