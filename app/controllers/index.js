@@ -8,6 +8,7 @@ module.exports.index = (application, req, res) => {
 
 module.exports.validar = (application, req, res) => {
   var tabelaParse = [{
+
         p1: 48,
         p2: 2,
         valor: 1
@@ -1387,11 +1388,6 @@ module.exports.validar = (application, req, res) => {
       }
     ];
 
-  //const OPERADOR_MAT_MSG = "Erro ao informar o operador matemático";
-  // const OPERADOR_LOG_MSG = "Erro ao informar o operador lógico";
-  //const OPERADOR_IO_MSG = "Erro ao informar o operador de entrada e saída ou lógico";
-
-
   var Token = function (line, token, messageError, code) {
     this.line = line;
     this.token = token;
@@ -1720,7 +1716,65 @@ module.exports.validar = (application, req, res) => {
   // fim de arquivo $ - 44
   tok('$');
 
+
+  var top = 5,
+    entrada = 3,
+    pilha = [3, 10, 6, 7, 50, 2, 5];
+  while (!pilha) {
+    if (top == null) {
+      pilha.shift(); // remove primeiro elemento
+      top = pilha[0]; // recebe o topo da pilha
+      continue;
+    }
+    // senão
+
+    if (isTerminal(top)) { // se for terminal
+      if (top === entrada) { // termina
+        pilha.shift();
+        continue;
+      }
+      //senão erro
+      console.log('errow');
+      break;
+    }
+    // se não for terminal
+    var tab = findTabela(top, entrada);
+    if (tab != 0) {
+      pilha.shift(); // remove elemento do topo da pilha
+      // coloque o conteudo na pilha
+      if (tab.length > 1) {
+        tab.forEach((value) => {
+          pilha.push(value);
+        });
+      }
+      top = pilha[0]; // recebe topo da pilha
+    } else {
+      // erro encerra programa
+      console.log('errow');
+      break;
+    }
+
+  }
+
   retornar();
+
+  function findTabela(top, entrada) {
+    tabelaParse.forEach((value) => {
+      if (value.p1 === top && value.p2 === entrada) {
+        return value.valor;
+      }
+    });
+    return 0;
+  }
+
+  function isTerminal(element) {
+    tokList.forEach((value) => {
+      if (value.code === element) {
+        return true;
+      }
+    });
+    return false;
+  }
 
   function retornar() {
     console.log(tokens);
