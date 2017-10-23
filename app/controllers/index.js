@@ -1,3 +1,5 @@
+var sintatico = require('./sintatico')
+
 module.exports.index = (application, req, res) => {
   res.render('index', {
     validacao: {},
@@ -8,647 +10,646 @@ module.exports.index = (application, req, res) => {
 
 module.exports.validar = (application, req, res) => {
   var tabelaParse = [{
-
-        p1: 48,
-        p2: 2,
-        valor: 1
-      },
-      {
-        p1: 49,
-        p2: 2,
-        valor: 3
-      },
-      {
-        p1: 49,
-        p2: 3,
-        valor: 3
-      },
-      {
-        p1: 49,
-        p2: 7,
-        valor: 2
-      },
-      {
-        p1: 49,
-        p2: 12,
-        valor: 3
-      },
-      {
-        p1: 49,
-        p2: 13,
-        valor: 3
-      },
-      {
-        p1: 49,
-        p2: 17,
-        valor: 3
-      },
-      {
-        p1: 49,
-        p2: 23,
-        valor: 3
-      },
-      {
-        p1: 49,
-        p2: 44,
-        valor: 3
-      },
-      {
-        p1: 50,
-        p2: 2,
-        valor: 13
-      },
-      {
-        p1: 50,
-        p2: 3,
-        valor: 13
-      },
-      {
-        p1: 50,
-        p2: 12,
-        valor: 13
-      },
-      {
-        p1: 50,
-        p2: 13,
-        valor: 19
-      },
-      {
-        p1: 50,
-        p2: 17,
-        valor: 13
-      },
-      {
-        p1: 50,
-        p2: 23,
-        valor: 13
-      },
-      {
-        p1: 51,
-        p2: 13,
-        valor: 31
-      },
-      {
-        p1: 52,
-        p2: 38,
-        valor: 4
-      },
-      {
-        p1: 52,
-        p2: 40,
-        valor: 5
-      },
-      {
-        p1: 53,
-        p2: 3,
-        valor: 8
-      },
-      {
-        p1: 53,
-        p2: 12,
-        valor: 6
-      },
-      {
-        p1: 53,
-        p2: 17,
-        valor: 7
-      },
-      {
-        p1: 53,
-        p2: 23,
-        valor: 9
-      },
-      {
-        p1: 54,
-        p2: 2,
-        valor: 10
-      },
-      {
-        p1: 54,
-        p2: 3,
-        valor: 10
-      },
-      {
-        p1: 54,
-        p2: 7,
-        valor: 11
-      },
-      {
-        p1: 54,
-        p2: 12,
-        valor: 10
-      },
-      {
-        p1: 54,
-        p2: 13,
-        valor: 10
-      },
-      {
-        p1: 54,
-        p2: 17,
-        valor: 10
-      },
-      {
-        p1: 54,
-        p2: 23,
-        valor: 10
-      },
-      {
-        p1: 54,
-        p2: 44,
-        valor: 10
-      },
-      {
-        p1: 55,
-        p2: 7,
-        valor: 12
-      },
-      {
-        p1: 56,
-        p2: 2,
-        valor: 15
-      },
-      {
-        p1: 56,
-        p2: 3,
-        valor: 18
-      },
-      {
-        p1: 56,
-        p2: 12,
-        valor: 14
-      },
-      {
-        p1: 56,
-        p2: 17,
-        valor: 17
-      },
-      {
-        p1: 56,
-        p2: 23,
-        valor: 16
-      },
-      {
-        p1: 57,
-        p2: 36,
-        valor: 26
-      },
-      {
-        p1: 57,
-        p2: 43,
-        valor: 27
-      },
-      {
-        p1: 58,
-        p2: 5,
-        valor: 20
-      },
-      {
-        p1: 58,
-        p2: 6,
-        valor: 21
-      },
-      {
-        p1: 58,
-        p2: 7,
-        valor: 22
-      },
-      {
-        p1: 58,
-        p2: 8,
-        valor: 23
-      },
-      {
-        p1: 58,
-        p2: 9,
-        valor: 24
-      },
-      {
-        p1: 58,
-        p2: 42,
-        valor: 25
-      },
-      {
-        p1: 59,
-        p2: 3,
-        valor: 28
-      },
-      {
-        p1: 59,
-        p2: 12,
-        valor: 28
-      },
-      {
-        p1: 59,
-        p2: 17,
-        valor: 28
-      },
-      {
-        p1: 59,
-        p2: 23,
-        valor: 28
-      },
-      {
-        p1: 60,
-        p2: 37,
-        valor: 29
-      },
-      {
-        p1: 60,
-        p2: 42,
-        valor: 30
-      },
-      {
-        p1: 61,
-        p2: 1,
-        valor: 52
-      },
-      {
-        p1: 61,
-        p2: 5,
-        valor: 37
-      },
-      {
-        p1: 61,
-        p2: 6,
-        valor: 37
-      },
-      {
-        p1: 61,
-        p2: 7,
-        valor: 37
-      },
-      {
-        p1: 61,
-        p2: 8,
-        valor: 37
-      },
-      {
-        p1: 61,
-        p2: 9,
-        valor: 37
-      },
-      {
-        p1: 61,
-        p2: 14,
-        valor: 49
-      },
-      {
-        p1: 61,
-        p2: 16,
-        valor: 64
-      },
-      {
-        p1: 61,
-        p2: 20,
-        valor: 67
-      },
-      {
-        p1: 61,
-        p2: 21,
-        valor: 69
-      },
-      {
-        p1: 61,
-        p2: 22,
-        valor: 68
-      },
-      {
-        p1: 61,
-        p2: 24,
-        valor: 39
-      },
-      {
-        p1: 61,
-        p2: 37,
-        valor: 38
-      },
-      {
-        p1: 61,
-        p2: 43,
-        valor: 37
-      },
-      {
-        p1: 62,
-        p2: 18,
-        valor: 33
-      },
-      {
-        p1: 62,
-        p2: 35,
-        valor: 33
-      },
-      {
-        p1: 63,
-        p2: 5,
-        valor: 75
-      },
-      {
-        p1: 63,
-        p2: 6,
-        valor: 75
-      },
-      {
-        p1: 63,
-        p2: 7,
-        valor: 75
-      },
-      {
-        p1: 63,
-        p2: 8,
-        valor: 75
-      },
-      {
-        p1: 63,
-        p2: 9,
-        valor: 75
-      },
-      {
-        p1: 63,
-        p2: 24,
-        valor: 76
-      },
-      {
-        p1: 63,
-        p2: 43,
-        valor: 75
-      },
-      {
-        p1: 64,
-        p2: 29,
-        valor: 40
-      },
-      {
-        p1: 64,
-        p2: 37,
-        valor: 40
-      },
-      {
-        p1: 64,
-        p2: 42,
-        valor: 40
-      },
-      {
-        p1: 64,
-        p2: 43,
-        valor: 41
-      },
-      {
-        p1: 65,
-        p2: 5,
-        valor: 44
-      },
-      {
-        p1: 65,
-        p2: 6,
-        valor: 46
-      },
-      {
-        p1: 65,
-        p2: 7,
-        valor: 48
-      },
-      {
-        p1: 65,
-        p2: 8,
-        valor: 47
-      },
-      {
-        p1: 65,
-        p2: 9,
-        valor: 45
-      },
-      {
-        p1: 66,
-        p2: 40,
-        valor: 43
-      },
-      {
-        p1: 66,
-        p2: 42,
-        valor: 42
-      },
-      {
-        p1: 67,
-        p2: 26,
-        valor: 56
-      },
-      {
-        p1: 67,
-        p2: 27,
-        valor: 55
-      },
-      {
-        p1: 67,
-        p2: 28,
-        valor: 53
-      },
-      {
-        p1: 67,
-        p2: 30,
-        valor: 58
-      },
-      {
-        p1: 67,
-        p2: 32,
-        valor: 57
-      },
-      {
-        p1: 67,
-        p2: 45,
-        valor: 54
-      },
-      {
-        p1: 68,
-        p2: 19,
-        valor: 50
-      },
-      {
-        p1: 68,
-        p2: 37,
-        valor: 51
-      },
-      {
-        p1: 69,
-        p2: 5,
-        valor: 59
-      },
-      {
-        p1: 69,
-        p2: 6,
-        valor: 60
-      },
-      {
-        p1: 69,
-        p2: 7,
-        valor: 63
-      },
-      {
-        p1: 69,
-        p2: 8,
-        valor: 62
-      },
-      {
-        p1: 69,
-        p2: 9,
-        valor: 61
-      },
-      {
-        p1: 70,
-        p2: 33,
-        valor: 65
-      },
-      {
-        p1: 70,
-        p2: 46,
-        valor: 66
-      },
-      {
-        p1: 71,
-        p2: 31,
-        valor: 72
-      },
-      {
-        p1: 71,
-        p2: 37,
-        valor: 70
-      },
-      {
-        p1: 72,
-        p2: 31,
-        valor: 73
-      },
-      {
-        p1: 72,
-        p2: 37,
-        valor: 73
-      },
-      {
-        p1: 72,
-        p2: 40,
-        valor: 74
-      },
-      {
-        p1: 73,
-        p2: 5,
-        valor: 80
-      },
-      {
-        p1: 73,
-        p2: 6,
-        valor: 80
-      },
-      {
-        p1: 73,
-        p2: 7,
-        valor: 80
-      },
-      {
-        p1: 73,
-        p2: 8,
-        valor: 80
-      },
-      {
-        p1: 73,
-        p2: 9,
-        valor: 80
-      },
-      {
-        p1: 73,
-        p2: 43,
-        valor: 80
-      },
-      {
-        p1: 74,
-        p2: 29,
-        valor: 79
-      },
-      {
-        p1: 74,
-        p2: 34,
-        valor: 77
-      },
-      {
-        p1: 74,
-        p2: 37,
-        valor: 79
-      },
-      {
-        p1: 74,
-        p2: 42,
-        valor: 79
-      },
-      {
-        p1: 74,
-        p2: 47,
-        valor: 78
-      },
-      {
-        p1: 75,
-        p2: 5,
-        valor: 84
-      },
-      {
-        p1: 75,
-        p2: 6,
-        valor: 85
-      },
-      {
-        p1: 75,
-        p2: 7,
-        valor: 86
-      },
-      {
-        p1: 75,
-        p2: 8,
-        valor: 88
-      },
-      {
-        p1: 75,
-        p2: 9,
-        valor: 87
-      },
-      {
-        p1: 75,
-        p2: 43,
-        valor: 89
-      },
-      {
-        p1: 76,
-        p2: 29,
-        valor: 81
-      },
-      {
-        p1: 76,
-        p2: 34,
-        valor: 81
-      },
-      {
-        p1: 76,
-        p2: 37,
-        valor: 81
-      },
-      {
-        p1: 76,
-        p2: 39,
-        valor: 83
-      },
-      {
-        p1: 76,
-        p2: 41,
-        valor: 82
-      },
-      {
-        p1: 76,
-        p2: 42,
-        valor: 81
-      },
-      {
-        p1: 76,
-        p2: 47,
-        valor: 81
-      }
-    ],
+    p1: 48,
+    p2: 2,
+    valor: 1
+  },
+  {
+    p1: 49,
+    p2: 2,
+    valor: 3
+  },
+  {
+    p1: 49,
+    p2: 3,
+    valor: 3
+  },
+  {
+    p1: 49,
+    p2: 7,
+    valor: 2
+  },
+  {
+    p1: 49,
+    p2: 12,
+    valor: 3
+  },
+  {
+    p1: 49,
+    p2: 13,
+    valor: 3
+  },
+  {
+    p1: 49,
+    p2: 17,
+    valor: 3
+  },
+  {
+    p1: 49,
+    p2: 23,
+    valor: 3
+  },
+  {
+    p1: 49,
+    p2: 44,
+    valor: 3
+  },
+  {
+    p1: 50,
+    p2: 2,
+    valor: 13
+  },
+  {
+    p1: 50,
+    p2: 3,
+    valor: 13
+  },
+  {
+    p1: 50,
+    p2: 12,
+    valor: 13
+  },
+  {
+    p1: 50,
+    p2: 13,
+    valor: 19
+  },
+  {
+    p1: 50,
+    p2: 17,
+    valor: 13
+  },
+  {
+    p1: 50,
+    p2: 23,
+    valor: 13
+  },
+  {
+    p1: 51,
+    p2: 13,
+    valor: 31
+  },
+  {
+    p1: 52,
+    p2: 38,
+    valor: 4
+  },
+  {
+    p1: 52,
+    p2: 40,
+    valor: 5
+  },
+  {
+    p1: 53,
+    p2: 3,
+    valor: 8
+  },
+  {
+    p1: 53,
+    p2: 12,
+    valor: 6
+  },
+  {
+    p1: 53,
+    p2: 17,
+    valor: 7
+  },
+  {
+    p1: 53,
+    p2: 23,
+    valor: 9
+  },
+  {
+    p1: 54,
+    p2: 2,
+    valor: 10
+  },
+  {
+    p1: 54,
+    p2: 3,
+    valor: 10
+  },
+  {
+    p1: 54,
+    p2: 7,
+    valor: 11
+  },
+  {
+    p1: 54,
+    p2: 12,
+    valor: 10
+  },
+  {
+    p1: 54,
+    p2: 13,
+    valor: 10
+  },
+  {
+    p1: 54,
+    p2: 17,
+    valor: 10
+  },
+  {
+    p1: 54,
+    p2: 23,
+    valor: 10
+  },
+  {
+    p1: 54,
+    p2: 44,
+    valor: 10
+  },
+  {
+    p1: 55,
+    p2: 7,
+    valor: 12
+  },
+  {
+    p1: 56,
+    p2: 2,
+    valor: 15
+  },
+  {
+    p1: 56,
+    p2: 3,
+    valor: 18
+  },
+  {
+    p1: 56,
+    p2: 12,
+    valor: 14
+  },
+  {
+    p1: 56,
+    p2: 17,
+    valor: 17
+  },
+  {
+    p1: 56,
+    p2: 23,
+    valor: 16
+  },
+  {
+    p1: 57,
+    p2: 36,
+    valor: 26
+  },
+  {
+    p1: 57,
+    p2: 43,
+    valor: 27
+  },
+  {
+    p1: 58,
+    p2: 5,
+    valor: 20
+  },
+  {
+    p1: 58,
+    p2: 6,
+    valor: 21
+  },
+  {
+    p1: 58,
+    p2: 7,
+    valor: 22
+  },
+  {
+    p1: 58,
+    p2: 8,
+    valor: 23
+  },
+  {
+    p1: 58,
+    p2: 9,
+    valor: 24
+  },
+  {
+    p1: 58,
+    p2: 42,
+    valor: 25
+  },
+  {
+    p1: 59,
+    p2: 3,
+    valor: 28
+  },
+  {
+    p1: 59,
+    p2: 12,
+    valor: 28
+  },
+  {
+    p1: 59,
+    p2: 17,
+    valor: 28
+  },
+  {
+    p1: 59,
+    p2: 23,
+    valor: 28
+  },
+  {
+    p1: 60,
+    p2: 37,
+    valor: 29
+  },
+  {
+    p1: 60,
+    p2: 42,
+    valor: 30
+  },
+  {
+    p1: 61,
+    p2: 1,
+    valor: 52
+  },
+  {
+    p1: 61,
+    p2: 5,
+    valor: 37
+  },
+  {
+    p1: 61,
+    p2: 6,
+    valor: 37
+  },
+  {
+    p1: 61,
+    p2: 7,
+    valor: 37
+  },
+  {
+    p1: 61,
+    p2: 8,
+    valor: 37
+  },
+  {
+    p1: 61,
+    p2: 9,
+    valor: 37
+  },
+  {
+    p1: 61,
+    p2: 14,
+    valor: 49
+  },
+  {
+    p1: 61,
+    p2: 16,
+    valor: 64
+  },
+  {
+    p1: 61,
+    p2: 20,
+    valor: 67
+  },
+  {
+    p1: 61,
+    p2: 21,
+    valor: 69
+  },
+  {
+    p1: 61,
+    p2: 22,
+    valor: 68
+  },
+  {
+    p1: 61,
+    p2: 24,
+    valor: 39
+  },
+  {
+    p1: 61,
+    p2: 37,
+    valor: 38
+  },
+  {
+    p1: 61,
+    p2: 43,
+    valor: 37
+  },
+  {
+    p1: 62,
+    p2: 18,
+    valor: 32 //atualizado aqui
+  },
+  {
+    p1: 62,
+    p2: 35,
+    valor: 33
+  },
+  {
+    p1: 63,
+    p2: 5,
+    valor: 75
+  },
+  {
+    p1: 63,
+    p2: 6,
+    valor: 75
+  },
+  {
+    p1: 63,
+    p2: 7,
+    valor: 75
+  },
+  {
+    p1: 63,
+    p2: 8,
+    valor: 75
+  },
+  {
+    p1: 63,
+    p2: 9,
+    valor: 75
+  },
+  {
+    p1: 63,
+    p2: 24,
+    valor: 76
+  },
+  {
+    p1: 63,
+    p2: 43,
+    valor: 75
+  },
+  {
+    p1: 64,
+    p2: 29,
+    valor: 40
+  },
+  {
+    p1: 64,
+    p2: 37,
+    valor: 40
+  },
+  {
+    p1: 64,
+    p2: 42,
+    valor: 40
+  },
+  {
+    p1: 64,
+    p2: 43,
+    valor: 41
+  },
+  {
+    p1: 65,
+    p2: 5,
+    valor: 44
+  },
+  {
+    p1: 65,
+    p2: 6,
+    valor: 46
+  },
+  {
+    p1: 65,
+    p2: 7,
+    valor: 48
+  },
+  {
+    p1: 65,
+    p2: 8,
+    valor: 47
+  },
+  {
+    p1: 65,
+    p2: 9,
+    valor: 45
+  },
+  {
+    p1: 66,
+    p2: 40,
+    valor: 43
+  },
+  {
+    p1: 66,
+    p2: 42,
+    valor: 42
+  },
+  {
+    p1: 67,
+    p2: 26,
+    valor: 56
+  },
+  {
+    p1: 67,
+    p2: 27,
+    valor: 55
+  },
+  {
+    p1: 67,
+    p2: 28,
+    valor: 53
+  },
+  {
+    p1: 67,
+    p2: 30,
+    valor: 58
+  },
+  {
+    p1: 67,
+    p2: 32,
+    valor: 57
+  },
+  {
+    p1: 67,
+    p2: 45,
+    valor: 54
+  },
+  {
+    p1: 68,
+    p2: 19,
+    valor: 50
+  },
+  {
+    p1: 68,
+    p2: 37,
+    valor: 51
+  },
+  {
+    p1: 69,
+    p2: 5,
+    valor: 59
+  },
+  {
+    p1: 69,
+    p2: 6,
+    valor: 60
+  },
+  {
+    p1: 69,
+    p2: 7,
+    valor: 63
+  },
+  {
+    p1: 69,
+    p2: 8,
+    valor: 62
+  },
+  {
+    p1: 69,
+    p2: 9,
+    valor: 61
+  },
+  {
+    p1: 70,
+    p2: 33,
+    valor: 65
+  },
+  {
+    p1: 70,
+    p2: 46,
+    valor: 66
+  },
+  {
+    p1: 71,
+    p2: 31,
+    valor: 72
+  },
+  {
+    p1: 71,
+    p2: 37,
+    valor: 70
+  },
+  {
+    p1: 72,
+    p2: 31,
+    valor: 73
+  },
+  {
+    p1: 72,
+    p2: 37,
+    valor: 73
+  },
+  {
+    p1: 72,
+    p2: 40,
+    valor: 74
+  },
+  {
+    p1: 73,
+    p2: 5,
+    valor: 80
+  },
+  {
+    p1: 73,
+    p2: 6,
+    valor: 80
+  },
+  {
+    p1: 73,
+    p2: 7,
+    valor: 80
+  },
+  {
+    p1: 73,
+    p2: 8,
+    valor: 80
+  },
+  {
+    p1: 73,
+    p2: 9,
+    valor: 80
+  },
+  {
+    p1: 73,
+    p2: 43,
+    valor: 80
+  },
+  {
+    p1: 74,
+    p2: 29,
+    valor: 79
+  },
+  {
+    p1: 74,
+    p2: 34,
+    valor: 77
+  },
+  {
+    p1: 74,
+    p2: 37,
+    valor: 79
+  },
+  {
+    p1: 74,
+    p2: 42,
+    valor: 79
+  },
+  {
+    p1: 74,
+    p2: 47,
+    valor: 78
+  },
+  {
+    p1: 75,
+    p2: 5,
+    valor: 84
+  },
+  {
+    p1: 75,
+    p2: 6,
+    valor: 85
+  },
+  {
+    p1: 75,
+    p2: 7,
+    valor: 86
+  },
+  {
+    p1: 75,
+    p2: 8,
+    valor: 88
+  },
+  {
+    p1: 75,
+    p2: 9,
+    valor: 87
+  },
+  {
+    p1: 75,
+    p2: 43,
+    valor: 89
+  },
+  {
+    p1: 76,
+    p2: 29,
+    valor: 81
+  },
+  {
+    p1: 76,
+    p2: 34,
+    valor: 81
+  },
+  {
+    p1: 76,
+    p2: 37,
+    valor: 81
+  },
+  {
+    p1: 76,
+    p2: 39,
+    valor: 83
+  },
+  {
+    p1: 76,
+    p2: 41,
+    valor: 82
+  },
+  {
+    p1: 76,
+    p2: 42,
+    valor: 81
+  },
+  {
+    p1: 76,
+    p2: 47,
+    valor: 81
+  }
+  ],
     producoes = [{
       code: 48,
       sentence: [2, 10, 36, 49, 50, 51, 35]
@@ -795,7 +796,7 @@ module.exports.validar = (application, req, res) => {
       sentence: [7]
     }, {
       code: 61,
-      sentence: [14, 43, 7, 67, 36, 61, 37, 62, 35, 68]
+      sentence: [14, 43, 7, 67, 42, 36, 61, 37, 62, 35, 68] // atualizado aqui
     }, {
       code: 68,
       sentence: [19, 36, 61, 37, 62, 35]
@@ -920,497 +921,498 @@ module.exports.validar = (application, req, res) => {
 
     //Lista de não terminais
     nterm = [{
-        code: 48,
-        nterm: ' BLOCO'
-      },
-      {
-        code: 49,
-        nterm: 'DCLVAR'
-      },
-      {
-        code: 50,
-        nterm: 'DCLFUNC'
-      },
-      {
-        code: 51,
-        nterm: 'CORPO'
-      },
-      {
-        code: 52,
-        nterm: 'REPIDENT'
-      },
-      {
-        code: 53,
-        nterm: 'TIPO'
-      },
-      {
-        code: 54,
-        nterm: 'LDVAR'
-      },
-      {
-        code: 55,
-        nterm: 'LID'
-      },
-      {
-        code: 56,
-        nterm: 'TIPO_RETORNO'
-      },
-      {
-        code: 57,
-        nterm: 'DEFPAR'
-      },
-      {
-        code: 58,
-        nterm: 'VALORRETORNO'
-      },
-      {
-        code: 59,
-        nterm: 'PARAM'
-      },
-      {
-        code: 60,
-        nterm: 'LPARAM'
-      },
-      {
-        code: 61,
-        nterm: 'COMANDO'
-      },
-      {
-        code: 62,
-        nterm: 'REPCOMANDO'
-      },
-      {
-        code: 63,
-        nterm: 'EXPRESSAO'
-      },
-      {
-        code: 64,
-        nterm: 'PARAMETROS'
-      },
-      {
-        code: 65,
-        nterm: 'TPARAM'
-      },
-      {
-        code: 66,
-        nterm: 'REPPAR'
-      },
-      {
-        code: 67,
-        nterm: 'COMPARACAO'
-      },
-      {
-        code: 68,
-        nterm: 'ELSEPARTE'
-      },
-      {
-        code: 69,
-        nterm: 'CONTCOMPARACAO'
-      },
-      {
-        code: 70,
-        nterm: 'INCREMENTO'
-      },
-      {
-        code: 71,
-        nterm: 'SEQCOUT'
-      },
-      {
-        code: 72,
-        nterm: 'SEQUENCIA'
-      },
-      {
-        code: 73,
-        nterm: 'TERMO'
-      },
-      {
-        code: 74,
-        nterm: 'REPEXP'
-      },
-      {
-        code: 75,
-        nterm: 'FATOR'
-      },
-      {
-        code: 76,
-        nterm: 'REPTERMO'
-      },
-      {
-        code: 48,
-        nterm: ' BLOCO'
-      },
-      {
-        code: 49,
-        nterm: 'DCLVAR'
-      },
-      {
-        code: 50,
-        nterm: 'DCLFUNC'
-      },
-      {
-        code: 51,
-        nterm: 'CORPO'
-      },
-      {
-        code: 52,
-        nterm: 'REPIDENT'
-      },
-      {
-        code: 53,
-        nterm: 'TIPO'
-      },
-      {
-        code: 54,
-        nterm: 'LDVAR'
-      },
-      {
-        code: 55,
-        nterm: 'LID'
-      },
-      {
-        code: 56,
-        nterm: 'TIPO_RETORNO'
-      },
-      {
-        code: 57,
-        nterm: 'DEFPAR'
-      },
-      {
-        code: 58,
-        nterm: 'VALORRETORNO'
-      },
-      {
-        code: 59,
-        nterm: 'PARAM'
-      },
-      {
-        code: 60,
-        nterm: 'LPARAM'
-      },
-      {
-        code: 61,
-        nterm: 'COMANDO'
-      },
-      {
-        code: 62,
-        nterm: 'REPCOMANDO'
-      },
-      {
-        code: 63,
-        nterm: 'EXPRESSAO'
-      },
-      {
-        code: 64,
-        nterm: 'PARAMETROS'
-      },
-      {
-        code: 65,
-        nterm: 'TPARAM'
-      },
-      {
-        code: 66,
-        nterm: 'REPPAR'
-      },
-      {
-        code: 67,
-        nterm: 'COMPARACAO'
-      },
-      {
-        code: 68,
-        nterm: 'ELSEPARTE'
-      },
-      {
-        code: 69,
-        nterm: 'CONTCOMPARACAO'
-      },
-      {
-        code: 70,
-        nterm: 'INCREMENTO'
-      },
-      {
-        code: 71,
-        nterm: 'SEQCOUT'
-      },
-      {
-        code: 72,
-        nterm: 'SEQUENCIA'
-      },
-      {
-        code: 73,
-        nterm: 'TERMO'
-      },
-      {
-        code: 74,
-        nterm: 'REPEXP'
-      },
-      {
-        code: 75,
-        nterm: 'FATOR'
-      },
-      {
-        code: 76,
-        nterm: 'REPTERMO'
-      }
+      code: 48,
+      nterm: ' BLOCO'
+    },
+    {
+      code: 49,
+      nterm: 'DCLVAR'
+    },
+    {
+      code: 50,
+      nterm: 'DCLFUNC'
+    },
+    {
+      code: 51,
+      nterm: 'CORPO'
+    },
+    {
+      code: 52,
+      nterm: 'REPIDENT'
+    },
+    {
+      code: 53,
+      nterm: 'TIPO'
+    },
+    {
+      code: 54,
+      nterm: 'LDVAR'
+    },
+    {
+      code: 55,
+      nterm: 'LID'
+    },
+    {
+      code: 56,
+      nterm: 'TIPO_RETORNO'
+    },
+    {
+      code: 57,
+      nterm: 'DEFPAR'
+    },
+    {
+      code: 58,
+      nterm: 'VALORRETORNO'
+    },
+    {
+      code: 59,
+      nterm: 'PARAM'
+    },
+    {
+      code: 60,
+      nterm: 'LPARAM'
+    },
+    {
+      code: 61,
+      nterm: 'COMANDO'
+    },
+    {
+      code: 62,
+      nterm: 'REPCOMANDO'
+    },
+    {
+      code: 63,
+      nterm: 'EXPRESSAO'
+    },
+    {
+      code: 64,
+      nterm: 'PARAMETROS'
+    },
+    {
+      code: 65,
+      nterm: 'TPARAM'
+    },
+    {
+      code: 66,
+      nterm: 'REPPAR'
+    },
+    {
+      code: 67,
+      nterm: 'COMPARACAO'
+    },
+    {
+      code: 68,
+      nterm: 'ELSEPARTE'
+    },
+    {
+      code: 69,
+      nterm: 'CONTCOMPARACAO'
+    },
+    {
+      code: 70,
+      nterm: 'INCREMENTO'
+    },
+    {
+      code: 71,
+      nterm: 'SEQCOUT'
+    },
+    {
+      code: 72,
+      nterm: 'SEQUENCIA'
+    },
+    {
+      code: 73,
+      nterm: 'TERMO'
+    },
+    {
+      code: 74,
+      nterm: 'REPEXP'
+    },
+    {
+      code: 75,
+      nterm: 'FATOR'
+    },
+    {
+      code: 76,
+      nterm: 'REPTERMO'
+    },
+    {
+      code: 48,
+      nterm: ' BLOCO'
+    },
+    {
+      code: 49,
+      nterm: 'DCLVAR'
+    },
+    {
+      code: 50,
+      nterm: 'DCLFUNC'
+    },
+    {
+      code: 51,
+      nterm: 'CORPO'
+    },
+    {
+      code: 52,
+      nterm: 'REPIDENT'
+    },
+    {
+      code: 53,
+      nterm: 'TIPO'
+    },
+    {
+      code: 54,
+      nterm: 'LDVAR'
+    },
+    {
+      code: 55,
+      nterm: 'LID'
+    },
+    {
+      code: 56,
+      nterm: 'TIPO_RETORNO'
+    },
+    {
+      code: 57,
+      nterm: 'DEFPAR'
+    },
+    {
+      code: 58,
+      nterm: 'VALORRETORNO'
+    },
+    {
+      code: 59,
+      nterm: 'PARAM'
+    },
+    {
+      code: 60,
+      nterm: 'LPARAM'
+    },
+    {
+      code: 61,
+      nterm: 'COMANDO'
+    },
+    {
+      code: 62,
+      nterm: 'REPCOMANDO'
+    },
+    {
+      code: 63,
+      nterm: 'EXPRESSAO'
+    },
+    {
+      code: 64,
+      nterm: 'PARAMETROS'
+    },
+    {
+      code: 65,
+      nterm: 'TPARAM'
+    },
+    {
+      code: 66,
+      nterm: 'REPPAR'
+    },
+    {
+      code: 67,
+      nterm: 'COMPARACAO'
+    },
+    {
+      code: 68,
+      nterm: 'ELSEPARTE'
+    },
+    {
+      code: 69,
+      nterm: 'CONTCOMPARACAO'
+    },
+    {
+      code: 70,
+      nterm: 'INCREMENTO'
+    },
+    {
+      code: 71,
+      nterm: 'SEQCOUT'
+    },
+    {
+      code: 72,
+      nterm: 'SEQUENCIA'
+    },
+    {
+      code: 73,
+      nterm: 'TERMO'
+    },
+    {
+      code: 74,
+      nterm: 'REPEXP'
+    },
+    {
+      code: 75,
+      nterm: 'FATOR'
+    },
+    {
+      code: 76,
+      nterm: 'REPTERMO'
+    }
     ],
     // Lista de tokens
     tokList = [{
-        nome: 'while',
-        code: 1
-      },
-      {
-        nome: 'void',
-        code: 2
-      },
-      {
-        nome: 'string',
-        code: 3
-      },
-      {
-        nome: 'return',
-        code: 4
-      },
-      {
-        nome: 'numerointeiro',
-        code: 5
-      },
-      {
-        nome: 'numeroflutuante',
-        code: 6
-      },
-      {
-        nome: 'nomevariavel',
-        code: 7
-      },
-      {
-        nome: 'nomecht',
-        code: 8
-      }, // Nome do char
-      {
-        nome: 'nomedastring',
-        code: 9
-      },
-      {
-        nome: 'main',
-        code: 10
-      },
-      {
-        nome: 'literal',
-        code: 11
-      },
-      {
-        nome: 'integer',
-        code: 12
-      },
-      {
-        nome: 'inicio',
-        code: 13
-      },
-      {
-        nome: 'if',
-        code: 14
-      },
-      {
-        nome: 'for',
-        code: 16
-      },
-      {
-        nome: 'float',
-        code: 17
-      },
-      {
-        nome: 'fim',
-        code: 18
-      },
-      {
-        nome: 'else',
-        code: 19
-      },
-      {
-        nome: 'do',
-        code: 20
-      },
-      {
-        nome: 'cout',
-        code: 21
-      },
-      {
-        nome: 'cin',
-        code: 22
-      },
-      {
-        nome: 'char',
-        code: 23
-      },
-      {
-        nome: 'callfuncao',
-        code: 24
-      },
-      {
-        nome: '>>',
-        code: 25
-      },
-      {
-        nome: '>=',
-        code: 26
-      },
-      {
-        nome: '>',
-        code: 27
-      },
-      {
-        nome: '==',
-        code: 28
-      },
-      {
-        nome: '=',
-        code: 29
-      },
-      {
-        nome: '<=',
-        code: 30
-      },
-      {
-        nome: '<<',
-        code: 31
-      },
-      {
-        nome: '<',
-        code: 32
-      },
-      {
-        nome: '++',
-        code: 33
-      },
-      {
-        nome: '+',
-        code: 34
-      },
-      {
-        nome: '}',
-        code: 35
-      },
-      {
-        nome: '{',
-        code: 36
-      },
-      {
-        nome: ';',
-        code: 37
-      },
-      {
-        nome: ':',
-        code: 38
-      },
-      {
-        nome: '/',
-        code: 39
-      },
-      {
-        nome: ',',
-        code: 40
-      },
-      {
-        nome: '*',
-        code: 41
-      },
-      {
-        nome: ')',
-        code: 42
-      },
-      {
-        nome: '(',
-        code: 43
-      },
-      {
-        nome: '$',
-        code: 44
-      },
-      {
-        nome: '!=',
-        code: 45
-      },
-      {
-        nome: '--',
-        code: 46
-      },
-      {
-        nome: '-',
-        code: 47
-      },
-      {
-        nome: 'nomefuncao',
-        code: 0
-      }
+      nome: 'while',
+      code: 1
+    },
+    {
+      nome: 'void',
+      code: 2
+    },
+    {
+      nome: 'string',
+      code: 3
+    },
+    {
+      nome: 'return',
+      code: 4
+    },
+    {
+      nome: 'numerointeiro',
+      code: 5
+    },
+    {
+      nome: 'numeroflutuante',
+      code: 6
+    },
+    {
+      nome: 'nomevariavel',
+      code: 7
+    },
+    {
+      nome: 'nomecht',
+      code: 8
+    }, // Nome do char
+    {
+      nome: 'nomedastring',
+      code: 9
+    },
+    {
+      nome: 'main',
+      code: 10
+    },
+    {
+      nome: 'literal',
+      code: 11
+    },
+    {
+      nome: 'integer',
+      code: 12
+    },
+    {
+      nome: 'inicio',
+      code: 13
+    },
+    {
+      nome: 'if',
+      code: 14
+    },
+    {
+      nome: 'for',
+      code: 16
+    },
+    {
+      nome: 'float',
+      code: 17
+    },
+    {
+      nome: 'fim',
+      code: 18
+    },
+    {
+      nome: 'else',
+      code: 19
+    },
+    {
+      nome: 'do',
+      code: 20
+    },
+    {
+      nome: 'cout',
+      code: 21
+    },
+    {
+      nome: 'cin',
+      code: 22
+    },
+    {
+      nome: 'char',
+      code: 23
+    },
+    {
+      nome: 'callfuncao',
+      code: 24
+    },
+    {
+      nome: '>>',
+      code: 25
+    },
+    {
+      nome: '>=',
+      code: 26
+    },
+    {
+      nome: '>',
+      code: 27
+    },
+    {
+      nome: '==',
+      code: 28
+    },
+    {
+      nome: '=',
+      code: 29
+    },
+    {
+      nome: '<=',
+      code: 30
+    },
+    {
+      nome: '<<',
+      code: 31
+    },
+    {
+      nome: '<',
+      code: 32
+    },
+    {
+      nome: '++',
+      code: 33
+    },
+    {
+      nome: '+',
+      code: 34
+    },
+    {
+      nome: '}',
+      code: 35
+    },
+    {
+      nome: '{',
+      code: 36
+    },
+    {
+      nome: ';',
+      code: 37
+    },
+    {
+      nome: ':',
+      code: 38
+    },
+    {
+      nome: '/',
+      code: 39
+    },
+    {
+      nome: ',',
+      code: 40
+    },
+    {
+      nome: '*',
+      code: 41
+    },
+    {
+      nome: ')',
+      code: 42
+    },
+    {
+      nome: '(',
+      code: 43
+    },
+    {
+      nome: '$',
+      code: 44
+    },
+    {
+      nome: '!=',
+      code: 45
+    },
+    {
+      nome: '--',
+      code: 46
+    },
+    {
+      nome: '-',
+      code: 47
+    },
+    {
+      nome: 'nomefuncao',
+      code: 0
+    }
     ],
     errList = [{
-        nome: 'literal',
-        msg: 'Erro ao fechar o literal "'
-      },
-      {
-        nome: 'float',
-        msg: 'Float não foi inserido corretamente'
-      },
-      {
-        nome: 'stringchar',
-        msg: 'Falta de fechamento. Esperado uma string ou char.'
-      },
-      {
-        nome: 'diff',
-        msg: 'Esperava "!=" entrava inválida'
-      },
-      {
-        nome: 'biginteger',
-        msg: 'Número inteiro ultrapassa o limite de 1.048.576'
-      },
-      {
-        nome: 'smallinteger',
-        msg: 'Número inteiro menor que o limite de -1.048.576'
-      },
-      {
-        nome: 'bigfloat',
-        msg: 'Número float ultrapassa o limite de 1.073.741.824 para númuero inteiro'
-      },
-      {
-        nome: 'smallfloat',
-        msg: 'Número float menor o limite de -1.073.741.824'
-      },
-      {
-        nome: 'invalidcomment',
-        msg: 'Falta fechamento de comentário'
-      },
-      {
-        nome: 'numberinvalido',
-        msg: 'Entrada inválida para um inteiro'
-      }, // falta esse erro. Exemplo: 123variavel123 - é uma variável inválida ou número inválido.
-      {
-        nome: 'identifyinvalid',
-        msg: 'Tamanho inválido para o identificador. Limite: 512 caracteres'
-      }
-    ];
+      nome: 'literal',
+      msg: 'Erro ao fechar o literal "'
+    },
+    {
+      nome: 'float',
+      msg: 'Float não foi inserido corretamente'
+    },
+    {
+      nome: 'stringchar',
+      msg: 'Falta de fechamento. Esperado uma string ou char.'
+    },
+    {
+      nome: 'diff',
+      msg: 'Esperava "!=" entrava inválida'
+    },
+    {
+      nome: 'biginteger',
+      msg: 'Número inteiro ultrapassa o limite de 1.048.576'
+    },
+    {
+      nome: 'smallinteger',
+      msg: 'Número inteiro menor que o limite de -1.048.576'
+    },
+    {
+      nome: 'bigfloat',
+      msg: 'Número float ultrapassa o limite de 1.073.741.824 para númuero inteiro'
+    },
+    {
+      nome: 'smallfloat',
+      msg: 'Número float menor o limite de -1.073.741.824'
+    },
+    {
+      nome: 'invalidcomment',
+      msg: 'Falta fechamento de comentário'
+    },
+    {
+      nome: 'numberinvalido',
+      msg: 'Entrada inválida para um inteiro'
+    }, // falta esse erro. Exemplo: 123variavel123 - é uma variável inválida ou número inválido.
+    {
+      nome: 'identifyinvalid',
+      msg: 'Tamanho inválido para o identificador. Limite: 512 caracteres'
+    }
+    ],
+    Token = function (line, token, messageError, code) {
+      this.line = line;
+      this.token = token;
+      this.messageError = messageError;
+      this.code = code;
+    },
+    text = textOriginal = textaux = req.body.textarea,
+    typeClient = req.body.typeclient,
+    validacao = {},
+    tokens = [],
+    posicao = 0,
+    literal = false,
+    literalOpen = 0,
+    number = false,
+    numberOpen = 0,
+    numAcumula = "",
+    wordAux = "",
+    firstLetter = false,
+    hasChar = false,
+    literalAux = "",
+    charAux = "";
 
-  var Token = function (line, token, messageError, code) {
-    this.line = line;
-    this.token = token;
-    this.messageError = messageError;
-    this.code = code;
-  }
-
-  var text = textOriginal = textaux = req.body.textarea;
-  var typeClient = req.body.typeclient;
   if (!typeClient) {
     typeClient = 0
   }
-  var validacao = {},
-    tokens = [],
-    posicao = 0;
-  var literal = false,
-    literalOpen = 0;
-  var number = false,
-    numberOpen = 0,
-    numAcumula = "";
-  var wordAux = "",
-    firstLetter = false;
-
 
   // remove espaço em branco
   // @deprecated text = text.replace(/(\r\n|\n|\r)/gm, "");
@@ -1450,11 +1452,18 @@ module.exports.validar = (application, req, res) => {
 
       if (l.match(/[\/]/) && next.match(/\*/)) {
         error('invalidcomment');
-        retornar();
       }
 
       // verifica se não é fechamento de literal
-      if (literal && !(l.match(/[\"]+/g))) {
+      if ((literal && !(l.match(/[\"]+/g))) || (hasChar && !(l.match(/[\']+/g)))) {
+        if (literal) {
+          literalAux += l;
+        } else {
+          if (hasChar) {
+            charAux += l;
+            console.log(charAux);
+          }
+        }
         continue;
       }
 
@@ -1464,27 +1473,27 @@ module.exports.validar = (application, req, res) => {
         case /[}]+/g.test(l):
           tok('}');
           continue;
-          // { - 36
+        // { - 36
         case /[{]+/g.test(l):
           tok('{');
           continue;
-          // ; - 37
+        // ; - 37
         case /[;]+/g.test(l):
           tok(';');
           continue;
-          // : - 38
+        // : - 38
         case /[:]+/g.test(l):
           tok(':');
           continue;
-          // , - 40
+        // , - 40
         case /[,]+/g.test(l):
           tok(',');
           continue;
-          // ) - 42
+        // ) - 42
         case /[)]+/g.test(l):
           tok(')');
           continue;
-          // , - 43
+        // , - 43
         case /[(]+/g.test(l):
           tok('(');
           continue;
@@ -1518,25 +1527,27 @@ module.exports.validar = (application, req, res) => {
           if (!finded) {
             //ANNN SE O PROXIMO FOR ( OU { É PQ TA CHAMANDO FUNCAO OU TA INICIANDO UMA CERTO? CERTO
             if (next.match(/[(]+/g) || nextnext.match(/[(]+/g)) {
-              tok('nomefuncao');
+              tokL(temp, tokList.find(x => x.nome === 'nomevariavel ').code);
               continue;
             }
             if (next.match(/[{]+/g) || nextnext.match(/[{]+/g)) {
-              tok('nomefuncao');
+              tokL(temp, tokList.find(x => x.nome === 'nomevariavel').code);
               continue;
             }
             //v verifica o anterior se é ( e anterior a ele se é return
-            if (tokens[tokens.length - 1].code == tokList.find(x => x.nome === "(").code &&
+            //+.+.+.+.+.+.+.+.+.+.+.+.  ARRUAMR STRING//+.+.+.+.+.+.+.+.+.+.+.+. 
+            /* if (tokens[tokens.length - 1].code == tokList.find(x => x.nome === "(").code &&
               tokens[tokens.length - 2].code == tokList.find(x => x.nome === "return").code) {
               tok('string');
               continue;
-            }
+            } */
 
             if (temp.length > 512) {
               error('identifyinvalid');
               continue;
             }
-            tok('nomevariavel');
+            console.log("asdasdasdas    " + temp)
+            tokL(temp, tokList.find(x => x.nome === 'nomevariavel').code);
             continue;
           }
         }
@@ -1545,14 +1556,23 @@ module.exports.validar = (application, req, res) => {
       // verifica char ou string
       if (l.match(/[']+/g)) {
         // se o segundo após l for "'"então é pq é char
+        b += 1;
         if (nextnext.match(/[']+/g)) {
           // é char - 23
-          tok('nomecht');
-          b += 2;
+          tokL(next, tokList.find(x => x.nome === 'nomecht').code);
+          b += 1;
+          continue;
         } else {
           /* FAZER A STRING AQUI, tem que ficar assim -> 'Isso é uma string' */
-          error('stringchar');
-          break;
+          if (hasChar) {
+            tokL(charAux, tokList.find(x => x.nome === 'nomedastring').code);
+            charAux = "";
+          } else {
+            console.log("MERDA " + next);
+            charAux = next;
+          }
+          hasChar = !hasChar;
+          continue;
         }
       }
 
@@ -1574,7 +1594,7 @@ module.exports.validar = (application, req, res) => {
                 } else if (numAcumula < 0 && numAcumula < -1073741824) {
                   error('smallfloat');
                 } else {
-                  tok('numeroflutuante');
+                  tokL(numAcumula, tokList.find(x => x.nome === 'numeroflutuante').code);
                   numAcumula = '';
                 }
               } else {
@@ -1588,7 +1608,7 @@ module.exports.validar = (application, req, res) => {
               } else if (numAcumula < 0 && numAcumula < -1048576) {
                 error('smallinteger');
               } else {
-                tok('numerointeiro');
+                tokL(numAcumula, tokList.find(x => x.nome === 'numerointeiro').code);
                 numAcumula = '';
               }
             }
@@ -1692,19 +1712,27 @@ module.exports.validar = (application, req, res) => {
       }
 
       //verifica '""
-      if (l.match(/[\"]+/g)) {
-        if (!literal) {
+      if (l.match(/[\"]+/g) || l.match(/[\']+/g)) {
+        if (!literal && l.match(/[\"]+/g)) {
           literalOpen = a;
+          literal = !literal;
         } else {
-          //se tem igual é pq é variável recebendo string
-          if (tokens[tokens.length - 1].code == tokList.find(x => x.nome === "=").code) {
-            tok("nomedastring");
-          } else {
+          if (l.match(/[\"]+/g)) {
+            /* //se tem igual é pq é variável recebendo string
+            if (tokens[tokens.length - 1].code == tokList.find(x => x.nome === "=").code) {
+              tok("nomedastring");
+            } else { */
             // literal - 11
             tok("literal");
+            literalAux = "";
+            literal = !literal;
+          } else if (hasChar && l.match(/[\']+/g)) {
+            hasChar = !hasChar;
+          } else {
+            tok("while");
+            charAux = "";
           }
         }
-        literal = !literal;
       }
     }
   } // Fim FOR
@@ -1716,46 +1744,7 @@ module.exports.validar = (application, req, res) => {
   // fim de arquivo $ - 44
   tok('$');
 
-
-  var top = 5,
-    entrada = 3,
-    pilha = [3, 10, 6, 7, 50, 2, 5];
-  while (!pilha) {
-    if (top == null) {
-      pilha.shift(); // remove primeiro elemento
-      top = pilha[0]; // recebe o topo da pilha
-      continue;
-    }
-    // senão
-
-    if (isTerminal(top)) { // se for terminal
-      if (top === entrada) { // termina
-        pilha.shift();
-        continue;
-      }
-      //senão erro
-      console.log('errow');
-      break;
-    }
-    // se não for terminal
-    var tab = findTabela(top, entrada);
-    if (tab != 0) {
-      pilha.shift(); // remove elemento do topo da pilha
-      // coloque o conteudo na pilha
-      if (tab.length > 1) {
-        tab.forEach((value) => {
-          pilha.push(value);
-        });
-      }
-      top = pilha[0]; // recebe topo da pilha
-    } else {
-      // erro encerra programa
-      console.log('errow');
-      break;
-    }
-
-  }
-
+  //sintatico();
   retornar();
 
   function findTabela(top, entrada) {
@@ -1776,6 +1765,46 @@ module.exports.validar = (application, req, res) => {
     return false;
   }
 
+  function sintatico() {
+    var top = 5,
+      entrada = 3,
+      pilha = [3, 10, 6, 7, 50, 2, 5];
+    while (!pilha) {
+      if (top == null) {
+        pilha.shift(); // remove primeiro elemento
+        top = pilha[0]; // recebe o topo da pilha
+        continue;
+      }
+      // senão
+
+      if (isTerminal(top)) { // se for terminal
+        if (top === entrada) { // termina
+          pilha.shift();
+          continue;
+        }
+        //senão erro
+        console.log('errow');
+        break;
+      }
+      // se não for terminal
+      var tab = findTabela(top, entrada);
+      if (tab != 0) {
+        pilha.shift(); // remove elemento do topo da pilha
+        // coloque o conteudo na pilha
+        if (tab.length > 1) {
+          tab.forEach((value) => {
+            pilha.push(value);
+          });
+        }
+        top = pilha[0]; // recebe topo da pilha
+      } else {
+        // erro encerra programa
+        console.log('errow');
+        break;
+      }
+    }
+  }
+
   function retornar() {
     console.log(tokens);
 
@@ -1788,15 +1817,18 @@ module.exports.validar = (application, req, res) => {
         dadosForm: textOriginal
       });
     }
-
   }
 
   function tok(nome) {
     console.log(nome);
-    tokens.push(new Token(a, nome, null, tokList.find(x => x.nome === nome).code));
+    tokens.push(new Token(a, tokList.find(x => x.nome === nome).nome, null, tokList.find(x => x.nome === nome).code));
+  }
+  function tokL(word, code) {
+    tokens.push(new Token(a, word, null, code));
   }
 
   function error(nome) {
     tokens.push(new Token(a, null, errList.find(x => x.nome === nome).msg, null));
+    retornar();
   }
 }
