@@ -1143,17 +1143,56 @@ var tabelaParse = [{
   }
   ];
 
-module.exports.sintatico = function (application, req, res) {
-  var Token = function (line, token, messageError, code) {
-    this.line = line;
-    this.token = token;
-    this.messageError = messageError;
-    this.code = code;
-  };
-  var codigos = req.body.tokens;
-  console.log(codigos)
-  for (var a = 0; a < codigos.length; a++) {
-    console.log(codigos[a]);
+module.exports.sintatico = function (application, req, res, tokens) {
+  sintaticoExecuta(tokens)
+}
+
+function sintaticoExecuta(tokens) {
+
+  var codigos  = []
+
+  for(var a = 0; a < tokens.length; a++){
+    codigos.push(tokens[a].code)
+    console.log(codigos[a])
   }
-  
+
+  var top = 44,
+    entrada = 3,
+    pilha = codigos;
+
+
+  while (!pilha) {
+    if (!!top) { // se for null, NaN ou undefined, então é falso - antes estava if(top != null)
+      pilha.shift(); // remove primeiro elemento
+      top = pilha[0]; // recebe o topo da pilha
+      continue;
+    }
+    // senão
+    if (isTerminal(top)) { // se for terminal
+      if (top === entrada) { // termina
+        pilha.shift();
+        top = pilha[0]; // recebe o topo da pilha
+        continue;
+      }
+      //senão erro
+      console.log('errow');
+      break;
+    }
+    // se não for terminal
+    var tab = findTabela(top, entrada);
+    if (tab != 0) {
+      pilha.shift(); // remove elemento do topo da pilha
+      // coloque o conteudo na pilha
+      if (tab.length > 1) {
+        tab.forEach((value) => {
+          pilha.push(value);
+        });
+      }
+      top = pilha[0]; // recebe topo da pilha
+    } else {
+      // erro encerra programa
+      console.log('errow');
+      break;
+    }
+  }
 }
