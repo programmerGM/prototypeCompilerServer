@@ -1338,6 +1338,12 @@ function sintaticoExecuta(tokens) {
 
   var codigos = []
 
+  console.log('teste')
+  console.log(tokens)
+  console.log(tokens[0])
+  console.log(tokens[1])
+  console.log(tokens[2])
+  console.log('teste')
   for (var a = 0; a < tokens.length; a++) {
     codigos.push(tokens[a].code)
   }
@@ -1414,8 +1420,8 @@ function sintaticoExecuta(tokens) {
   }
 
   function isTerminal(element) {
-    for (var i = 0; i < tokList.length; i++){
-      if (tokList[i].code === element){
+    for (var i = 0; i < tokList.length; i++) {
+      if (tokList[i].code === element) {
         return true;
       }
     }
@@ -1425,11 +1431,12 @@ function sintaticoExecuta(tokens) {
 }
 
 module.exports.sintatico = function (application, req, res, tokens) {
-  //Utilizado pela Web - 4 parametros
-  sintaticoExecuta(tokens)
-}
-
-module.exports.sintaticoJava = function (application, req, res) {
-  //Utilizado na requisição do Java - 3 parametros
-
+  var typeClient = req.body.typeclient
+  if (typeClient == 1) {
+    console.log('Recebeu requisição do JAVA')
+    sintaticoExecuta(JSON.parse(req.body.tokens))
+  } else {
+    console.log('Recebeu requisição da WEB')
+    sintaticoExecuta(tokens)
+  }
 }
