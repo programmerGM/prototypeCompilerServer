@@ -756,7 +756,7 @@ function sintaticoExecuta(typeClient, tokens, res) {
       sentence: [63, 29, 63]
     }, {
       code: 38,
-      sentence: [15, 7]
+      sentence: [15]
     }, {
       code: 39,
       sentence: [24, 7, 64]
@@ -1336,9 +1336,9 @@ function sintaticoExecuta(typeClient, tokens, res) {
     }
     ];
 
-  StackJava = function(code, add){
+  StackJava = function (code, add) {
     this.code = code,
-    this.add = add
+      this.add = add
   }
   var returnJava = []
 
@@ -1350,7 +1350,8 @@ function sintaticoExecuta(typeClient, tokens, res) {
   codigos.reverse()
 
   var x, a
-  var stack = []
+  var erro=false//
+  var stack = [], stackWeb = []
   var repeat = true
 
   stack.push(44) // final de arquivo
@@ -1358,7 +1359,7 @@ function sintaticoExecuta(typeClient, tokens, res) {
   returnJava.push(new StackJava(44, true))
   returnJava.push(new StackJava(48, true))
 
-  while (!!stack) {
+  while (stack.length > 1 && stack[0] == 44) {
     repeat = true;
     x = stack[stack.length - 1]
     a = codigos[codigos.length - 1]
@@ -1369,7 +1370,7 @@ function sintaticoExecuta(typeClient, tokens, res) {
     console.log('A antes de iniciar: ' + a)
 
     do {
-      if (!!x && x == 15) { // se for null, NaN ou undefined, então é falso - antes estava if(top != null)
+      if (x == 15) { // se for null, NaN ou undefined, então é falso - antes estava if(top != null)
         returnJava.push(new StackJava(stack[stack.length - 1], false))
         stack.pop() // remove o último elemento da pilha (último adicionado)
         x = stack[stack.length - 1] // recebe o topo da pilha (último elemento)
@@ -1378,6 +1379,7 @@ function sintaticoExecuta(typeClient, tokens, res) {
           if (x === a) { // termina
             console.log('Remove terminal ' + x)
             returnJava.push(new StackJava(stack[stack.length - 1], false))
+            stackWeb.push(stack.join());//
             stack.pop()
             codigos.pop()
             repeat = false // para retornar no while de fora e atualizar os valores de X e A, ou seja, começar de novo.
@@ -1387,6 +1389,7 @@ function sintaticoExecuta(typeClient, tokens, res) {
             //return; // retorna a função e não executa mais nada
             repeat = false
             stack = null
+            erro=true//
           }
         } else {
           // se não for terminal
@@ -1394,6 +1397,7 @@ function sintaticoExecuta(typeClient, tokens, res) {
           console.log('Regra: ' + regra)
           if (!!regra) {
             returnJava.push(new StackJava(stack[stack.length - 1], false))
+            stackWeb.push(stack.join())//
             stack.pop(); // remove elemento do topo da stack
             console.log('topo removido, ficou: ' + stack)
             // coloque o conteudo na stack
@@ -1402,6 +1406,7 @@ function sintaticoExecuta(typeClient, tokens, res) {
                 for (var i = value.sentence.length - 1; i >= 0; i--) {
                   stack.push(value.sentence[i])
                   returnJava.push(new StackJava(stack[stack.length - 1], true))
+                  stackWeb.push(stack.join())//
                 }
               }
             })
@@ -1413,6 +1418,7 @@ function sintaticoExecuta(typeClient, tokens, res) {
             //return; // retorna a função e não executa mais nada
             repeat = false
             stack = null
+            erro=true//
           }
         }
       } // FIM ELSE
@@ -1420,8 +1426,15 @@ function sintaticoExecuta(typeClient, tokens, res) {
   } // FIM while(!stack)
 
   console.log('Depois do While')
-  if (typeClient){
+  if (typeClient) {
     res.send(returnJava)
+  } else {//
+    console.log("erro" + erro)
+    if (!erro) {
+      stackWeb.push([44]);
+      stackWeb.push([]);
+    }
+    console.log(stackWeb)
   }
 
   function findTabela(x, a) {
