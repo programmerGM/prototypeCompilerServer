@@ -1338,12 +1338,6 @@ function sintaticoExecuta(tokens) {
 
   var codigos = []
 
-  console.log('teste')
-  console.log(tokens)
-  console.log(tokens[0])
-  console.log(tokens[1])
-  console.log(tokens[2])
-  console.log('teste')
   for (var a = 0; a < tokens.length; a++) {
     codigos.push(tokens[a].code)
   }
