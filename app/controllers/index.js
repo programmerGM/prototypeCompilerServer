@@ -317,7 +317,6 @@ module.exports.validar = (application, req, res) => {
         } else {
           if (hasChar) {
             charAux += l;
-            console.log(charAux);
           }
         }
         continue;
@@ -402,7 +401,6 @@ module.exports.validar = (application, req, res) => {
               error('identifyinvalid');
               continue;
             }
-            console.log("asdasdasdas    " + temp)
             tokL(temp, tokList.find(x => x.nome === 'nomevariavel').code);
             continue;
           }
@@ -424,7 +422,6 @@ module.exports.validar = (application, req, res) => {
             tokL(charAux, tokList.find(x => x.nome === 'nomedastring').code);
             charAux = "";
           } else {
-            console.log("MERDA " + next);
             charAux = next;
           }
           hasChar = !hasChar;
@@ -602,26 +599,7 @@ module.exports.validar = (application, req, res) => {
 
   retornar();
 
-  function findTabela(top, entrada) {
-    tabelaParse.forEach((value) => {
-      if (value.p1 === top && value.p2 === entrada) {
-        return value.valor;
-      }
-    });
-    return 0;
-  }
-
-  function isTerminal(element) {
-    tokList.forEach((value) => {
-      if (value.code === element) {
-        return true;
-      }
-    });
-    return false;
-  }
-
   function retornar() {
-    console.log(tokens);
 
     if (typeClient == 1) { // App JavaFx
       res.send(tokens);
@@ -636,7 +614,6 @@ module.exports.validar = (application, req, res) => {
   }
 
   function tok(nome) {
-    console.log(nome);
     tokens.push(new Token(a, tokList.find(x => x.nome === nome).nome, null, tokList.find(x => x.nome === nome).code));
   }
   function tokL(word, code) {
