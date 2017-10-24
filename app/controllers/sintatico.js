@@ -1,4 +1,4 @@
-function sintaticoExecuta(tokens) {
+function sintaticoExecuta(typeClient, tokens, res) {
 
   console.log('---------------INICIOU O SINTÁTICO---------------')
 
@@ -1336,6 +1336,12 @@ function sintaticoExecuta(tokens) {
     }
     ];
 
+  StackJava = function(code, add){
+    this.code = code,
+    this.add = add
+  }
+  var returnJava = []
+
   var codigos = []
 
   for (var a = 0; a < tokens.length; a++) {
@@ -1349,6 +1355,8 @@ function sintaticoExecuta(tokens) {
 
   stack.push(44) // final de arquivo
   stack.push(tabelaParse[0].p1) // 48 - primeiro elemento
+  returnJava.push(new StackJava(44, true))
+  returnJava.push(new StackJava(48, true))
 
   while (!!stack) {
     repeat = true;
@@ -1362,25 +1370,30 @@ function sintaticoExecuta(tokens) {
 
     do {
       if (!!x && x == 15) { // se for null, NaN ou undefined, então é falso - antes estava if(top != null)
+        returnJava.push(new StackJava(stack[stack.length - 1], false))
         stack.pop() // remove o último elemento da pilha (último adicionado)
         x = stack[stack.length - 1] // recebe o topo da pilha (último elemento)
       } else {
         if (isTerminal(x)) { // se for termina 
           if (x === a) { // termina
             console.log('Remove terminal ' + x)
+            returnJava.push(new StackJava(stack[stack.length - 1], false))
             stack.pop()
             codigos.pop()
             repeat = false // para retornar no while de fora e atualizar os valores de X e A, ou seja, começar de novo.
           } else {
             //senão erro
             console.log('errow')
-            return; // retorna a função e não executa mais nada
+            //return; // retorna a função e não executa mais nada
+            repeat = false
+            stack = null
           }
         } else {
           // se não for terminal
           var regra = findTabela(x, a)
           console.log('Regra: ' + regra)
           if (!!regra) {
+            returnJava.push(new StackJava(stack[stack.length - 1], false))
             stack.pop(); // remove elemento do topo da stack
             console.log('topo removido, ficou: ' + stack)
             // coloque o conteudo na stack
@@ -1388,6 +1401,7 @@ function sintaticoExecuta(tokens) {
               if (value.code == regra) {
                 for (var i = value.sentence.length - 1; i >= 0; i--) {
                   stack.push(value.sentence[i])
+                  returnJava.push(new StackJava(stack[stack.length - 1], true))
                 }
               }
             })
@@ -1396,12 +1410,19 @@ function sintaticoExecuta(tokens) {
           } else {
             // erro encerra programa
             console.log('errow')
-            return; // retorna a função e não executa mais nada
+            //return; // retorna a função e não executa mais nada
+            repeat = false
+            stack = null
           }
         }
       } // FIM ELSE
     } while (repeat) // 
   } // FIM while(!stack)
+
+  console.log('Depois do While')
+  if (typeClient){
+    res.send(returnJava)
+  }
 
   function findTabela(x, a) {
     var value = null;
@@ -1428,9 +1449,9 @@ module.exports.sintatico = function (application, req, res, tokens) {
   var typeClient = req.body.typeclient
   if (typeClient == 1) {
     console.log('Recebeu requisição do JAVA')
-    sintaticoExecuta(JSON.parse(req.body.tokens))
+    sintaticoExecuta(typeClient, JSON.parse(req.body.tokens), res)
   } else {
     console.log('Recebeu requisição da WEB')
-    sintaticoExecuta(tokens)
+    sintaticoExecuta(0, tokens, res)
   }
-}
+} 
