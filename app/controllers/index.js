@@ -600,7 +600,6 @@ module.exports.validar = (application, req, res) => {
   retornar();
 
   function retornar() {
-
     if (typeClient == 1) { // App JavaFx
       res.send(tokens);
     } else { // Página web

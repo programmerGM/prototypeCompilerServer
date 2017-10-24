@@ -1340,8 +1340,8 @@ function sintaticoExecuta(tokens) {
 
   for (var a = 0; a < tokens.length; a++) {
     codigos.push(tokens[a].code)
-    console.log(codigos[a])
   }
+  codigos.reverse()
 
   var x, a
   var stack = []
@@ -1350,43 +1350,52 @@ function sintaticoExecuta(tokens) {
   stack.push(44) // final de arquivo
   stack.push(tabelaParse[0].p1) // 48 - primeiro elemento
 
-  console.log('Códigos[sintáxico]: ' + codigos)
-  console.log(stack)
-
-  while (stack != 44 && !stack) {
+  while (!!stack) {
+    repeat = true;
     x = stack[stack.length - 1]
-    a = codigos[0]
+    a = codigos[codigos.length - 1]
+    console.log("INICIADO WHILE")
+    console.log('Códigos[sintáxico]: ' + codigos)
+    console.log('Pilha: ' + stack)
+    console.log('X antes de iniciar: ' + x)
+    console.log('A antes de iniciar: ' + a)
 
     do {
       if (!!x && x == 15) { // se for null, NaN ou undefined, então é falso - antes estava if(top != null)
         stack.pop() // remove o último elemento da pilha (último adicionado)
         x = stack[stack.length - 1] // recebe o topo da pilha (último elemento)
       } else {
-        if (isTerminal(x)) { // se for terminal
+        if (isTerminal(x)) { // se for termina 
           if (x === a) { // termina
-            stack.pop();
-            x = stack[stack.length - 1] // recebe o topo da pilha (último elemento)
+            console.log('Remove terminal ' + x)
+            stack.pop()
+            codigos.pop()
+            repeat = false // para retornar no while de fora e atualizar os valores de X e A, ou seja, começar de novo.
+          } else {
+            //senão erro
+            console.log('errow')
+            return; // retorna a função e não executa mais nada
           }
-          //senão erro
-          console.log('errow');
-          return; // retorna a função e não executa mais nada
         } else {
           // se não for terminal
-          var regra = findTabela(x, a);
+          var regra = findTabela(x, a)
+          console.log('Regra: ' + regra)
           if (!!regra) {
             stack.pop(); // remove elemento do topo da stack
+            console.log('topo removido, ficou: ' + stack)
             // coloque o conteudo na stack
             producoes.forEach((value) => {
-              if(value.code == regra){
-                for (var i = value.sentence.length - 1; i >= 0; i--){
+              if (value.code == regra) {
+                for (var i = value.sentence.length - 1; i >= 0; i--) {
                   stack.push(value.sentence[i])
                 }
               }
             })
-            x = stack[stack.length - 1] // recebe o topo da pilha (último elemento)
+            console.log('sequencia adicionada: ' + stack)
+            x = stack[stack.length - 1]
           } else {
             // erro encerra programa
-            console.log('errow');
+            console.log('errow')
             return; // retorna a função e não executa mais nada
           }
         }
@@ -1395,20 +1404,21 @@ function sintaticoExecuta(tokens) {
   } // FIM while(!stack)
 
   function findTabela(x, a) {
-    tabelaParse.forEach((value) => {
-      if (value.p1 === x && value.p2 === a) {
-        return value.valor;
+    var value = null;
+    for (var i = 0; i < tabelaParse.length; i++) {
+      if (tabelaParse[i].p1 === x && tabelaParse[i].p2 === a) {
+        return tabelaParse[i].valor;
       }
-    });
-    return null;
+    }
+    return value;
   }
 
   function isTerminal(element) {
-    tokList.forEach((value) => {
-      if (value.code === element) {
+    for (var i = 0; i < tokList.length; i++){
+      if (tokList[i].code === element){
         return true;
       }
-    });
+    }
     return false;
   }
 
