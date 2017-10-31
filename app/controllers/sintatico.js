@@ -329,7 +329,7 @@ function sintaticoExecuta(typeClient, tokens, res) {
   },
   {
     p1: 62,
-    p2: 35,
+    p2: 7,
     valor: 33
   },
   {
@@ -1359,7 +1359,7 @@ function sintaticoExecuta(typeClient, tokens, res) {
   returnJava.push(new StackJava(44, true))
   returnJava.push(new StackJava(48, true))
 
-  while (stack.length > 1 && stack[0] == 44) {
+  while (!!stack && stack[0] == 44) {
     repeat = true;
     x = stack[stack.length - 1]
     a = codigos[codigos.length - 1]
