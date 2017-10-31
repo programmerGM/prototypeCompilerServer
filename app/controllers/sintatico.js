@@ -836,79 +836,79 @@ function sintaticoExecuta(typeClient, tokens, res) {
       code: 64,
       sentence: [16, 43, 7, 29, 69, 37, 7, 67, 37, 70, 42, 36, 61, 37, 62, 35]
     }, {
-      code: 63,
-      sentence: [33, 5]
-    }, {
-      code: 64,
-      sentence: [46, 5]
-    }, {
       code: 65,
-      sentence: [20, 36, 61, 37, 62, 35, 1, 43, 7, 67, 42]
+      sentenc5e: [33, 5]
     }, {
       code: 66,
-      sentence: [22, 25, 7]
+      sentence: [46, 5]
     }, {
       code: 67,
-      sentence: [21, 31, 11, 71]
+      sentence: [20, 36, 61, 37, 62, 35, 1, 43, 7, 67, 42]
     }, {
       code: 68,
-      sentence: [15]
+      sentence: [22, 25, 7]
     }, {
       code: 69,
-      sentence: [31, 7, 72, 71]
+      sentence: [21, 31, 11, 71]
     }, {
       code: 70,
-      sentence: [31, 11, 71]
+      sentence: [15]
     }, {
       code: 71,
-      sentence: [15]
+      sentence: [31, 7, 72, 71]
     }, {
       code: 72,
-      sentence: [40, 7, 72]
+      sentence: [31, 11, 71]
     }, {
       code: 73,
-      sentence: [73, 74]
-    }, {
-      code: 74,
-      sentence: [24, 7, 64]
-    }, {
-      code: 75,
-      sentence: [34, 73, 74]
-    }, {
-      code: 76,
-      sentence: [47, 73, 74]
-    }, {
-      code: 77,
       sentence: [15]
     }, {
+      code: 74,
+      sentence: [40, 7, 72]
+    }, {
+      code: 75,
+      sentence: [73, 74]
+    }, {
+      code: 76,
+      sentence: [24, 7, 64]
+    }, {
+      code: 77,
+      sentence: [34, 73, 74]
+    }, {
       code: 78,
-      sentence: [75, 7, 6, 8]
+      sentence: [47, 73, 74]
     }, {
       code: 79,
       sentence: [15]
     }, {
       code: 80,
-      sentence: [41, 75, 76]
+      sentence: [75, 76]
     }, {
       code: 81,
-      sentence: [39, 75, 76]
+      sentence: [15]
     }, {
       code: 82,
-      sentence: [5]
+      sentence: [41, 75, 76]
     }, {
       code: 83,
-      sentence: [6]
+      sentence: [39, 75, 76]
     }, {
       code: 84,
-      sentence: [7]
+      sentence: [5]
     }, {
       code: 85,
-      sentence: [9]
+      sentence: [6]
     }, {
       code: 86,
-      sentence: [8]
+      sentence: [7]
     }, {
       code: 87,
+      sentence: [9]
+    }, {
+      code: 88,
+      sentence: [8]
+    }, {
+      code: 89,
       sentence: [43, 63, 42]
     }],
     // lista de terminais
