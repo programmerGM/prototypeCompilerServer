@@ -329,7 +329,7 @@ function sintaticoExecuta(typeClient, tokens, res, req) {
       },
       {
         p1: 62,
-        p2: 7, // FOI TROCADO O 35 PELO 7, CASO CONTRÁRIO NÃO ACEITA DOIS 'COMANDO'
+        p2: 35, // FOI TROCADO O 35 PELO 7, CASO CONTRÁRIO NÃO ACEITA DOIS 'COMANDO'
         valor: 33
       },
       {
