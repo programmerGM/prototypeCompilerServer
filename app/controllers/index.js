@@ -2,247 +2,247 @@ var sintatico = require('./sintatico');
 
 module.exports.index = (application, req, res) => {
   res.render('index', {
-    validacao: {},
     dadosForm: '',
-    tokens: {}
+    tokens: {},
+    sintatico: []
   });
 }
 
 module.exports.validar = (application, req, res) => {
   // Lista de tokens
   var tokList = [{
-      nome: 'while',
-      code: 1
-    },
-    {
-      nome: 'void',
-      code: 2
-    },
-    {
-      nome: 'string',
-      code: 3
-    },
-    {
-      nome: 'return',
-      code: 4
-    },
-    {
-      nome: 'numerointeiro',
-      code: 5
-    },
-    {
-      nome: 'numeroflutuante',
-      code: 6
-    },
-    {
-      nome: 'nomevariavel',
-      code: 7
-    },
-    {
-      nome: 'nomecht',
-      code: 8
-    }, // Nome do char
-    {
-      nome: 'nomedastring',
-      code: 9
-    },
-    {
-      nome: 'main',
-      code: 10
-    },
-    {
-      nome: 'literal',
-      code: 11
-    },
-    {
-      nome: 'integer',
-      code: 12
-    },
-    {
-      nome: 'inicio',
-      code: 13
-    },
-    {
-      nome: 'if',
-      code: 14
-    },
-    {
-      nome: 'for',
-      code: 16
-    },
-    {
-      nome: 'float',
-      code: 17
-    },
-    {
-      nome: 'fim',
-      code: 18
-    },
-    {
-      nome: 'else',
-      code: 19
-    },
-    {
-      nome: 'do',
-      code: 20
-    },
-    {
-      nome: 'cout',
-      code: 21
-    },
-    {
-      nome: 'cin',
-      code: 22
-    },
-    {
-      nome: 'char',
-      code: 23
-    },
-    {
-      nome: 'callfuncao',
-      code: 24
-    },
-    {
-      nome: '>>',
-      code: 25
-    },
-    {
-      nome: '>=',
-      code: 26
-    },
-    {
-      nome: '>',
-      code: 27
-    },
-    {
-      nome: '==',
-      code: 28
-    },
-    {
-      nome: '=',
-      code: 29
-    },
-    {
-      nome: '<=',
-      code: 30
-    },
-    {
-      nome: '<<',
-      code: 31
-    },
-    {
-      nome: '<',
-      code: 32
-    },
-    {
-      nome: '++',
-      code: 33
-    },
-    {
-      nome: '+',
-      code: 34
-    },
-    {
-      nome: '}',
-      code: 35
-    },
-    {
-      nome: '{',
-      code: 36
-    },
-    {
-      nome: ';',
-      code: 37
-    },
-    {
-      nome: ':',
-      code: 38
-    },
-    {
-      nome: '/',
-      code: 39
-    },
-    {
-      nome: ',',
-      code: 40
-    },
-    {
-      nome: '*',
-      code: 41
-    },
-    {
-      nome: ')',
-      code: 42
-    },
-    {
-      nome: '(',
-      code: 43
-    },
-    {
-      nome: '$',
-      code: 44
-    },
-    {
-      nome: '!=',
-      code: 45
-    },
-    {
-      nome: '--',
-      code: 46
-    },
-    {
-      nome: '-',
-      code: 47
-    },
-    {
-      nome: 'nomefuncao',
-      code: 0
-    }
+        nome: 'while',
+        code: 1
+      },
+      {
+        nome: 'void',
+        code: 2
+      },
+      {
+        nome: 'string',
+        code: 3
+      },
+      {
+        nome: 'return',
+        code: 4
+      },
+      {
+        nome: 'numerointeiro',
+        code: 5
+      },
+      {
+        nome: 'numeroflutuante',
+        code: 6
+      },
+      {
+        nome: 'nomevariavel',
+        code: 7
+      },
+      {
+        nome: 'nomecht',
+        code: 8
+      }, // Nome do char
+      {
+        nome: 'nomedastring',
+        code: 9
+      },
+      {
+        nome: 'main',
+        code: 10
+      },
+      {
+        nome: 'literal',
+        code: 11
+      },
+      {
+        nome: 'integer',
+        code: 12
+      },
+      {
+        nome: 'inicio',
+        code: 13
+      },
+      {
+        nome: 'if',
+        code: 14
+      },
+      {
+        nome: 'for',
+        code: 16
+      },
+      {
+        nome: 'float',
+        code: 17
+      },
+      {
+        nome: 'fim',
+        code: 18
+      },
+      {
+        nome: 'else',
+        code: 19
+      },
+      {
+        nome: 'do',
+        code: 20
+      },
+      {
+        nome: 'cout',
+        code: 21
+      },
+      {
+        nome: 'cin',
+        code: 22
+      },
+      {
+        nome: 'char',
+        code: 23
+      },
+      {
+        nome: 'callfuncao',
+        code: 24
+      },
+      {
+        nome: '>>',
+        code: 25
+      },
+      {
+        nome: '>=',
+        code: 26
+      },
+      {
+        nome: '>',
+        code: 27
+      },
+      {
+        nome: '==',
+        code: 28
+      },
+      {
+        nome: '=',
+        code: 29
+      },
+      {
+        nome: '<=',
+        code: 30
+      },
+      {
+        nome: '<<',
+        code: 31
+      },
+      {
+        nome: '<',
+        code: 32
+      },
+      {
+        nome: '++',
+        code: 33
+      },
+      {
+        nome: '+',
+        code: 34
+      },
+      {
+        nome: '}',
+        code: 35
+      },
+      {
+        nome: '{',
+        code: 36
+      },
+      {
+        nome: ';',
+        code: 37
+      },
+      {
+        nome: ':',
+        code: 38
+      },
+      {
+        nome: '/',
+        code: 39
+      },
+      {
+        nome: ',',
+        code: 40
+      },
+      {
+        nome: '*',
+        code: 41
+      },
+      {
+        nome: ')',
+        code: 42
+      },
+      {
+        nome: '(',
+        code: 43
+      },
+      {
+        nome: '$',
+        code: 44
+      },
+      {
+        nome: '!=',
+        code: 45
+      },
+      {
+        nome: '--',
+        code: 46
+      },
+      {
+        nome: '-',
+        code: 47
+      },
+      {
+        nome: 'nomefuncao',
+        code: 0
+      }
     ],
     errList = [{
-      nome: 'literal',
-      msg: 'Erro ao fechar o literal "'
-    },
-    {
-      nome: 'float',
-      msg: 'Float não foi inserido corretamente'
-    },
-    {
-      nome: 'stringchar',
-      msg: 'Falta de fechamento. Esperado uma string ou char.'
-    },
-    {
-      nome: 'diff',
-      msg: 'Esperava "!=" entrava inválida'
-    },
-    {
-      nome: 'biginteger',
-      msg: 'Número inteiro ultrapassa o limite de 1.048.576'
-    },
-    {
-      nome: 'smallinteger',
-      msg: 'Número inteiro menor que o limite de -1.048.576'
-    },
-    {
-      nome: 'bigfloat',
-      msg: 'Número float ultrapassa o limite de 1.073.741.824 para númuero inteiro'
-    },
-    {
-      nome: 'smallfloat',
-      msg: 'Número float menor o limite de -1.073.741.824'
-    },
-    {
-      nome: 'invalidcomment',
-      msg: 'Falta fechamento de comentário'
-    },
-    {
-      nome: 'numberinvalido',
-      msg: 'Entrada inválida para um inteiro'
-    }, // falta esse erro. Exemplo: 123variavel123 - é uma variável inválida ou número inválido.
-    {
-      nome: 'identifyinvalid',
-      msg: 'Tamanho inválido para o identificador. Limite: 512 caracteres'
-    }
+        nome: 'literal',
+        msg: 'Erro ao fechar o literal "'
+      },
+      {
+        nome: 'float',
+        msg: 'Float não foi inserido corretamente'
+      },
+      {
+        nome: 'stringchar',
+        msg: 'Falta de fechamento. Esperado uma string ou char.'
+      },
+      {
+        nome: 'diff',
+        msg: 'Esperava "!=" entrava inválida'
+      },
+      {
+        nome: 'biginteger',
+        msg: 'Número inteiro ultrapassa o limite de 1.048.576'
+      },
+      {
+        nome: 'smallinteger',
+        msg: 'Número inteiro menor que o limite de -1.048.576'
+      },
+      {
+        nome: 'bigfloat',
+        msg: 'Número float ultrapassa o limite de 1.073.741.824 para númuero inteiro'
+      },
+      {
+        nome: 'smallfloat',
+        msg: 'Número float menor o limite de -1.073.741.824'
+      },
+      {
+        nome: 'invalidcomment',
+        msg: 'Falta fechamento de comentário'
+      },
+      {
+        nome: 'numberinvalido',
+        msg: 'Entrada inválida para um inteiro'
+      }, // falta esse erro. Exemplo: 123variavel123 - é uma variável inválida ou número inválido.
+      {
+        nome: 'identifyinvalid',
+        msg: 'Tamanho inválido para o identificador. Limite: 512 caracteres'
+      }
     ],
     Token = function (line, token, messageError, code) {
       this.line = line;
@@ -328,27 +328,27 @@ module.exports.validar = (application, req, res) => {
         case /[}]+/g.test(l):
           tok('}');
           continue;
-        // { - 36
+          // { - 36
         case /[{]+/g.test(l):
           tok('{');
           continue;
-        // ; - 37
+          // ; - 37
         case /[;]+/g.test(l):
           tok(';');
           continue;
-        // : - 38
+          // : - 38
         case /[:]+/g.test(l):
           tok(':');
           continue;
-        // , - 40
+          // , - 40
         case /[,]+/g.test(l):
           tok(',');
           continue;
-        // ) - 42
+          // ) - 42
         case /[)]+/g.test(l):
           tok(')');
           continue;
-        // , - 43
+          // , - 43
         case /[(]+/g.test(l):
           tok('(');
           continue;
@@ -390,7 +390,7 @@ module.exports.validar = (application, req, res) => {
               continue;
             }
             //v verifica o anterior se é ( e anterior a ele se é return
-            //+.+.+.+.+.+.+.+.+.+.+.+.  ARRUAMR STRING//+.+.+.+.+.+.+.+.+.+.+.+. 
+            //+.+.+.+.+.+.+.+.+.+.+.+.  ARRUAMR STRING//+.+.+.+.+.+.+.+.+.+.+.+.
             /* if (tokens[tokens.length - 1].code == tokList.find(x => x.nome === "(").code &&
               tokens[tokens.length - 2].code == tokList.find(x => x.nome === "return").code) {
               tok('string');
@@ -603,18 +603,20 @@ module.exports.validar = (application, req, res) => {
     if (typeClient == 1) { // App JavaFx
       res.send(tokens);
     } else { // Página web
-      res.render('index', {
-        validacao: validacao,
+      req.session.dadosForm = textOriginal + " ";
+      sintatico.sintatico(application, req, res, tokens)
+      /*  res.render('index', {
         tokens: tokens,
         dadosForm: textOriginal,
         sintatico: sintatico.sintatico(application, req, res, tokens)
-      });
+      }); */
     }
   }
 
   function tok(nome) {
     tokens.push(new Token(a, tokList.find(x => x.nome === nome).nome, null, tokList.find(x => x.nome === nome).code));
   }
+
   function tokL(word, code) {
     tokens.push(new Token(a, word, null, code));
   }
