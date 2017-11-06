@@ -1386,7 +1386,7 @@ function sintaticoExecuta(typeClient, tokens, res, req) {
       } else {
         if (isTerminal(x)) { // se for termina
           if (x === a.code) { // termina
-            if (lerTipo) {
+            /* if (lerTipo) {
               var tipo = "tipo";
               switch (x) {
                 case 12:
@@ -1425,7 +1425,7 @@ function sintaticoExecuta(typeClient, tokens, res, req) {
               tabelaSimb.push(new Simbolo(a.name, "variável", "tipo", " nivel"))
               console.log(tabelaSimb)
               lerTipo = true;
-            }
+            } */
             console.log('Remove terminal ' + x)
             returnJava.push(new StackJava(stack[stack.length - 1], false))
             adicionarWeb(stack, stackWeb);
