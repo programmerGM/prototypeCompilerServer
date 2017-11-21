@@ -1414,31 +1414,27 @@ function sintaticoExecuta(typeClient, tokens, res, req) {
 		this.code = code,
 			this.add = add
 	}
-	Simbolo = function (nome, categoria, tipo, nivel) {
-		this.nome = nome,
-			this.categoria = categoria,
-			this.tipo = tipo,
-			this.nivel = nivel
-	}
 
-	TabelaSimbolos = function (value, scope) {
-		this.value,
-			this.scope
+	SimbolTable = function (name, category, type, level) {
+		this.name = name,
+		this.category = category,
+		this.type = type,
+		this.level = level
 	}
 
 	var returnJava = [],
-		codigos = [],
-		tabelaSimb = [];
+		codes = []
 
 	for (var a = 0; a < tokens.length; a++) {
-		codigos.push({ name: tokens[a].token, code: tokens[a].code })
+		codes.push({ name: tokens[a].token, code: tokens[a].code })
 	}
-	codigos.reverse()
+	codes.reverse()
 
 	var x,
 		a,
 		erro = false,
 		stack = [],
+		SimbolTable = [],
 		stackWeb = new Array(),
 		repeat = true
 	lerTipo = false;
@@ -1452,9 +1448,9 @@ function sintaticoExecuta(typeClient, tokens, res, req) {
 	while (!!stack && stack[0] == 44) {
 		repeat = true;
 		x = stack[stack.length - 1]
-		a = codigos[codigos.length - 1]
+		a = codes[codes.length - 1]
 		console.log("INICIADO WHILE")
-		console.log('Códigos[sintáxico]: ' + codigos)
+		console.log('Códigos[sintáxico]: ' + codes)
 		console.log('Pilha: ' + stack)
 		console.log('X antes de iniciar: ' + x)
 		console.log('A antes de iniciar: ' + a)
@@ -1471,7 +1467,7 @@ function sintaticoExecuta(typeClient, tokens, res, req) {
 						adicionarWeb(stack, stackWeb);
 						//stackWeb.push([stack.join(",")]); //
 						stack.pop()
-						codigos.pop()
+						codes.pop()
 						repeat = false // para retornar no while de fora e atualizar os valores de X e A, ou seja, começar de novo.
 					} else {
 						console.log('errow')
@@ -1496,7 +1492,7 @@ function sintaticoExecuta(typeClient, tokens, res, req) {
 						case 106:
 							break;
 						case 114: // INSERE_NA_TABELA_DE_SIMBOLOS_VARIAVEL
-								
+
 							
 							break;
 						case 115:
