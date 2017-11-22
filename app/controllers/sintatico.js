@@ -644,6 +644,11 @@ function sintaticoExecuta(typeClient, tokens, res, req) {
                 valor: 81
             },
             {
+                p1: 104,
+                p2: 7,
+                valor: 1114
+            },
+            {
                 p1: 114,
                 p2: 7,
                 valor: 1114
@@ -1489,15 +1494,17 @@ function sintaticoExecuta(typeClient, tokens, res, req) {
                             break
                         case 103:
                             break
-                        case 104:
-                            // Verifica se a variável já existe na tabela(duplicada)							
+                        case 104: // VERIFICA_NOME_VARIAVEL_REPETIDO
+                            if (tokens.find((value) => value.token == a.name)) {
+                                console.log('A VARIÁVEL JÁ EXISTEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEEE')
+                            }
                             break
                         case 105:
                             break
                         case 106:
                             break
                         case 114: // INSERE_NA_TABELA_DE_SIMBOLOS_VARIAVEL
-                            simbolTable.push(new Simbol(tokens.find((value) => value.code == a.code), 'category', 'type', 'level'))
+                            simbolTable.push(new Simbol(tokens.find((value) => value.code == a.code).token, 'category', 'type', 'level'))
                             break
                         case 115:
                             break
