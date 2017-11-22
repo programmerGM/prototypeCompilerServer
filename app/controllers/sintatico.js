@@ -1,6 +1,7 @@
 function sintaticoExecuta(typeClient, tokens, res, req) {
 
     console.log('---------------INICIOU O SINTÁTICO---------------')
+    console.log(tokens)
 
     var tabelaParse = [{
                 p1: 48,
@@ -644,7 +645,7 @@ function sintaticoExecuta(typeClient, tokens, res, req) {
             },
             {
                 p1: 114,
-                p2: 38,
+                p2: 7,
                 valor: 1114
             }
         ],
@@ -653,7 +654,7 @@ function sintaticoExecuta(typeClient, tokens, res, req) {
                 sentence: [2, 10, 36, 49, 50, 51, 35]
             }, {
                 code: 2,
-                sentence: [7, 114, 52, 38, 53, 37, 54] // alterado - semântico
+                sentence: [114, 7, 52, 38, 53, 37, 54] // alterado - semântico
             }, {
                 code: 3,
                 sentence: [15]
@@ -662,7 +663,7 @@ function sintaticoExecuta(typeClient, tokens, res, req) {
                 sentence: [15]
             }, {
                 code: 5,
-                sentence: [40, 7, 104, 52] // alterado - semântico
+                sentence: [40, 104, 7, 52] // alterado - semântico
             }, {
                 code: 6,
                 sentence: [12]
@@ -683,7 +684,7 @@ function sintaticoExecuta(typeClient, tokens, res, req) {
                 sentence: [55, 38, 53, 37, 54]
             }, {
                 code: 12,
-                sentence: [7, 104, 52] // alterado - semântico
+                sentence: [104, 7, 52] // alterado - semântico
             }, {
                 code: 13,
                 sentence: [56, 7, 57, 36, 49, 50, 51, 4, 43, 58, 42, 35, 50]
@@ -1496,8 +1497,7 @@ function sintaticoExecuta(typeClient, tokens, res, req) {
                         case 106:
                             break
                         case 114: // INSERE_NA_TABELA_DE_SIMBOLOS_VARIAVEL
-                            //console.log('Encontrou 114')
-                            simbolTable.push(new Simbol())
+                            simbolTable.push(new Simbol(tokens.find((value) => value.code == a.code), 'category', 'type', 'level'))
                             break
                         case 115:
                             break
