@@ -662,6 +662,31 @@ function sintaticoExecuta(typeClient, tokens, res, req) {
                 p1: 115,
                 p2: 7,
                 valor: 1115
+            },
+            {
+                p1: 116,
+                p2: 2,
+                valor: 1116
+            },
+            {
+                p1: 116,
+                p2: 3,
+                valor: 1116
+            },
+            {
+                p1: 116,
+                p2: 12,
+                valor: 1116
+            },
+            {
+                p1: 115,
+                p2: 17,
+                valor: 1116
+            },
+            {
+                p1: 116,
+                p2: 23,
+                valor: 1116
             }
         ],
         productions = [{
@@ -669,7 +694,7 @@ function sintaticoExecuta(typeClient, tokens, res, req) {
                 sentence: [2, 10, 36, 49, 50, 51, 35]
             }, {
                 code: 2,
-                sentence: [114, 7, 52, 38, 53, 37, 54] // alterado - semântico
+                sentence: [114, 7, 52, 38, 116, 53, 37, 54] // alterado - semântico
             }, {
                 code: 3,
                 sentence: [15]
@@ -696,7 +721,7 @@ function sintaticoExecuta(typeClient, tokens, res, req) {
                 sentence: [15]
             }, {
                 code: 11,
-                sentence: [55, 38, 53, 37, 54]
+                sentence: [55, 38, 116, 53, 37, 54]
             }, {
                 code: 12,
                 sentence: [104, 7, 52] // alterado - semântico
@@ -967,475 +992,475 @@ function sintaticoExecuta(typeClient, tokens, res, req) {
         ],
         // lista de terminais
         tokList = [{
-            nome: 'while',
-            code: 1
-        },
-        {
-            nome: 'void',
-            code: 2
-        },
-        {
-            nome: 'string',
-            code: 3
-        },
-        {
-            nome: 'return',
-            code: 4
-        },
-        {
-            nome: 'numerointeiro',
-            code: 5
-        },
-        {
-            nome: 'numeroflutuante',
-            code: 6
-        },
-        {
-            nome: 'nomevariavel',
-            code: 7
-        },
-        {
-            nome: 'nomecht',
-            code: 8
-        }, // Nome do char
-        {
-            nome: 'nomedastring',
-            code: 9
-        },
-        {
-            nome: 'main',
-            code: 10
-        },
-        {
-            nome: 'literal',
-            code: 11
-        },
-        {
-            nome: 'integer',
-            code: 12
-        },
-        {
-            nome: 'inicio',
-            code: 13
-        },
-        {
-            nome: 'if',
-            code: 14
-        },
-        {
-            nome: 'for',
-            code: 16
-        },
-        {
-            nome: 'float',
-            code: 17
-        },
-        {
-            nome: 'fim',
-            code: 18
-        },
-        {
-            nome: 'else',
-            code: 19
-        },
-        {
-            nome: 'do',
-            code: 20
-        },
-        {
-            nome: 'cout',
-            code: 21
-        },
-        {
-            nome: 'cin',
-            code: 22
-        },
-        {
-            nome: 'char',
-            code: 23
-        },
-        {
-            nome: 'callfuncao',
-            code: 24
-        },
-        {
-            nome: '>>',
-            code: 25
-        },
-        {
-            nome: '>=',
-            code: 26
-        },
-        {
-            nome: '>',
-            code: 27
-        },
-        {
-            nome: '==',
-            code: 28
-        },
-        {
-            nome: '=',
-            code: 29
-        },
-        {
-            nome: '<=',
-            code: 30
-        },
-        {
-            nome: '<<',
-            code: 31
-        },
-        {
-            nome: '<',
-            code: 32
-        },
-        {
-            nome: '++',
-            code: 33
-        },
-        {
-            nome: '+',
-            code: 34
-        },
-        {
-            nome: '}',
-            code: 35
-        },
-        {
-            nome: '{',
-            code: 36
-        },
-        {
-            nome: ';',
-            code: 37
-        },
-        {
-            nome: ':',
-            code: 38
-        },
-        {
-            nome: '/',
-            code: 39
-        },
-        {
-            nome: ',',
-            code: 40
-        },
-        {
-            nome: '*',
-            code: 41
-        },
-        {
-            nome: ')',
-            code: 42
-        },
-        {
-            nome: '(',
-            code: 43
-        },
-        {
-            nome: '$',
-            code: 44
-        },
-        {
-            nome: '!=',
-            code: 45
-        },
-        {
-            nome: '--',
-            code: 46
-        },
-        {
-            nome: '-',
-            code: 47
-        },
-        {
-            nome: 'nomefuncao',
-            code: 0
-        }
+                nome: 'while',
+                code: 1
+            },
+            {
+                nome: 'void',
+                code: 2
+            },
+            {
+                nome: 'string',
+                code: 3
+            },
+            {
+                nome: 'return',
+                code: 4
+            },
+            {
+                nome: 'numerointeiro',
+                code: 5
+            },
+            {
+                nome: 'numeroflutuante',
+                code: 6
+            },
+            {
+                nome: 'nomevariavel',
+                code: 7
+            },
+            {
+                nome: 'nomecht',
+                code: 8
+            }, // Nome do char
+            {
+                nome: 'nomedastring',
+                code: 9
+            },
+            {
+                nome: 'main',
+                code: 10
+            },
+            {
+                nome: 'literal',
+                code: 11
+            },
+            {
+                nome: 'integer',
+                code: 12
+            },
+            {
+                nome: 'inicio',
+                code: 13
+            },
+            {
+                nome: 'if',
+                code: 14
+            },
+            {
+                nome: 'for',
+                code: 16
+            },
+            {
+                nome: 'float',
+                code: 17
+            },
+            {
+                nome: 'fim',
+                code: 18
+            },
+            {
+                nome: 'else',
+                code: 19
+            },
+            {
+                nome: 'do',
+                code: 20
+            },
+            {
+                nome: 'cout',
+                code: 21
+            },
+            {
+                nome: 'cin',
+                code: 22
+            },
+            {
+                nome: 'char',
+                code: 23
+            },
+            {
+                nome: 'callfuncao',
+                code: 24
+            },
+            {
+                nome: '>>',
+                code: 25
+            },
+            {
+                nome: '>=',
+                code: 26
+            },
+            {
+                nome: '>',
+                code: 27
+            },
+            {
+                nome: '==',
+                code: 28
+            },
+            {
+                nome: '=',
+                code: 29
+            },
+            {
+                nome: '<=',
+                code: 30
+            },
+            {
+                nome: '<<',
+                code: 31
+            },
+            {
+                nome: '<',
+                code: 32
+            },
+            {
+                nome: '++',
+                code: 33
+            },
+            {
+                nome: '+',
+                code: 34
+            },
+            {
+                nome: '}',
+                code: 35
+            },
+            {
+                nome: '{',
+                code: 36
+            },
+            {
+                nome: ';',
+                code: 37
+            },
+            {
+                nome: ':',
+                code: 38
+            },
+            {
+                nome: '/',
+                code: 39
+            },
+            {
+                nome: ',',
+                code: 40
+            },
+            {
+                nome: '*',
+                code: 41
+            },
+            {
+                nome: ')',
+                code: 42
+            },
+            {
+                nome: '(',
+                code: 43
+            },
+            {
+                nome: '$',
+                code: 44
+            },
+            {
+                nome: '!=',
+                code: 45
+            },
+            {
+                nome: '--',
+                code: 46
+            },
+            {
+                nome: '-',
+                code: 47
+            },
+            {
+                nome: 'nomefuncao',
+                code: 0
+            }
         ],
         //Lista de não terminais
         nterm = [{
-            code: 48,
-            nterm: ' BLOCO'
-        },
-        {
-            code: 49,
-            nterm: 'DCLVAR'
-        },
-        {
-            code: 50,
-            nterm: 'DCLFUNC'
-        },
-        {
-            code: 51,
-            nterm: 'CORPO'
-        },
-        {
-            code: 52,
-            nterm: 'REPIDENT'
-        },
-        {
-            code: 53,
-            nterm: 'TIPO'
-        },
-        {
-            code: 54,
-            nterm: 'LDVAR'
-        },
-        {
-            code: 55,
-            nterm: 'LID'
-        },
-        {
-            code: 56,
-            nterm: 'TIPO_RETORNO'
-        },
-        {
-            code: 57,
-            nterm: 'DEFPAR'
-        },
-        {
-            code: 58,
-            nterm: 'VALORRETORNO'
-        },
-        {
-            code: 59,
-            nterm: 'PARAM'
-        },
-        {
-            code: 60,
-            nterm: 'LPARAM'
-        },
-        {
-            code: 61,
-            nterm: 'COMANDO'
-        },
-        {
-            code: 62,
-            nterm: 'REPCOMANDO'
-        },
-        {
-            code: 63,
-            nterm: 'EXPRESSAO'
-        },
-        {
-            code: 64,
-            nterm: 'PARAMETROS'
-        },
-        {
-            code: 65,
-            nterm: 'TPARAM'
-        },
-        {
-            code: 66,
-            nterm: 'REPPAR'
-        },
-        {
-            code: 67,
-            nterm: 'COMPARACAO'
-        },
-        {
-            code: 68,
-            nterm: 'ELSEPARTE'
-        },
-        {
-            code: 69,
-            nterm: 'CONTCOMPARACAO'
-        },
-        {
-            code: 70,
-            nterm: 'INCREMENTO'
-        },
-        {
-            code: 71,
-            nterm: 'SEQCOUT'
-        },
-        {
-            code: 72,
-            nterm: 'SEQUENCIA'
-        },
-        {
-            code: 73,
-            nterm: 'TERMO'
-        },
-        {
-            code: 74,
-            nterm: 'REPEXP'
-        },
-        {
-            code: 75,
-            nterm: 'FATOR'
-        },
-        {
-            code: 76,
-            nterm: 'REPTERMO'
-        },
-        {
-            code: 48,
-            nterm: ' BLOCO'
-        },
-        {
-            code: 49,
-            nterm: 'DCLVAR'
-        },
-        {
-            code: 50,
-            nterm: 'DCLFUNC'
-        },
-        {
-            code: 51,
-            nterm: 'CORPO'
-        },
-        {
-            code: 52,
-            nterm: 'REPIDENT'
-        },
-        {
-            code: 53,
-            nterm: 'TIPO'
-        },
-        {
-            code: 54,
-            nterm: 'LDVAR'
-        },
-        {
-            code: 55,
-            nterm: 'LID'
-        },
-        {
-            code: 56,
-            nterm: 'TIPO_RETORNO'
-        },
-        {
-            code: 57,
-            nterm: 'DEFPAR'
-        },
-        {
-            code: 58,
-            nterm: 'VALORRETORNO'
-        },
-        {
-            code: 59,
-            nterm: 'PARAM'
-        },
-        {
-            code: 60,
-            nterm: 'LPARAM'
-        },
-        {
-            code: 61,
-            nterm: 'COMANDO'
-        },
-        {
-            code: 62,
-            nterm: 'REPCOMANDO'
-        },
-        {
-            code: 63,
-            nterm: 'EXPRESSAO'
-        },
-        {
-            code: 64,
-            nterm: 'PARAMETROS'
-        },
-        {
-            code: 65,
-            nterm: 'TPARAM'
-        },
-        {
-            code: 66,
-            nterm: 'REPPAR'
-        },
-        {
-            code: 67,
-            nterm: 'COMPARACAO'
-        },
-        {
-            code: 68,
-            nterm: 'ELSEPARTE'
-        },
-        {
-            code: 69,
-            nterm: 'CONTCOMPARACAO'
-        },
-        {
-            code: 70,
-            nterm: 'INCREMENTO'
-        },
-        {
-            code: 71,
-            nterm: 'SEQCOUT'
-        },
-        {
-            code: 72,
-            nterm: 'SEQUENCIA'
-        },
-        {
-            code: 73,
-            nterm: 'TERMO'
-        },
-        {
-            code: 74,
-            nterm: 'REPEXP'
-        },
-        {
-            code: 75,
-            nterm: 'FATOR'
-        },
-        {
-            code: 76,
-            nterm: 'REPTERMO'
-        },
-        {
-            code: 101,
-            nterm: 'VERIFICA_STRING'
-        },
-        {
-            code: 102,
-            nterm: 'VERIFICA_INT_NO_FLOAT'
-        },
-        {
-            code: 103,
-            nterm: 'VERIFICA_INT_NO_CHAR'
-        },
-        {
-            code: 104,
-            nterm: 'VERIFICA_NOME_VARIAVEL_REPETIDO'
-        },
-        {
-            code: 105,
-            nterm: 'VERIFICA_RETORNO_FUNCAO'
-        },
-        {
-            code: 106,
-            nterm: 'VERIFICA_NOME_FUNCAO_REPETIDA'
-        },
-        {
-            code: 107,
-            nterm: 'VERIFICA_STRING_NO_INT'
-        },
-        {
-            code: 114,
-            nterm: 'INSERE_NA_TABELA_DE_SIMBOLOS_VARIAVEL'
-        },
-        {
-            code: 115,
-            nterm: 'INSERE_NA_TABELA_DE_SIMBOLOS_FUNCAO'
-        },
-        {
-            code: 116,
-            nterm: 'ARMAZENA_NOME_E_TIPO_VARIAVEL'
-        }
+                code: 48,
+                nterm: ' BLOCO'
+            },
+            {
+                code: 49,
+                nterm: 'DCLVAR'
+            },
+            {
+                code: 50,
+                nterm: 'DCLFUNC'
+            },
+            {
+                code: 51,
+                nterm: 'CORPO'
+            },
+            {
+                code: 52,
+                nterm: 'REPIDENT'
+            },
+            {
+                code: 53,
+                nterm: 'TIPO'
+            },
+            {
+                code: 54,
+                nterm: 'LDVAR'
+            },
+            {
+                code: 55,
+                nterm: 'LID'
+            },
+            {
+                code: 56,
+                nterm: 'TIPO_RETORNO'
+            },
+            {
+                code: 57,
+                nterm: 'DEFPAR'
+            },
+            {
+                code: 58,
+                nterm: 'VALORRETORNO'
+            },
+            {
+                code: 59,
+                nterm: 'PARAM'
+            },
+            {
+                code: 60,
+                nterm: 'LPARAM'
+            },
+            {
+                code: 61,
+                nterm: 'COMANDO'
+            },
+            {
+                code: 62,
+                nterm: 'REPCOMANDO'
+            },
+            {
+                code: 63,
+                nterm: 'EXPRESSAO'
+            },
+            {
+                code: 64,
+                nterm: 'PARAMETROS'
+            },
+            {
+                code: 65,
+                nterm: 'TPARAM'
+            },
+            {
+                code: 66,
+                nterm: 'REPPAR'
+            },
+            {
+                code: 67,
+                nterm: 'COMPARACAO'
+            },
+            {
+                code: 68,
+                nterm: 'ELSEPARTE'
+            },
+            {
+                code: 69,
+                nterm: 'CONTCOMPARACAO'
+            },
+            {
+                code: 70,
+                nterm: 'INCREMENTO'
+            },
+            {
+                code: 71,
+                nterm: 'SEQCOUT'
+            },
+            {
+                code: 72,
+                nterm: 'SEQUENCIA'
+            },
+            {
+                code: 73,
+                nterm: 'TERMO'
+            },
+            {
+                code: 74,
+                nterm: 'REPEXP'
+            },
+            {
+                code: 75,
+                nterm: 'FATOR'
+            },
+            {
+                code: 76,
+                nterm: 'REPTERMO'
+            },
+            {
+                code: 48,
+                nterm: ' BLOCO'
+            },
+            {
+                code: 49,
+                nterm: 'DCLVAR'
+            },
+            {
+                code: 50,
+                nterm: 'DCLFUNC'
+            },
+            {
+                code: 51,
+                nterm: 'CORPO'
+            },
+            {
+                code: 52,
+                nterm: 'REPIDENT'
+            },
+            {
+                code: 53,
+                nterm: 'TIPO'
+            },
+            {
+                code: 54,
+                nterm: 'LDVAR'
+            },
+            {
+                code: 55,
+                nterm: 'LID'
+            },
+            {
+                code: 56,
+                nterm: 'TIPO_RETORNO'
+            },
+            {
+                code: 57,
+                nterm: 'DEFPAR'
+            },
+            {
+                code: 58,
+                nterm: 'VALORRETORNO'
+            },
+            {
+                code: 59,
+                nterm: 'PARAM'
+            },
+            {
+                code: 60,
+                nterm: 'LPARAM'
+            },
+            {
+                code: 61,
+                nterm: 'COMANDO'
+            },
+            {
+                code: 62,
+                nterm: 'REPCOMANDO'
+            },
+            {
+                code: 63,
+                nterm: 'EXPRESSAO'
+            },
+            {
+                code: 64,
+                nterm: 'PARAMETROS'
+            },
+            {
+                code: 65,
+                nterm: 'TPARAM'
+            },
+            {
+                code: 66,
+                nterm: 'REPPAR'
+            },
+            {
+                code: 67,
+                nterm: 'COMPARACAO'
+            },
+            {
+                code: 68,
+                nterm: 'ELSEPARTE'
+            },
+            {
+                code: 69,
+                nterm: 'CONTCOMPARACAO'
+            },
+            {
+                code: 70,
+                nterm: 'INCREMENTO'
+            },
+            {
+                code: 71,
+                nterm: 'SEQCOUT'
+            },
+            {
+                code: 72,
+                nterm: 'SEQUENCIA'
+            },
+            {
+                code: 73,
+                nterm: 'TERMO'
+            },
+            {
+                code: 74,
+                nterm: 'REPEXP'
+            },
+            {
+                code: 75,
+                nterm: 'FATOR'
+            },
+            {
+                code: 76,
+                nterm: 'REPTERMO'
+            },
+            {
+                code: 101,
+                nterm: 'VERIFICA_STRING'
+            },
+            {
+                code: 102,
+                nterm: 'VERIFICA_INT_NO_FLOAT'
+            },
+            {
+                code: 103,
+                nterm: 'VERIFICA_INT_NO_CHAR'
+            },
+            {
+                code: 104,
+                nterm: 'VERIFICA_NOME_VARIAVEL_REPETIDO'
+            },
+            {
+                code: 105,
+                nterm: 'VERIFICA_RETORNO_FUNCAO'
+            },
+            {
+                code: 106,
+                nterm: 'VERIFICA_NOME_FUNCAO_REPETIDA'
+            },
+            {
+                code: 107,
+                nterm: 'VERIFICA_STRING_NO_INT'
+            },
+            {
+                code: 114,
+                nterm: 'INSERE_NA_TABELA_DE_SIMBOLOS_VARIAVEL'
+            },
+            {
+                code: 115,
+                nterm: 'INSERE_NA_TABELA_DE_SIMBOLOS_FUNCAO'
+            },
+            {
+                code: 116,
+                nterm: 'ARMAZENA_TIPO_VARIAVEL'
+            }
         ]
 
-    StackJava = function (code, add) {
+    StackJava = function(code, add) {
         this.code = code,
             this.add = add
     }
 
-    Simbol = function (name, category, type, level) {
+    Simbol = function(name, category, type, level) {
         this.name = name,
             this.category = category,
             this.type = type,
@@ -1513,7 +1538,7 @@ function sintaticoExecuta(typeClient, tokens, res, req) {
                                 // Inserir um erro no retorno e parar o while, erro de variável repetida
                                 //errorStopWhile(repeat, stack, error)
                             } else {
-                                simbolTable.push(new Simbol(tokens.find((value) => value.token == a.name).token, 'variavel', 'type', 'level'))
+                                simbolTable.push(new Simbol(tokens.find((value) => value.token == a.name).token, 'variavel', '', 'level'))
                             }
                             break
                         case 105:
@@ -1524,12 +1549,17 @@ function sintaticoExecuta(typeClient, tokens, res, req) {
                             }
                             break
                         case 114: // INSERE_NA_TABELA_DE_SIMBOLOS_VARIAVEL
-                            simbolTable.push(new Simbol(tokens.find((value) => value.token == a.name).token, 'variavel', 'type', 'level'))
+                            simbolTable.push(new Simbol(tokens.find((value) => value.token == a.name).token, 'variavel', '', 'level'))
                             break
                         case 115: // INSERE_NA_TABELA_DE_SIMBOLOS_FUNCAO
-                            simbolTable.push(new Simbol(tokens.find((value) => value.token == a.name).token, 'funcao', 'type', 'level'))
+                            simbolTable.push(new Simbol(tokens.find((value) => value.token == a.name).token, 'funcao', '', 'level'))
                             break
-                        case 116:
+                        case 116: // ARMAZENA_TIPO_VARIAVEL
+                            simbolTable.forEach((value, index) => {
+                                if (value.category == 'variavel' && value.type == '') {
+                                    value.type = findType(a.code)
+                                }
+                            })
                             break
                     }
 
@@ -1605,6 +1635,21 @@ function sintaticoExecuta(typeClient, tokens, res, req) {
         return value
     }
 
+    function findType(code) {
+        switch (code) {
+            case 3:
+                return 'string'
+            case 12:
+                return 'integer'
+            case 17:
+                return 'float'
+            case 23:
+                return 'char'
+            default:
+                return 'Erro na tipagem de variável'
+        }
+    }
+
     function isTerminal(element) {
         for (var i = 0; i < tokList.length; i++) {
             if (tokList[i].code === element) {
@@ -1616,7 +1661,7 @@ function sintaticoExecuta(typeClient, tokens, res, req) {
 
 }
 
-module.exports.sintatico = function (application, req, res, tokens) {
+module.exports.sintatico = function(application, req, res, tokens) {
     var typeClient = req.body.typeclient
     if (typeClient == 1) {
         console.log('Recebeu requisição do JAVA')
