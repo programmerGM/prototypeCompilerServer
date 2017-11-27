@@ -4,961 +4,966 @@ function sintaticoExecuta(typeClient, tokens, res, req) {
     console.log(tokens)
 
     var tabelaParse = [{
-        p1: 48,
-        p2: 2,
-        valor: 1
-    },
-    {
-        p1: 49,
-        p2: 2,
-        valor: 3
-    },
-    {
-        p1: 49,
-        p2: 3,
-        valor: 3
-    },
-    {
-        p1: 49,
-        p2: 7,
-        valor: 2
-    },
-    {
-        p1: 49,
-        p2: 12,
-        valor: 3
-    },
-    {
-        p1: 49,
-        p2: 13,
-        valor: 3
-    },
-    {
-        p1: 49,
-        p2: 17,
-        valor: 3
-    },
-    {
-        p1: 49,
-        p2: 23,
-        valor: 3
-    },
-    {
-        p1: 49,
-        p2: 44,
-        valor: 3
-    },
-    {
-        p1: 50,
-        p2: 2,
-        valor: 13
-    },
-    {
-        p1: 50,
-        p2: 3,
-        valor: 13
-    },
-    {
-        p1: 50,
-        p2: 12,
-        valor: 13
-    },
-    {
-        p1: 50,
-        p2: 13,
-        valor: 19
-    },
-    {
-        p1: 50,
-        p2: 17,
-        valor: 13
-    },
-    {
-        p1: 50,
-        p2: 23,
-        valor: 13
-    },
-    {
-        p1: 51,
-        p2: 13,
-        valor: 31
-    },
-    {
-        p1: 52,
-        p2: 38,
-        valor: 4
-    },
-    {
-        p1: 52,
-        p2: 40,
-        valor: 5
-    },
-    {
-        p1: 53,
-        p2: 3,
-        valor: 8
-    },
-    {
-        p1: 53,
-        p2: 12,
-        valor: 6
-    },
-    {
-        p1: 53,
-        p2: 17,
-        valor: 7
-    },
-    {
-        p1: 53,
-        p2: 23,
-        valor: 9
-    },
-    {
-        p1: 54,
-        p2: 2,
-        valor: 10
-    },
-    {
-        p1: 54,
-        p2: 3,
-        valor: 10
-    },
-    {
-        p1: 54,
-        p2: 7,
-        valor: 11
-    },
-    {
-        p1: 54,
-        p2: 12,
-        valor: 10
-    },
-    {
-        p1: 54,
-        p2: 13,
-        valor: 10
-    },
-    {
-        p1: 54,
-        p2: 17,
-        valor: 10
-    },
-    {
-        p1: 54,
-        p2: 23,
-        valor: 10
-    },
-    {
-        p1: 54,
-        p2: 44,
-        valor: 10
-    },
-    {
-        p1: 55,
-        p2: 7,
-        valor: 12
-    },
-    {
-        p1: 56,
-        p2: 2,
-        valor: 15
-    },
-    {
-        p1: 56,
-        p2: 3,
-        valor: 18
-    },
-    {
-        p1: 56,
-        p2: 12,
-        valor: 14
-    },
-    {
-        p1: 56,
-        p2: 17,
-        valor: 17
-    },
-    {
-        p1: 56,
-        p2: 23,
-        valor: 16
-    },
-    {
-        p1: 57,
-        p2: 36,
-        valor: 26
-    },
-    {
-        p1: 57,
-        p2: 43,
-        valor: 27
-    },
-    {
-        p1: 58,
-        p2: 5,
-        valor: 20
-    },
-    {
-        p1: 58,
-        p2: 6,
-        valor: 21
-    },
-    {
-        p1: 58,
-        p2: 7,
-        valor: 22
-    },
-    {
-        p1: 58,
-        p2: 8,
-        valor: 23
-    },
-    {
-        p1: 58,
-        p2: 9,
-        valor: 24
-    },
-    {
-        p1: 58,
-        p2: 42,
-        valor: 25
-    },
-    {
-        p1: 59,
-        p2: 3,
-        valor: 28
-    },
-    {
-        p1: 59,
-        p2: 12,
-        valor: 28
-    },
-    {
-        p1: 59,
-        p2: 17,
-        valor: 28
-    },
-    {
-        p1: 59,
-        p2: 23,
-        valor: 28
-    },
-    {
-        p1: 60,
-        p2: 37,
-        valor: 29
-    },
-    {
-        p1: 60,
-        p2: 42,
-        valor: 30
-    },
-    {
-        p1: 61,
-        p2: 1,
-        valor: 52
-    },
-    {
-        p1: 61,
-        p2: 5,
-        valor: 37
-    },
-    {
-        p1: 61,
-        p2: 6,
-        valor: 37
-    },
-    {
-        p1: 61,
-        p2: 7,
-        valor: 37
-    },
-    {
-        p1: 61,
-        p2: 8,
-        valor: 37
-    },
-    {
-        p1: 61,
-        p2: 9,
-        valor: 37
-    },
-    {
-        p1: 61,
-        p2: 14,
-        valor: 49
-    },
-    {
-        p1: 61,
-        p2: 16,
-        valor: 64
-    },
-    {
-        p1: 61,
-        p2: 20,
-        valor: 67
-    },
-    {
-        p1: 61,
-        p2: 21,
-        valor: 69
-    },
-    {
-        p1: 61,
-        p2: 22,
-        valor: 68
-    },
-    {
-        p1: 61,
-        p2: 24,
-        valor: 39
-    },
-    {
-        p1: 61,
-        p2: 37,
-        valor: 38
-    },
-    {
-        p1: 61,
-        p2: 43,
-        valor: 37
-    },
-    {
-        p1: 62,
-        p2: 18,
-        valor: 32 //atualizado aqui
-    },
-    {
-        p1: 62,
-        p2: 35, // FOI TROCADO O 35 PELO 7, CASO CONTRÁRIO NÃO ACEITA DOIS 'COMANDO'
-        valor: 33
-    },
-    {
-        p1: 63,
-        p2: 5,
-        valor: 75
-    },
-    {
-        p1: 63,
-        p2: 6,
-        valor: 75
-    },
-    {
-        p1: 63,
-        p2: 7,
-        valor: 75
-    },
-    {
-        p1: 63,
-        p2: 8,
-        valor: 75
-    },
-    {
-        p1: 63,
-        p2: 9,
-        valor: 75
-    },
-    {
-        p1: 63,
-        p2: 24,
-        valor: 76
-    },
-    {
-        p1: 63,
-        p2: 43,
-        valor: 75
-    },
-    {
-        p1: 64,
-        p2: 29,
-        valor: 40
-    },
-    {
-        p1: 64,
-        p2: 37,
-        valor: 40
-    },
-    {
-        p1: 64,
-        p2: 42,
-        valor: 40
-    },
-    {
-        p1: 64,
-        p2: 43,
-        valor: 41
-    },
-    {
-        p1: 65,
-        p2: 5,
-        valor: 44
-    },
-    {
-        p1: 65,
-        p2: 6,
-        valor: 46
-    },
-    {
-        p1: 65,
-        p2: 7,
-        valor: 48
-    },
-    {
-        p1: 65,
-        p2: 8,
-        valor: 47
-    },
-    {
-        p1: 65,
-        p2: 9,
-        valor: 45
-    },
-    {
-        p1: 66,
-        p2: 40,
-        valor: 43
-    },
-    {
-        p1: 66,
-        p2: 42,
-        valor: 42
-    },
-    {
-        p1: 67,
-        p2: 26,
-        valor: 56
-    },
-    {
-        p1: 67,
-        p2: 27,
-        valor: 55
-    },
-    {
-        p1: 67,
-        p2: 28,
-        valor: 53
-    },
-    {
-        p1: 67,
-        p2: 30,
-        valor: 58
-    },
-    {
-        p1: 67,
-        p2: 32,
-        valor: 57
-    },
-    {
-        p1: 67,
-        p2: 45,
-        valor: 54
-    },
-    {
-        p1: 68,
-        p2: 19,
-        valor: 50
-    },
-    {
-        p1: 68,
-        p2: 37,
-        valor: 51
-    },
-    {
-        p1: 69,
-        p2: 5,
-        valor: 59
-    },
-    {
-        p1: 69,
-        p2: 6,
-        valor: 60
-    },
-    {
-        p1: 69,
-        p2: 7,
-        valor: 63
-    },
-    {
-        p1: 69,
-        p2: 8,
-        valor: 62
-    },
-    {
-        p1: 69,
-        p2: 9,
-        valor: 61
-    },
-    {
-        p1: 70,
-        p2: 33,
-        valor: 65
-    },
-    {
-        p1: 70,
-        p2: 46,
-        valor: 66
-    },
-    {
-        p1: 71,
-        p2: 31,
-        valor: 72
-    },
-    {
-        p1: 71,
-        p2: 37,
-        valor: 70
-    },
-    {
-        p1: 72,
-        p2: 31,
-        valor: 73
-    },
-    {
-        p1: 72,
-        p2: 37,
-        valor: 73
-    },
-    {
-        p1: 72,
-        p2: 40,
-        valor: 74
-    },
-    {
-        p1: 73,
-        p2: 5,
-        valor: 80
-    },
-    {
-        p1: 73,
-        p2: 6,
-        valor: 80
-    },
-    {
-        p1: 73,
-        p2: 7,
-        valor: 80
-    },
-    {
-        p1: 73,
-        p2: 8,
-        valor: 80
-    },
-    {
-        p1: 73,
-        p2: 9,
-        valor: 80
-    },
-    {
-        p1: 73,
-        p2: 43,
-        valor: 80
-    },
-    {
-        p1: 74,
-        p2: 29,
-        valor: 79
-    },
-    {
-        p1: 74,
-        p2: 34,
-        valor: 77
-    },
-    {
-        p1: 74,
-        p2: 37,
-        valor: 79
-    },
-    {
-        p1: 74,
-        p2: 42,
-        valor: 79
-    },
-    {
-        p1: 74,
-        p2: 47,
-        valor: 78
-    },
-    {
-        p1: 75,
-        p2: 5,
-        valor: 84
-    },
-    {
-        p1: 75,
-        p2: 6,
-        valor: 85
-    },
-    {
-        p1: 75,
-        p2: 7,
-        valor: 86
-    },
-    {
-        p1: 75,
-        p2: 8,
-        valor: 88
-    },
-    {
-        p1: 75,
-        p2: 9,
-        valor: 87
-    },
-    {
-        p1: 75,
-        p2: 43,
-        valor: 89
-    },
-    {
-        p1: 76,
-        p2: 29,
-        valor: 81
-    },
-    {
-        p1: 76,
-        p2: 34,
-        valor: 81
-    },
-    {
-        p1: 76,
-        p2: 37,
-        valor: 81
-    },
-    {
-        p1: 76,
-        p2: 39,
-        valor: 83
-    },
-    {
-        p1: 76,
-        p2: 41,
-        valor: 82
-    },
-    {
-        p1: 76,
-        p2: 42,
-        valor: 81
-    },
-    {
-        p1: 76,
-        p2: 47,
-        valor: 81
-    },
-    {
-        p1: 104,
-        p2: 7,
-        valor: 1104
-    },
-    {
-        p1: 114,
-        p2: 7,
-        valor: 1114
-    },
-    {
-        p1: 115,
-        p2: 7,
-        valor: 1115
-    }
-    ],
+                p1: 48,
+                p2: 2,
+                valor: 1
+            },
+            {
+                p1: 49,
+                p2: 2,
+                valor: 3
+            },
+            {
+                p1: 49,
+                p2: 3,
+                valor: 3
+            },
+            {
+                p1: 49,
+                p2: 7,
+                valor: 2
+            },
+            {
+                p1: 49,
+                p2: 12,
+                valor: 3
+            },
+            {
+                p1: 49,
+                p2: 13,
+                valor: 3
+            },
+            {
+                p1: 49,
+                p2: 17,
+                valor: 3
+            },
+            {
+                p1: 49,
+                p2: 23,
+                valor: 3
+            },
+            {
+                p1: 49,
+                p2: 44,
+                valor: 3
+            },
+            {
+                p1: 50,
+                p2: 2,
+                valor: 13
+            },
+            {
+                p1: 50,
+                p2: 3,
+                valor: 13
+            },
+            {
+                p1: 50,
+                p2: 12,
+                valor: 13
+            },
+            {
+                p1: 50,
+                p2: 13,
+                valor: 19
+            },
+            {
+                p1: 50,
+                p2: 17,
+                valor: 13
+            },
+            {
+                p1: 50,
+                p2: 23,
+                valor: 13
+            },
+            {
+                p1: 51,
+                p2: 13,
+                valor: 31
+            },
+            {
+                p1: 52,
+                p2: 38,
+                valor: 4
+            },
+            {
+                p1: 52,
+                p2: 40,
+                valor: 5
+            },
+            {
+                p1: 53,
+                p2: 3,
+                valor: 8
+            },
+            {
+                p1: 53,
+                p2: 12,
+                valor: 6
+            },
+            {
+                p1: 53,
+                p2: 17,
+                valor: 7
+            },
+            {
+                p1: 53,
+                p2: 23,
+                valor: 9
+            },
+            {
+                p1: 54,
+                p2: 2,
+                valor: 10
+            },
+            {
+                p1: 54,
+                p2: 3,
+                valor: 10
+            },
+            {
+                p1: 54,
+                p2: 7,
+                valor: 11
+            },
+            {
+                p1: 54,
+                p2: 12,
+                valor: 10
+            },
+            {
+                p1: 54,
+                p2: 13,
+                valor: 10
+            },
+            {
+                p1: 54,
+                p2: 17,
+                valor: 10
+            },
+            {
+                p1: 54,
+                p2: 23,
+                valor: 10
+            },
+            {
+                p1: 54,
+                p2: 44,
+                valor: 10
+            },
+            {
+                p1: 55,
+                p2: 7,
+                valor: 12
+            },
+            {
+                p1: 56,
+                p2: 2,
+                valor: 15
+            },
+            {
+                p1: 56,
+                p2: 3,
+                valor: 18
+            },
+            {
+                p1: 56,
+                p2: 12,
+                valor: 14
+            },
+            {
+                p1: 56,
+                p2: 17,
+                valor: 17
+            },
+            {
+                p1: 56,
+                p2: 23,
+                valor: 16
+            },
+            {
+                p1: 57,
+                p2: 36,
+                valor: 26
+            },
+            {
+                p1: 57,
+                p2: 43,
+                valor: 27
+            },
+            {
+                p1: 58,
+                p2: 5,
+                valor: 20
+            },
+            {
+                p1: 58,
+                p2: 6,
+                valor: 21
+            },
+            {
+                p1: 58,
+                p2: 7,
+                valor: 22
+            },
+            {
+                p1: 58,
+                p2: 8,
+                valor: 23
+            },
+            {
+                p1: 58,
+                p2: 9,
+                valor: 24
+            },
+            {
+                p1: 58,
+                p2: 42,
+                valor: 25
+            },
+            {
+                p1: 59,
+                p2: 3,
+                valor: 28
+            },
+            {
+                p1: 59,
+                p2: 12,
+                valor: 28
+            },
+            {
+                p1: 59,
+                p2: 17,
+                valor: 28
+            },
+            {
+                p1: 59,
+                p2: 23,
+                valor: 28
+            },
+            {
+                p1: 60,
+                p2: 37,
+                valor: 29
+            },
+            {
+                p1: 60,
+                p2: 42,
+                valor: 30
+            },
+            {
+                p1: 61,
+                p2: 1,
+                valor: 52
+            },
+            {
+                p1: 61,
+                p2: 5,
+                valor: 37
+            },
+            {
+                p1: 61,
+                p2: 6,
+                valor: 37
+            },
+            {
+                p1: 61,
+                p2: 7,
+                valor: 37
+            },
+            {
+                p1: 61,
+                p2: 8,
+                valor: 37
+            },
+            {
+                p1: 61,
+                p2: 9,
+                valor: 37
+            },
+            {
+                p1: 61,
+                p2: 14,
+                valor: 49
+            },
+            {
+                p1: 61,
+                p2: 16,
+                valor: 64
+            },
+            {
+                p1: 61,
+                p2: 20,
+                valor: 67
+            },
+            {
+                p1: 61,
+                p2: 21,
+                valor: 69
+            },
+            {
+                p1: 61,
+                p2: 22,
+                valor: 68
+            },
+            {
+                p1: 61,
+                p2: 24,
+                valor: 39
+            },
+            {
+                p1: 61,
+                p2: 37,
+                valor: 38
+            },
+            {
+                p1: 61,
+                p2: 43,
+                valor: 37
+            },
+            {
+                p1: 62,
+                p2: 18,
+                valor: 32 //atualizado aqui
+            },
+            {
+                p1: 62,
+                p2: 35, // FOI TROCADO O 35 PELO 7, CASO CONTRÁRIO NÃO ACEITA DOIS 'COMANDO'
+                valor: 33
+            },
+            {
+                p1: 63,
+                p2: 5,
+                valor: 75
+            },
+            {
+                p1: 63,
+                p2: 6,
+                valor: 75
+            },
+            {
+                p1: 63,
+                p2: 7,
+                valor: 75
+            },
+            {
+                p1: 63,
+                p2: 8,
+                valor: 75
+            },
+            {
+                p1: 63,
+                p2: 9,
+                valor: 75
+            },
+            {
+                p1: 63,
+                p2: 24,
+                valor: 76
+            },
+            {
+                p1: 63,
+                p2: 43,
+                valor: 75
+            },
+            {
+                p1: 64,
+                p2: 29,
+                valor: 40
+            },
+            {
+                p1: 64,
+                p2: 37,
+                valor: 40
+            },
+            {
+                p1: 64,
+                p2: 42,
+                valor: 40
+            },
+            {
+                p1: 64,
+                p2: 43,
+                valor: 41
+            },
+            {
+                p1: 65,
+                p2: 5,
+                valor: 44
+            },
+            {
+                p1: 65,
+                p2: 6,
+                valor: 46
+            },
+            {
+                p1: 65,
+                p2: 7,
+                valor: 48
+            },
+            {
+                p1: 65,
+                p2: 8,
+                valor: 47
+            },
+            {
+                p1: 65,
+                p2: 9,
+                valor: 45
+            },
+            {
+                p1: 66,
+                p2: 40,
+                valor: 43
+            },
+            {
+                p1: 66,
+                p2: 42,
+                valor: 42
+            },
+            {
+                p1: 67,
+                p2: 26,
+                valor: 56
+            },
+            {
+                p1: 67,
+                p2: 27,
+                valor: 55
+            },
+            {
+                p1: 67,
+                p2: 28,
+                valor: 53
+            },
+            {
+                p1: 67,
+                p2: 30,
+                valor: 58
+            },
+            {
+                p1: 67,
+                p2: 32,
+                valor: 57
+            },
+            {
+                p1: 67,
+                p2: 45,
+                valor: 54
+            },
+            {
+                p1: 68,
+                p2: 19,
+                valor: 50
+            },
+            {
+                p1: 68,
+                p2: 37,
+                valor: 51
+            },
+            {
+                p1: 69,
+                p2: 5,
+                valor: 59
+            },
+            {
+                p1: 69,
+                p2: 6,
+                valor: 60
+            },
+            {
+                p1: 69,
+                p2: 7,
+                valor: 63
+            },
+            {
+                p1: 69,
+                p2: 8,
+                valor: 62
+            },
+            {
+                p1: 69,
+                p2: 9,
+                valor: 61
+            },
+            {
+                p1: 70,
+                p2: 33,
+                valor: 65
+            },
+            {
+                p1: 70,
+                p2: 46,
+                valor: 66
+            },
+            {
+                p1: 71,
+                p2: 31,
+                valor: 72
+            },
+            {
+                p1: 71,
+                p2: 37,
+                valor: 70
+            },
+            {
+                p1: 72,
+                p2: 31,
+                valor: 73
+            },
+            {
+                p1: 72,
+                p2: 37,
+                valor: 73
+            },
+            {
+                p1: 72,
+                p2: 40,
+                valor: 74
+            },
+            {
+                p1: 73,
+                p2: 5,
+                valor: 80
+            },
+            {
+                p1: 73,
+                p2: 6,
+                valor: 80
+            },
+            {
+                p1: 73,
+                p2: 7,
+                valor: 80
+            },
+            {
+                p1: 73,
+                p2: 8,
+                valor: 80
+            },
+            {
+                p1: 73,
+                p2: 9,
+                valor: 80
+            },
+            {
+                p1: 73,
+                p2: 43,
+                valor: 80
+            },
+            {
+                p1: 74,
+                p2: 29,
+                valor: 79
+            },
+            {
+                p1: 74,
+                p2: 34,
+                valor: 77
+            },
+            {
+                p1: 74,
+                p2: 37,
+                valor: 79
+            },
+            {
+                p1: 74,
+                p2: 42,
+                valor: 79
+            },
+            {
+                p1: 74,
+                p2: 47,
+                valor: 78
+            },
+            {
+                p1: 75,
+                p2: 5,
+                valor: 84
+            },
+            {
+                p1: 75,
+                p2: 6,
+                valor: 85
+            },
+            {
+                p1: 75,
+                p2: 7,
+                valor: 86
+            },
+            {
+                p1: 75,
+                p2: 8,
+                valor: 88
+            },
+            {
+                p1: 75,
+                p2: 9,
+                valor: 87
+            },
+            {
+                p1: 75,
+                p2: 43,
+                valor: 89
+            },
+            {
+                p1: 76,
+                p2: 29,
+                valor: 81
+            },
+            {
+                p1: 76,
+                p2: 34,
+                valor: 81
+            },
+            {
+                p1: 76,
+                p2: 37,
+                valor: 81
+            },
+            {
+                p1: 76,
+                p2: 39,
+                valor: 83
+            },
+            {
+                p1: 76,
+                p2: 41,
+                valor: 82
+            },
+            {
+                p1: 76,
+                p2: 42,
+                valor: 81
+            },
+            {
+                p1: 76,
+                p2: 47,
+                valor: 81
+            },
+            {
+                p1: 104,
+                p2: 7,
+                valor: 1104
+            },
+            {
+                p1: 106,
+                p2: 7,
+                valor: 1106
+            },
+            {
+                p1: 114,
+                p2: 7,
+                valor: 1114
+            },
+            {
+                p1: 115,
+                p2: 7,
+                valor: 1115
+            }
+        ],
         productions = [{
-            code: 1,
-            sentence: [2, 10, 36, 49, 50, 51, 35]
-        }, {
-            code: 2,
-            sentence: [114, 7, 52, 38, 53, 37, 54] // alterado - semântico
-        }, {
-            code: 3,
-            sentence: [15]
-        }, {
-            code: 4,
-            sentence: [15]
-        }, {
-            code: 5,
-            sentence: [40, 104, 7, 52] // alterado - semântico
-        }, {
-            code: 6,
-            sentence: [12]
-        }, {
-            code: 7,
-            sentence: [17]
-        }, {
-            code: 8,
-            sentence: [3]
-        }, {
-            code: 9,
-            sentence: [23]
-        }, {
-            code: 10,
-            sentence: [15]
-        }, {
-            code: 11,
-            sentence: [55, 38, 53, 37, 54]
-        }, {
-            code: 12,
-            sentence: [104, 7, 52] // alterado - semântico
-        }, {
-            code: 13,
-            sentence: [56, 115, 7, 57, 36, 49, 50, 51, 4, 43, 58, 42, 35, 50]
-        }, {
-            code: 14,
-            sentence: [12]
-        }, {
-            code: 15,
-            sentence: [2]
-        }, {
-            code: 16,
-            sentence: [23]
-        }, {
-            code: 17,
-            sentence: [17]
-        }, {
-            code: 18,
-            sentence: [3]
-        }, {
-            code: 19,
-            sentence: [15]
-        }, {
-            code: 20,
-            sentence: [5]
-        }, {
-            code: 21,
-            sentence: [6]
-        }, {
-            code: 22,
-            sentence: [7]
-        }, {
-            code: 23,
-            sentence: [8]
-        }, {
-            code: 24,
-            sentence: [9]
-        }, {
-            code: 25,
-            sentence: [15]
-        }, {
-            code: 26,
-            sentence: [15]
-        }, {
-            code: 27,
-            sentence: [43, 59, 42]
-        }, {
-            code: 28,
-            sentence: [53, 60]
-        }, {
-            code: 29,
-            sentence: [37, 53, 60]
-        }, {
-            code: 30,
-            sentence: [15]
-        }, {
-            code: 31,
-            sentence: [13, 61, 37, 62, 18]
-        }, {
-            code: 32,
-            sentence: [15]
-        }, {
-            code: 33,
-            sentence: [61, 37, 62]
-        }, {
-            code: 34,
-            sentence: [7, 29, 63]
-        }, {
-            code: 35,
-            sentence: [9, 29, 63]
-        }, {
-            code: 36,
-            sentence: [8, 29, 63]
-        }, {
-            code: 37,
-            sentence: [63, 29, 63]
-        }, {
-            code: 38,
-            sentence: [15]
-        }, {
-            code: 39,
-            sentence: [24, 7, 64]
-        }, {
-            code: 40,
-            sentence: [15]
-        }, {
-            code: 41,
-            sentence: [43, 65, 66, 42]
-        }, {
-            code: 42,
-            sentence: [15]
-        }, {
-            code: 43,
-            sentence: [40, 65, 66]
-        }, {
-            code: 44,
-            sentence: [5]
-        }, {
-            code: 45,
-            sentence: [9]
-        }, {
-            code: 46,
-            sentence: [6]
-        }, {
-            code: 47,
-            sentence: [8]
-        }, {
-            code: 48,
-            sentence: [7]
-        }, {
-            code: 49,
-            sentence: [14, 43, 7, 67, 42, 36, 61, 37, 62, 35, 68] // atualizado aqui
-        }, {
-            code: 50,
-            sentence: [19, 36, 61, 37, 62, 35]
-        }, {
-            code: 51,
-            sentence: [15]
-        }, {
-            code: 52,
-            sentence: [1, 43, 7, 67, 42, 36, 61, 37, 62, 35]
-        }, {
-            code: 53,
-            sentence: [28, 69]
-        }, {
-            code: 54,
-            sentence: [45, 69]
-        }, {
-            code: 55,
-            sentence: [27, 69]
-        }, {
-            code: 56,
-            sentence: [26, 69]
-        }, {
-            code: 57,
-            sentence: [32, 69]
-        }, {
-            code: 58,
-            sentence: [30, 69]
-        }, {
-            code: 59,
-            sentence: [5]
-        }, {
-            code: 60,
-            sentence: [6]
-        }, {
-            code: 61,
-            sentence: [9]
-        }, {
-            code: 62,
-            sentence: [8]
-        }, {
-            code: 63,
-            sentence: [7]
-        }, {
-            code: 64,
-            sentence: [16, 43, 7, 29, 69, 37, 7, 67, 37, 70, 42, 36, 61, 37, 62, 35]
-        }, {
-            code: 65,
-            sentenc5e: [33, 5]
-        }, {
-            code: 66,
-            sentence: [46, 5]
-        }, {
-            code: 67,
-            sentence: [20, 36, 61, 37, 62, 35, 1, 43, 7, 67, 42]
-        }, {
-            code: 68,
-            sentence: [22, 25, 7]
-        }, {
-            code: 69,
-            sentence: [21, 31, 11, 71]
-        }, {
-            code: 70,
-            sentence: [15]
-        }, {
-            code: 71,
-            sentence: [31, 7, 72, 71]
-        }, {
-            code: 72,
-            sentence: [31, 11, 71]
-        }, {
-            code: 73,
-            sentence: [15]
-        }, {
-            code: 74,
-            sentence: [40, 7, 72]
-        }, {
-            code: 75,
-            sentence: [73, 74]
-        }, {
-            code: 76,
-            sentence: [24, 7, 64]
-        }, {
-            code: 77,
-            sentence: [34, 73, 74]
-        }, {
-            code: 78,
-            sentence: [47, 73, 74]
-        }, {
-            code: 79,
-            sentence: [15]
-        }, {
-            code: 80,
-            sentence: [75, 76]
-        }, {
-            code: 81,
-            sentence: [15]
-        }, {
-            code: 82,
-            sentence: [41, 75, 76]
-        }, {
-            code: 83,
-            sentence: [39, 75, 76]
-        }, {
-            code: 84,
-            sentence: [5]
-        }, {
-            code: 85,
-            sentence: [6]
-        }, {
-            code: 86,
-            sentence: [7]
-        }, {
-            code: 87,
-            sentence: [9]
-        }, {
-            code: 88,
-            sentence: [8]
-        }, {
-            code: 89,
-            sentence: [43, 63, 42]
-        },
-        // ADICIONADO NOVOS ITENS NA TABELA DE PARSING AQUI PARA O SEMANTICO
-        {
-            code: 1101,
-            sentence: [15]
-        }, {
-            code: 1102,
-            sentence: [15]
-        }, {
-            code: 1103,
-            sentence: [15]
-        }, {
-            code: 1104,
-            sentence: [15]
-        }, {
-            code: 1105,
-            sentence: [15]
-        }, {
-            code: 1106,
-            sentence: [15]
-        }, {
-            code: 1107,
-            sentence: [15]
-        }, {
-            code: 1114,
-            sentence: [15]
-        }, {
-            code: 1115,
-            sentence: [15]
-        }, {
-            code: 1116,
-            sentence: [15]
-        }
+                code: 1,
+                sentence: [2, 10, 36, 49, 50, 51, 35]
+            }, {
+                code: 2,
+                sentence: [114, 7, 52, 38, 53, 37, 54] // alterado - semântico
+            }, {
+                code: 3,
+                sentence: [15]
+            }, {
+                code: 4,
+                sentence: [15]
+            }, {
+                code: 5,
+                sentence: [40, 104, 7, 52] // alterado - semântico
+            }, {
+                code: 6,
+                sentence: [12]
+            }, {
+                code: 7,
+                sentence: [17]
+            }, {
+                code: 8,
+                sentence: [3]
+            }, {
+                code: 9,
+                sentence: [23]
+            }, {
+                code: 10,
+                sentence: [15]
+            }, {
+                code: 11,
+                sentence: [55, 38, 53, 37, 54]
+            }, {
+                code: 12,
+                sentence: [104, 7, 52] // alterado - semântico
+            }, {
+                code: 13,
+                sentence: [56, 106, 115, 7, 57, 36, 49, 50, 51, 4, 43, 58, 42, 35, 50]
+            }, {
+                code: 14,
+                sentence: [12]
+            }, {
+                code: 15,
+                sentence: [2]
+            }, {
+                code: 16,
+                sentence: [23]
+            }, {
+                code: 17,
+                sentence: [17]
+            }, {
+                code: 18,
+                sentence: [3]
+            }, {
+                code: 19,
+                sentence: [15]
+            }, {
+                code: 20,
+                sentence: [5]
+            }, {
+                code: 21,
+                sentence: [6]
+            }, {
+                code: 22,
+                sentence: [7]
+            }, {
+                code: 23,
+                sentence: [8]
+            }, {
+                code: 24,
+                sentence: [9]
+            }, {
+                code: 25,
+                sentence: [15]
+            }, {
+                code: 26,
+                sentence: [15]
+            }, {
+                code: 27,
+                sentence: [43, 59, 42]
+            }, {
+                code: 28,
+                sentence: [53, 60]
+            }, {
+                code: 29,
+                sentence: [37, 53, 60]
+            }, {
+                code: 30,
+                sentence: [15]
+            }, {
+                code: 31,
+                sentence: [13, 61, 37, 62, 18]
+            }, {
+                code: 32,
+                sentence: [15]
+            }, {
+                code: 33,
+                sentence: [61, 37, 62]
+            }, {
+                code: 34,
+                sentence: [7, 29, 63]
+            }, {
+                code: 35,
+                sentence: [9, 29, 63]
+            }, {
+                code: 36,
+                sentence: [8, 29, 63]
+            }, {
+                code: 37,
+                sentence: [63, 29, 63]
+            }, {
+                code: 38,
+                sentence: [15]
+            }, {
+                code: 39,
+                sentence: [24, 7, 64]
+            }, {
+                code: 40,
+                sentence: [15]
+            }, {
+                code: 41,
+                sentence: [43, 65, 66, 42]
+            }, {
+                code: 42,
+                sentence: [15]
+            }, {
+                code: 43,
+                sentence: [40, 65, 66]
+            }, {
+                code: 44,
+                sentence: [5]
+            }, {
+                code: 45,
+                sentence: [9]
+            }, {
+                code: 46,
+                sentence: [6]
+            }, {
+                code: 47,
+                sentence: [8]
+            }, {
+                code: 48,
+                sentence: [7]
+            }, {
+                code: 49,
+                sentence: [14, 43, 7, 67, 42, 36, 61, 37, 62, 35, 68] // atualizado aqui
+            }, {
+                code: 50,
+                sentence: [19, 36, 61, 37, 62, 35]
+            }, {
+                code: 51,
+                sentence: [15]
+            }, {
+                code: 52,
+                sentence: [1, 43, 7, 67, 42, 36, 61, 37, 62, 35]
+            }, {
+                code: 53,
+                sentence: [28, 69]
+            }, {
+                code: 54,
+                sentence: [45, 69]
+            }, {
+                code: 55,
+                sentence: [27, 69]
+            }, {
+                code: 56,
+                sentence: [26, 69]
+            }, {
+                code: 57,
+                sentence: [32, 69]
+            }, {
+                code: 58,
+                sentence: [30, 69]
+            }, {
+                code: 59,
+                sentence: [5]
+            }, {
+                code: 60,
+                sentence: [6]
+            }, {
+                code: 61,
+                sentence: [9]
+            }, {
+                code: 62,
+                sentence: [8]
+            }, {
+                code: 63,
+                sentence: [7]
+            }, {
+                code: 64,
+                sentence: [16, 43, 7, 29, 69, 37, 7, 67, 37, 70, 42, 36, 61, 37, 62, 35]
+            }, {
+                code: 65,
+                sentenc5e: [33, 5]
+            }, {
+                code: 66,
+                sentence: [46, 5]
+            }, {
+                code: 67,
+                sentence: [20, 36, 61, 37, 62, 35, 1, 43, 7, 67, 42]
+            }, {
+                code: 68,
+                sentence: [22, 25, 7]
+            }, {
+                code: 69,
+                sentence: [21, 31, 11, 71]
+            }, {
+                code: 70,
+                sentence: [15]
+            }, {
+                code: 71,
+                sentence: [31, 7, 72, 71]
+            }, {
+                code: 72,
+                sentence: [31, 11, 71]
+            }, {
+                code: 73,
+                sentence: [15]
+            }, {
+                code: 74,
+                sentence: [40, 7, 72]
+            }, {
+                code: 75,
+                sentence: [73, 74]
+            }, {
+                code: 76,
+                sentence: [24, 7, 64]
+            }, {
+                code: 77,
+                sentence: [34, 73, 74]
+            }, {
+                code: 78,
+                sentence: [47, 73, 74]
+            }, {
+                code: 79,
+                sentence: [15]
+            }, {
+                code: 80,
+                sentence: [75, 76]
+            }, {
+                code: 81,
+                sentence: [15]
+            }, {
+                code: 82,
+                sentence: [41, 75, 76]
+            }, {
+                code: 83,
+                sentence: [39, 75, 76]
+            }, {
+                code: 84,
+                sentence: [5]
+            }, {
+                code: 85,
+                sentence: [6]
+            }, {
+                code: 86,
+                sentence: [7]
+            }, {
+                code: 87,
+                sentence: [9]
+            }, {
+                code: 88,
+                sentence: [8]
+            }, {
+                code: 89,
+                sentence: [43, 63, 42]
+            },
+            // ADICIONADO NOVOS ITENS NA TABELA DE PARSING AQUI PARA O SEMANTICO
+            {
+                code: 1101,
+                sentence: [15]
+            }, {
+                code: 1102,
+                sentence: [15]
+            }, {
+                code: 1103,
+                sentence: [15]
+            }, {
+                code: 1104,
+                sentence: [15]
+            }, {
+                code: 1105,
+                sentence: [15]
+            }, {
+                code: 1106,
+                sentence: [15]
+            }, {
+                code: 1107,
+                sentence: [15]
+            }, {
+                code: 1114,
+                sentence: [15]
+            }, {
+                code: 1115,
+                sentence: [15]
+            }, {
+                code: 1116,
+                sentence: [15]
+            }
         ],
         // lista de terminais
         tokList = [{
@@ -1505,7 +1510,7 @@ function sintaticoExecuta(typeClient, tokens, res, req) {
                             break
                         case 104: // VERIFICA_NOME_VARIAVEL_REPETIDO
                             if (simbolTable.find((value) => value.name == a.name)) {
-                                // Inserir um erro no retorno e parar o while
+                                // Inserir um erro no retorno e parar o while, erro de variável repetida
                                 //errorStopWhile(repeat, stack, error)
                             } else {
                                 simbolTable.push(new Simbol(tokens.find((value) => value.token == a.name).token, 'variavel', 'type', 'level'))
@@ -1513,7 +1518,10 @@ function sintaticoExecuta(typeClient, tokens, res, req) {
                             break
                         case 105:
                             break
-                        case 106:
+                        case 106: // VERIFICA_NOME_FUNCAO_REPETIDA
+                            if (simbolTable.find((value) => value.name == a.name)) {
+                                // Inserir um erro no retorno e parar o while, erro de função repetida
+                            }
                             break
                         case 114: // INSERE_NA_TABELA_DE_SIMBOLOS_VARIAVEL
                             simbolTable.push(new Simbol(tokens.find((value) => value.token == a.name).token, 'variavel', 'type', 'level'))
@@ -1543,7 +1551,8 @@ function sintaticoExecuta(typeClient, tokens, res, req) {
                     }
                 }
             } // FIM ELSE
-        } while (repeat)
+        }
+        while (repeat)
     } // FIM while(!stack)
 
     console.log('Depois do While - tabela')
