@@ -652,6 +652,11 @@ function sintaticoExecuta(typeClient, tokens, res, req) {
                 p1: 114,
                 p2: 7,
                 valor: 1114
+            },
+            {
+                p1: 115,
+                p2: 7,
+                valor: 1115
             }
         ],
         productions = [{
@@ -692,7 +697,7 @@ function sintaticoExecuta(typeClient, tokens, res, req) {
                 sentence: [104, 7, 52] // alterado - semântico
             }, {
                 code: 13,
-                sentence: [56, 7, 57, 36, 49, 50, 51, 4, 43, 58, 42, 35, 50]
+                sentence: [56, 115, 7, 57, 36, 49, 50, 51, 4, 43, 58, 42, 35, 50]
             }, {
                 code: 14,
                 sentence: [12]
@@ -1480,7 +1485,10 @@ function sintaticoExecuta(typeClient, tokens, res, req) {
                         codes.pop()
                         repeat = false // para retornar no while de fora e atualizar os valores de X e A, ou seja, começar de novo.
                     } else {
-                        errorStopWhile(repeat, stack, error)
+                        console.log('errorw')
+                        repeat = false
+                        stack = null
+                        error = true
                     }
                 } else {
                     // se não for terminal									
@@ -1496,7 +1504,7 @@ function sintaticoExecuta(typeClient, tokens, res, req) {
                                 // Inserir um erro no retorno e parar o while
                                 //errorStopWhile(repeat, stack, error)
                             } else {
-                                simbolTable.push(new Simbol(tokens.find((value) => value.token == a.name).token, 'category', 'type', 'level'))
+                                simbolTable.push(new Simbol(tokens.find((value) => value.token == a.name).token, 'variavel', 'type', 'level'))
                             }
                             break
                         case 105:
@@ -1504,9 +1512,10 @@ function sintaticoExecuta(typeClient, tokens, res, req) {
                         case 106:
                             break
                         case 114: // INSERE_NA_TABELA_DE_SIMBOLOS_VARIAVEL
-                            simbolTable.push(new Simbol(tokens.find((value) => value.token == a.name).token, 'category', 'type', 'level'))
+                            simbolTable.push(new Simbol(tokens.find((value) => value.token == a.name).token, 'variavel', 'type', 'level'))
                             break
-                        case 115:
+                        case 115: // INSERE_NA_TABELA_DE_SIMBOLOS_FUNCAO
+                            simbolTable.push(new Simbol(tokens.find((value) => value.token == a.name).token, 'funcao', 'type', 'level'))
                             break
                         case 116:
                             break
@@ -1521,14 +1530,18 @@ function sintaticoExecuta(typeClient, tokens, res, req) {
                         addProductionsInStack(productions, stack, returnJava, stackWeb)
                         x = stack[stack.length - 1]
                     } else {
-                        errorStopWhile(repeat, stack, error)
+                        console.log('errorw')
+                        repeat = false
+                        stack = null
+                        error = true
                     }
                 }
             } // FIM ELSE
         } while (repeat)
     } // FIM while(!stack)
 
-    console.log('Depois do While')
+    console.log('Depois do While - tabela')
+    console.log(simbolTable)
     if (typeClient) {
         res.send(returnJava)
     } else { //
@@ -1542,13 +1555,6 @@ function sintaticoExecuta(typeClient, tokens, res, req) {
             dadosForm: req.session.dadosForm,
             sintatico: JSON.stringify(stackWeb)
         });
-    }
-
-    function errorStopWhile(repeat, stack, error) {
-        console.log('errorw')
-        repeat = false
-        stack = null
-        error = true
     }
 
     function addProductionsInStack(productions, stack, returnJava, stackWeb) {
