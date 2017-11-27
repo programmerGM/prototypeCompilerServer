@@ -649,6 +649,11 @@ function sintaticoExecuta(typeClient, tokens, res, req) {
                 valor: 1104
             },
             {
+                p1: 106,
+                p2: 7,
+                valor: 1106
+            },
+            {
                 p1: 114,
                 p2: 7,
                 valor: 1114
@@ -697,7 +702,7 @@ function sintaticoExecuta(typeClient, tokens, res, req) {
                 sentence: [104, 7, 52] // alterado - semântico
             }, {
                 code: 13,
-                sentence: [56, 115, 7, 57, 36, 49, 50, 51, 4, 43, 58, 42, 35, 50]
+                sentence: [56, 106, 115, 7, 57, 36, 49, 50, 51, 4, 43, 58, 42, 35, 50]
             }, {
                 code: 14,
                 sentence: [12]
@@ -1501,7 +1506,7 @@ function sintaticoExecuta(typeClient, tokens, res, req) {
                             break
                         case 104: // VERIFICA_NOME_VARIAVEL_REPETIDO
                             if (simbolTable.find((value) => value.name == a.name)) {
-                                // Inserir um erro no retorno e parar o while
+                                // Inserir um erro no retorno e parar o while, erro de variável repetida
                                 //errorStopWhile(repeat, stack, error)
                             } else {
                                 simbolTable.push(new Simbol(tokens.find((value) => value.token == a.name).token, 'variavel', 'type', 'level'))
@@ -1509,7 +1514,10 @@ function sintaticoExecuta(typeClient, tokens, res, req) {
                             break
                         case 105:
                             break
-                        case 106:
+                        case 106: // VERIFICA_NOME_FUNCAO_REPETIDA
+                            if (simbolTable.find((value) => value.name == a.name)) {
+                                // Inserir um erro no retorno e parar o while, erro de função repetida
+                            }
                             break
                         case 114: // INSERE_NA_TABELA_DE_SIMBOLOS_VARIAVEL
                             simbolTable.push(new Simbol(tokens.find((value) => value.token == a.name).token, 'variavel', 'type', 'level'))
@@ -1537,7 +1545,8 @@ function sintaticoExecuta(typeClient, tokens, res, req) {
                     }
                 }
             } // FIM ELSE
-        } while (repeat)
+        }
+        while (repeat)
     } // FIM while(!stack)
 
     console.log('Depois do While - tabela')
