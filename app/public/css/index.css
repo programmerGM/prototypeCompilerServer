@@ -13,3 +13,8 @@ textarea {
 #menu {
   margin-top: 15px;
 }
+
+#errormsg{
+  position: absolute;
+  margin-top: 5px;
+}
