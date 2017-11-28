@@ -644,6 +644,16 @@ function sintaticoExecuta(typeClient, tokens, res, req) {
                 valor: 81
             },
             {
+                p1: 101,
+                p2: 5,
+                valor: 1101
+            },
+            {
+                p1: 102,
+                p2: 5,
+                valor: 1102
+            },
+            {
                 p1: 103,
                 p2: 5,
                 valor: 1103
@@ -684,7 +694,7 @@ function sintaticoExecuta(typeClient, tokens, res, req) {
                 valor: 1116
             },
             {
-                p1: 115,
+                p1: 116,
                 p2: 17,
                 valor: 1116
             },
@@ -949,7 +959,7 @@ function sintaticoExecuta(typeClient, tokens, res, req) {
                 sentence: [39, 75, 76]
             }, {
                 code: 84,
-                sentence: [103, 5]
+                sentence: [101, 102, 103, 5]
             }, {
                 code: 85,
                 sentence: [6]
@@ -958,7 +968,7 @@ function sintaticoExecuta(typeClient, tokens, res, req) {
                 sentence: [117, 7]
             }, {
                 code: 87,
-                sentence: [107, 9]
+                sentence: [9]
             }, {
                 code: 88,
                 sentence: [8]
@@ -1545,20 +1555,23 @@ function sintaticoExecuta(typeClient, tokens, res, req) {
                     // se não for terminal									
                     switch (x) {
                         case 101:
-                            console.log('-------------------------------------------------101--------------------------------------------------------------')
+                            if (tipoVarAux == 'string' && a.code == 5) {
+                                // INSERIR AQUI erro dizendo que foi atribuído um inteiro em uma variável do tipo string
+                            }
                             break
                         case 102:
-                            console.log('-------------------------------------------------102--------------------------------------------------------------')
+                            if (tipoVarAux == 'float' && a.code == 5) {
+                                // INSERIR AQUI erro dizendo que foi atribuído um inteiro em uma variável do tipo float
+                            }
                             break
                         case 103: // VERIFICA_INT_NO_CHAR
-                            if (a.code == 5) {
+                            if (tipoVarAux == 'char' && a.code == 5) {
                                 // INSERIR AQUI erro dizendo que foi atribuído um inteiro em uma variável do tipo char
                             }
                             break
                         case 104: // VERIFICA_NOME_VARIAVEL_REPETIDO
                             if (simbolTable.find((value) => value.name == a.name)) {
                                 // INSERIR ERRO AQUI no retorno e parar o while, "erro de variável repetida"
-                                //errorStopWhile(repeat, stack, error)
                             } else {
                                 simbolTable.push(new Simbol(tokens.find((value) => value.token == a.name).token, 'variavel', '', 'level'))
                             }
@@ -1588,7 +1601,9 @@ function sintaticoExecuta(typeClient, tokens, res, req) {
                             })
                             break
                         case 117: // ARMAZENA_NOME_VARIAVEL_TEMPORARIAMENTE
+                            console.log('-------------------------------------------------117--------------------------------------------------------------')
                             tipoVarAux = tipoVariavel(a.name)
+                            console.log('tipo: ' + tipoVarAux)
                             break
                     }
 
