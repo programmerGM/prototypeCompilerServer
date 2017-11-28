@@ -669,6 +669,11 @@ function sintaticoExecuta(typeClient, tokens, res, req) {
                 valor: 1106
             },
             {
+                p1: 107,
+                p2: 9,
+                valor: 1107
+            },
+            {
                 p1: 114,
                 p2: 7,
                 valor: 1114
@@ -702,9 +707,15 @@ function sintaticoExecuta(typeClient, tokens, res, req) {
                 p1: 116,
                 p2: 23,
                 valor: 1116
-            }, {
+            },
+            {
                 p1: 117,
                 p2: 7,
+                valor: 1117
+            },
+            {
+                p1: 117,
+                p2: 9,
                 valor: 1117
             }
         ],
@@ -746,7 +757,7 @@ function sintaticoExecuta(typeClient, tokens, res, req) {
                 sentence: [104, 7, 52] // alterado - semântico
             }, {
                 code: 13,
-                sentence: [56, 106, 115, 7, 57, 36, 49, 50, 51, 4, 43, 58, 42, 35, 50]
+                sentence: [56, 106, 115, 7, 57, 36, 49, 50, 51, 4, 43, 58, 42, 35, 50] // alterado - semântico
             }, {
                 code: 14,
                 sentence: [12]
@@ -959,16 +970,16 @@ function sintaticoExecuta(typeClient, tokens, res, req) {
                 sentence: [39, 75, 76]
             }, {
                 code: 84,
-                sentence: [101, 102, 103, 5]
+                sentence: [101, 102, 103, 5] // alterado - semântico
             }, {
                 code: 85,
                 sentence: [6]
             }, {
                 code: 86,
-                sentence: [117, 7]
+                sentence: [117, 7] // alterado - semântico
             }, {
                 code: 87,
-                sentence: [9]
+                sentence: [107, 9] // alterado - semântico
             }, {
                 code: 88,
                 sentence: [8]
@@ -1554,12 +1565,12 @@ function sintaticoExecuta(typeClient, tokens, res, req) {
                 } else {
                     // se não for terminal									
                     switch (x) {
-                        case 101:
+                        case 101: // VERIFICA_STRING
                             if (tipoVarAux == 'string' && a.code == 5) {
                                 // INSERIR AQUI erro dizendo que foi atribuído um inteiro em uma variável do tipo string
                             }
                             break
-                        case 102:
+                        case 102: // VERIFICA_INT_NO_FLOAT
                             if (tipoVarAux == 'float' && a.code == 5) {
                                 // INSERIR AQUI erro dizendo que foi atribuído um inteiro em uma variável do tipo float
                             }
@@ -1576,7 +1587,7 @@ function sintaticoExecuta(typeClient, tokens, res, req) {
                                 simbolTable.push(new Simbol(tokens.find((value) => value.token == a.name).token, 'variavel', '', 'level'))
                             }
                             break
-                        case 105:
+                        case 105: // VERIFICA_RETORNO_FUNCAO
                             console.log('-------------------------------------------------105--------------------------------------------------------------')
                             break
                         case 106: // VERIFICA_NOME_FUNCAO_REPETIDA
@@ -1584,8 +1595,10 @@ function sintaticoExecuta(typeClient, tokens, res, req) {
                                 // INSERIR ERRO AQUI no retorno e parar o while, "erro de função repetida"
                             }
                             break
-                        case 107:
-                            console.log('-------------------------------------------------107--------------------------------------------------------------')
+                        case 107: // VERIFICA_STRING_NO_INT
+                            if (tipoVarAux == 'integer' && a.code == 9) {
+                                // INSERIR AQUI erro dizendo que foi atribuído uma string em uma variável do tipo integer
+                            }
                             break
                         case 114: // INSERE_NA_TABELA_DE_SIMBOLOS_VARIAVEL
                             simbolTable.push(new Simbol(tokens.find((value) => value.token == a.name).token, 'variavel', '', 'level'))
@@ -1601,7 +1614,6 @@ function sintaticoExecuta(typeClient, tokens, res, req) {
                             })
                             break
                         case 117: // ARMAZENA_NOME_VARIAVEL_TEMPORARIAMENTE
-                            console.log('-------------------------------------------------117--------------------------------------------------------------')
                             tipoVarAux = tipoVariavel(a.name)
                             console.log('tipo: ' + tipoVarAux)
                             break
