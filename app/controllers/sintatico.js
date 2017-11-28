@@ -644,6 +644,11 @@ function sintaticoExecuta(typeClient, tokens, res, req) {
                 valor: 81
             },
             {
+                p1: 103,
+                p2: 5,
+                valor: 1103
+            },
+            {
                 p1: 104,
                 p2: 7,
                 valor: 1104
@@ -687,6 +692,10 @@ function sintaticoExecuta(typeClient, tokens, res, req) {
                 p1: 116,
                 p2: 23,
                 valor: 1116
+            }, {
+                p1: 117,
+                p2: 7,
+                valor: 1117
             }
         ],
         productions = [{
@@ -940,16 +949,16 @@ function sintaticoExecuta(typeClient, tokens, res, req) {
                 sentence: [39, 75, 76]
             }, {
                 code: 84,
-                sentence: [5]
+                sentence: [103, 5]
             }, {
                 code: 85,
                 sentence: [6]
             }, {
                 code: 86,
-                sentence: [7]
+                sentence: [117, 7]
             }, {
                 code: 87,
-                sentence: [9]
+                sentence: [107, 9]
             }, {
                 code: 88,
                 sentence: [8]
@@ -987,6 +996,9 @@ function sintaticoExecuta(typeClient, tokens, res, req) {
                 sentence: [15]
             }, {
                 code: 1116,
+                sentence: [15]
+            }, {
+                code: 1117,
                 sentence: [15]
             }
         ],
@@ -1452,6 +1464,10 @@ function sintaticoExecuta(typeClient, tokens, res, req) {
             {
                 code: 116,
                 nterm: 'ARMAZENA_TIPO_VARIAVEL'
+            },
+            {
+                code: 117,
+                nterm: 'ARMAZENA_NOME_VARIAVEL_TEMPORARIAMENTE'
             }
         ]
 
@@ -1477,6 +1493,7 @@ function sintaticoExecuta(typeClient, tokens, res, req) {
 
     var x,
         a,
+        tipoVarAux,
         error = {
             has: false,
             message: null
@@ -1528,25 +1545,34 @@ function sintaticoExecuta(typeClient, tokens, res, req) {
                     // se não for terminal									
                     switch (x) {
                         case 101:
+                            console.log('-------------------------------------------------101--------------------------------------------------------------')
                             break
                         case 102:
+                            console.log('-------------------------------------------------102--------------------------------------------------------------')
                             break
-                        case 103:
+                        case 103: // VERIFICA_INT_NO_CHAR
+                            if (a.code == 5) {
+                                // INSERIR AQUI erro dizendo que foi atribuído um inteiro em uma variável do tipo char
+                            }
                             break
                         case 104: // VERIFICA_NOME_VARIAVEL_REPETIDO
                             if (simbolTable.find((value) => value.name == a.name)) {
-                                // Inserir um erro no retorno e parar o while, erro de variável repetida
+                                // INSERIR ERRO AQUI no retorno e parar o while, "erro de variável repetida"
                                 //errorStopWhile(repeat, stack, error)
                             } else {
                                 simbolTable.push(new Simbol(tokens.find((value) => value.token == a.name).token, 'variavel', '', 'level'))
                             }
                             break
                         case 105:
+                            console.log('-------------------------------------------------105--------------------------------------------------------------')
                             break
                         case 106: // VERIFICA_NOME_FUNCAO_REPETIDA
                             if (simbolTable.find((value) => value.name == a.name)) {
-                                // Inserir um erro no retorno e parar o while, erro de função repetida
+                                // INSERIR ERRO AQUI no retorno e parar o while, "erro de função repetida"
                             }
+                            break
+                        case 107:
+                            console.log('-------------------------------------------------107--------------------------------------------------------------')
                             break
                         case 114: // INSERE_NA_TABELA_DE_SIMBOLOS_VARIAVEL
                             simbolTable.push(new Simbol(tokens.find((value) => value.token == a.name).token, 'variavel', '', 'level'))
@@ -1560,6 +1586,9 @@ function sintaticoExecuta(typeClient, tokens, res, req) {
                                     value.type = findType(a.code)
                                 }
                             })
+                            break
+                        case 117: // ARMAZENA_NOME_VARIAVEL_TEMPORARIAMENTE
+                            tipoVarAux = tipoVariavel(a.name)
                             break
                     }
 
@@ -1648,6 +1677,10 @@ function sintaticoExecuta(typeClient, tokens, res, req) {
             default:
                 return 'Erro na tipagem de variável'
         }
+    }
+
+    function tipoVariavel(name) {
+        return simbolTable.find((value) => value.name = name).type
     }
 
     function isTerminal(element) {
