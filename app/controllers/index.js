@@ -5,7 +5,7 @@ module.exports.index = (application, req, res) => {
     dadosForm: '',
     tokens: {},
     sintatico: [],
-    error: {}
+    erros: []
   });
 }
 

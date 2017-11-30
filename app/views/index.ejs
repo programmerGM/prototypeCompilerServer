@@ -82,10 +82,15 @@
       <div class="col-md-4 col-md-offset-4">
         <textarea id="sint" class="form-control" name="textarea" rows="10" cols="100"></textarea>
       </div>
-
-       <% if (error.has==true) { %>
-    <span id="errormsg" class="alert alert-danger"><%=error.message%></span>
-  <% } %>
+      <% if (erros.length>0) { %>
+      <span id="errormsg" class="alert alert-danger">
+        <strong>Lista de erros:</strong><br>
+        <% for(a = 0; a < erros.length; a++) { %>
+          <%=erros[a].message%>
+          <br>
+        <% } %>
+      </span>
+    <% } %>
 
 </body>
 
