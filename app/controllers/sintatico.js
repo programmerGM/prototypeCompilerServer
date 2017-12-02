@@ -1619,28 +1619,24 @@ function sintaticoExecuta(typeClient, tokens, res, req) {
                     switch (x) {
                         case 101: // VERIFICA_STRING
                             if (tipoVarAux == 'string' && a.code == 5) {
-                                // INSERIR AQUI erro dizendo que foi atribuído um inteiro em uma variável do tipo string
-                                //t = tokens.find((value) => value.token == a.name)
-                                //erros.push(new ErrorMsg(true, 'Linha ' + (t.line + 1) + ': Erro no token \'' + t.token + '\''))
+                                t = tokens.find((value) => value.token == a.name)
+                                erros.push(new ErrorMsg(true, 'Linha ' + (t.line + 1) + ': Erro no token \'' + t.token + '\' atribuído um inteiro em uma variável do tipo string!'))
                             }
                             break
                         case 102: // VERIFICA_INT_NO_FLOAT
                             if (tipoVarAux == 'float' && a.code == 5) {
-                                // INSERIR AQUI erro dizendo que foi atribuído um inteiro em uma variável do tipo float
                                 t = tokens.find((value) => value.token == a.name)
                                 erros.push(new ErrorMsg(true, 'Linha ' + (t.line + 1) + ': Atribuído tipo inteiro em uma variável do tipo float!'))
                             }
                             break
                         case 103: // VERIFICA_INT_NO_CHAR
                             if (tipoVarAux == 'char' && a.code == 5) {
-                                // INSERIR AQUI erro dizendo que foi atribuído um inteiro em uma variável do tipo char
                                 t = tokens.find((value) => value.token == a.name)
                                 erros.push(new ErrorMsg(true, 'Linha ' + (t.line + 1) + ': Atrubuido tipo inteiro em variável do tipo char!'))
                             }
                             break
                         case 104: // VERIFICA_NOME_VARIAVEL_REPETIDO
                             if (simbolTable.find((value) => value.name == a.name)) {
-                                // INSERIR ERRO AQUI no retorno e parar o while, "erro de variável repetida"
                                 t = tokens.find((value) => value.token == a.name)
                                 erros.push(new ErrorMsg(true, 'Linha ' + (t.line + 1) + ': Nome da variável \'' + t.token + '\' repetida!'))
                             } else {
@@ -1659,25 +1655,20 @@ function sintaticoExecuta(typeClient, tokens, res, req) {
 
                             if (!!lastFunction) {
                                 if (lastFunction.type !== findType(a.code)) {
-                                    // INSERIR MENSAGEM DE ERRO AQUI 
                                     console.log('RETORNANDO ' + findType(a.code) + ' EM UMA FUNÇÃO DO TIPO ' + lastFunction.type)
-                                t = tokens.find((value) => value.token == a.name)
-                                erros.push(new ErrorMsg(true, 'Linha ' + (t.line + 1) + ': Retornando '+ findTable(a.code)+' em uma função do tipo '+lastFunction.type+'!'))
+                                    t = tokens.find((value) => value.token == a.name)
+                                    erros.push(new ErrorMsg(true, 'Linha ' + (t.line + 1) + ': Retornando ' + findTable(a.code) + ' em uma função do tipo ' + lastFunction.type + '!'))
                                 }
                             }
                             break
                         case 106: // VERIFICA_NOME_FUNCAO_REPETIDA
                             if (simbolTable.find((value) => value.name == a.name)) {
-                                // INSERIR ERRO AQUI no retorno e parar o while, "erro de função repetida"
-                                
                                 t = tokens.find((value) => value.token == a.name)
                                 erros.push(new ErrorMsg(true, 'Linha ' + (t.line + 1) + ': Função repetida'))
                             }
                             break
                         case 107: // VERIFICA_STRING_NO_INT
                             if (tipoVarAux == 'integer' && a.code == 9) {
-                                // INSERIR AQUI erro dizendo que foi atribuído uma string em uma variável do tipo integer
-                                
                                 t = tokens.find((value) => value.token == a.name)
                                 erros.push(new ErrorMsg(true, 'Linha ' + (t.line + 1) + ': Atribuído tipo string em uma variável do tipo integer'))
                             }
@@ -1791,7 +1782,7 @@ function sintaticoExecuta(typeClient, tokens, res, req) {
                 return 'string'
             case 12:
                 return 'integer'
-            case 42: // tá certo -- não mexer
+            case 42: // tá certo -- não mexer no sitio
                 return 'void'
             case 17:
                 return 'float'
